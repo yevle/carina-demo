@@ -1,7 +1,6 @@
 package ylevchenko.carina.mobile.gui.ios;
 
 import com.zebrunner.carina.utils.factory.DeviceType;
-import ylevchenko.carina.mobile.gui.CarinaAbstractPage;
 import ylevchenko.carina.mobile.gui.common.LoginPageBase;
 import ylevchenko.carina.mobile.gui.common.WebViewPageBase;
 import com.zebrunner.carina.utils.exception.NotImplementedException;
@@ -31,7 +30,9 @@ public class LoginPage extends LoginPageBase {
     }
 
     @Override
-    public LoginPageBase checkPrivacyPolicyCheckbox() { throw new NotImplementedException();}
+    public LoginPageBase checkPrivacyPolicyCheckbox(boolean check) {
+        throw new NotImplementedException();
+    }
 
     @Override
     public WebViewPageBase clickLoginBtn() {
@@ -45,30 +46,31 @@ public class LoginPage extends LoginPageBase {
 
     @Override
     public boolean isNameFieldHasText() {
-        return false;
+        throw new NotImplementedException();
     }
 
     @Override
     public boolean isPasswordFieldHasText() {
-        return false;
-    }
-
-    @Override
-    public boolean isGenderFieldHasTextAndUnchecked(Gender gender) {
-        return false;
-    }
-
-    @Override
-    public boolean isPrivacyPolicyHasTextAndUnchecked() {
-        return false;
-    }
-
-    @Override
-    public WebViewPageBase login() {
         throw new NotImplementedException();
     }
 
-    public boolean isMaleChecked() {
+    @Override
+    public boolean isGenderFieldChecked(Gender gender) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean isGenderFieldHasText(Gender gender) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean isPrivacyPolicyChecked() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean isPrivacyPolicyHasText() {
         throw new NotImplementedException();
     }
 

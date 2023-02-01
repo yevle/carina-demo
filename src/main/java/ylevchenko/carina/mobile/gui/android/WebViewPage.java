@@ -9,7 +9,7 @@ import ylevchenko.carina.mobile.gui.common.WebViewPageBase;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = WebViewPageBase.class)
 public class WebViewPage extends WebViewPageBase {
 
-    @FindBy(className = "android.widget.TextView")
+    @FindBy(xpath = "//*[@content-desc='Navigate up']//following-sibling::*[@text = 'Web View']")
     private ExtendedWebElement title;
 
     public WebViewPage(WebDriver driver) {
@@ -17,7 +17,7 @@ public class WebViewPage extends WebViewPageBase {
     }
 
     public boolean isPageOpened() {
-        return title.isElementWithTextPresent("Web View", 3);
+        return title.isElementPresent(TIMEOUT_SHORT);
     }
 
 }

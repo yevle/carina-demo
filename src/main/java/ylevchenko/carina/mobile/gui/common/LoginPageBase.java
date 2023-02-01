@@ -16,11 +16,9 @@ public abstract class LoginPageBase extends CarinaAbstractPage {
 
     public abstract LoginPageBase selectGender(Gender gender);
 
-    public abstract LoginPageBase checkPrivacyPolicyCheckbox();
+    public abstract LoginPageBase checkPrivacyPolicyCheckbox(boolean check);
 
     public abstract WebViewPageBase clickLoginBtn();
-
-    public abstract WebViewPageBase login();
 
     public abstract boolean isLoginBtnActive();
 
@@ -28,8 +26,12 @@ public abstract class LoginPageBase extends CarinaAbstractPage {
 
     public abstract boolean isPasswordFieldHasText();
 
-    public abstract boolean isGenderFieldHasTextAndUnchecked(Gender gender);
+    public abstract boolean isGenderFieldChecked(Gender gender);
 
-    public abstract boolean isPrivacyPolicyHasTextAndUnchecked();
+    public abstract boolean isGenderFieldHasText(Gender gender);
+
+    public abstract boolean isPrivacyPolicyChecked();
+
+    public abstract boolean isPrivacyPolicyHasText();
 
 }

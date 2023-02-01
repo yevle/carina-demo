@@ -51,8 +51,12 @@ public class LoginPage extends LoginPageBase {
     }
 
     @Override
-    public LoginPageBase checkPrivacyPolicyCheckbox() {
-        privacyPolicyCheckbox.click();
+    public LoginPageBase checkPrivacyPolicyCheckbox(boolean check) {
+        if (check) {
+            privacyPolicyCheckbox.check();
+        } else {
+            privacyPolicyCheckbox.uncheck();
+        }
         return initPage(getDriver(), LoginPageBase.class);
     }
 
@@ -64,33 +68,37 @@ public class LoginPage extends LoginPageBase {
 
     @Override
     public boolean isLoginBtnActive() {
-        return loginBtn.isClickable(3);
+        return loginBtn.isClickable(TIMEOUT_SHORT);
     }
 
     @Override
     public boolean isNameFieldHasText() {
-        return nameInputField.isElementWithTextPresent("Name", 2);
+        return nameInputField.isElementWithTextPresent(NAME_FIELD_TEXT, TIMEOUT_SHORT);
     }
 
     @Override
     public boolean isPasswordFieldHasText() {
-        return passwordInputField.isElementWithTextPresent("Password", 2);
+        return passwordInputField.isElementWithTextPresent(PASSWORD_FIELD_TEXT, TIMEOUT_SHORT);
     }
 
     @Override
-    public boolean isGenderFieldHasTextAndUnchecked(Gender gender) {
-        return genderRadioBtn.format(gender.getIdName()).isElementWithTextPresent(gender.getText(), 2) && !genderRadioBtn.format(gender.getIdName()).isChecked();
+    public boolean isGenderFieldChecked(Gender gender) {
+        return genderRadioBtn.format(gender.getIdName()).isChecked();
     }
 
     @Override
-    public boolean isPrivacyPolicyHasTextAndUnchecked() {
-        return privacyPolicyCheckbox.isElementWithTextPresent("I agree to the Privacy Policy", 2) && !privacyPolicyCheckbox.isChecked();
+    public boolean isGenderFieldHasText(Gender gender) {
+        return genderRadioBtn.format(gender.getIdName()).isElementWithTextPresent(gender.getText(), TIMEOUT_SHORT);
     }
 
     @Override
-    public WebViewPageBase login() {
-        loginBtn.click();
-        return initPage(getDriver(), WebViewPageBase.class);
+    public boolean isPrivacyPolicyChecked() {
+        return privacyPolicyCheckbox.isChecked();
+    }
+
+    @Override
+    public boolean isPrivacyPolicyHasText() {
+        return privacyPolicyCheckbox.isElementWithTextPresent(PRIVACY_POLICY_TEXT, TIMEOUT_SHORT);
     }
 
 }
