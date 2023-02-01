@@ -1,26 +1,25 @@
 package ylevchenko.carina.mobile.gui.ios;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.exception.NotImplementedException;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
-import ylevchenko.carina.mobile.gui.common.BaseLoginPage;
-import ylevchenko.carina.mobile.gui.common.BaseWelcomePage;
+import ylevchenko.carina.mobile.gui.common.LoginPageBase;
+import ylevchenko.carina.mobile.gui.common.WelcomePageBase;
 
-@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = BaseWelcomePage.class)
-public class WelcomePage extends BaseWelcomePage {
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = WelcomePageBase.class)
+public class WelcomePage extends WelcomePageBase {
 
     public WelcomePage(WebDriver driver) {
         super(driver);
     }
 
     @Override
-    public BaseLoginPage clickNextBtn() {
+    public LoginPageBase clickNextBtn() {
         throw new NotImplementedException();
     }
 
     public boolean isPageOpened () {
         throw new NotImplementedException();
     }
+
 }

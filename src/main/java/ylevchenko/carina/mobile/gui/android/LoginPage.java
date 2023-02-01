@@ -1,14 +1,15 @@
 package ylevchenko.carina.mobile.gui.android;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import ylevchenko.carina.mobile.gui.common.BaseCarinaWebViewPage;
-import ylevchenko.carina.mobile.gui.common.BaseLoginPage;
+import ylevchenko.carina.enums.Gender;
+import ylevchenko.carina.mobile.gui.common.LoginPageBase;
+import ylevchenko.carina.mobile.gui.common.WebViewPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = BaseLoginPage.class)
-public class LoginPage extends BaseLoginPage {
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = LoginPageBase.class)
+public class LoginPage extends LoginPageBase {
     @FindBy(id = "name")
     private ExtendedWebElement nameInputField;
 
@@ -32,44 +33,64 @@ public class LoginPage extends BaseLoginPage {
     }
 
     @Override
-    public void typeName(String name) {
+    public LoginPageBase typeName(String name) {
         nameInputField.type(name);
+        return initPage(getDriver(), LoginPageBase.class);
     }
 
     @Override
-    public void typePassword(String password) {
+    public LoginPageBase typePassword(String password) {
         passwordInputField.type(password);
+        return initPage(getDriver(), LoginPageBase.class);
     }
 
     @Override
-    public void selectGender(String gender) {
-        genderRadioBtn.format(gender).click();
+    public LoginPageBase selectGender(Gender gender) {
+        genderRadioBtn.format(gender.getIdName()).check();
+        return initPage(getDriver(), LoginPageBase.class);
     }
 
     @Override
-    public void checkPrivacyPolicyCheckbox() {
+    public LoginPageBase checkPrivacyPolicyCheckbox() {
         privacyPolicyCheckbox.click();
+        return initPage(getDriver(), LoginPageBase.class);
     }
 
     @Override
-    public BaseCarinaWebViewPage clickLoginBtn() {
+    public WebViewPageBase clickLoginBtn() {
         loginBtn.click();
-        return initPage(getDriver(),BaseCarinaWebViewPage.class);
+        return initPage(getDriver(), WebViewPageBase.class);
     }
 
     @Override
     public boolean isLoginBtnActive() {
-        return loginBtn.isClickable();
+        return loginBtn.isClickable(3);
     }
 
     @Override
-    public BaseCarinaWebViewPage login() {
+    public boolean isNameFieldHasText() {
+        return nameInputField.isElementWithTextPresent("Name", 2);
+    }
+
+    @Override
+    public boolean isPasswordFieldHasText() {
+        return passwordInputField.isElementWithTextPresent("Password", 2);
+    }
+
+    @Override
+    public boolean isGenderFieldHasTextAndUnchecked(Gender gender) {
+        return genderRadioBtn.format(gender.getIdName()).isElementWithTextPresent(gender.getText(), 2) && !genderRadioBtn.format(gender.getIdName()).isChecked();
+    }
+
+    @Override
+    public boolean isPrivacyPolicyHasTextAndUnchecked() {
+        return privacyPolicyCheckbox.isElementWithTextPresent("I agree to the Privacy Policy", 2) && !privacyPolicyCheckbox.isChecked();
+    }
+
+    @Override
+    public WebViewPageBase login() {
         loginBtn.click();
-        return initPage(getDriver(), BaseCarinaWebViewPage.class);
+        return initPage(getDriver(), WebViewPageBase.class);
     }
 
-
-    public boolean isMaleChecked() {
-        return maleRadioBtn.isChecked();
-    }
 }

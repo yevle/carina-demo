@@ -4,27 +4,30 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import ylevchenko.carina.mobile.gui.common.BaseLoginPage;
+import ylevchenko.carina.mobile.gui.common.LoginPageBase;
+import ylevchenko.carina.mobile.gui.common.WelcomePageBase;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ylevchenko.carina.mobile.gui.common.BaseWelcomePage.class)
-public class WelcomePage extends ylevchenko.carina.mobile.gui.common.BaseWelcomePage {
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = WelcomePageBase.class)
+public class WelcomePage extends WelcomePageBase {
 
     @FindBy(id = "carina_logo")
     private ExtendedWebElement title;
 
     @FindBy(id = "next_button")
     private ExtendedWebElement nextBtn;
+
     public WelcomePage(WebDriver driver) {
         super(driver);
     }
 
     @Override
-    public BaseLoginPage clickNextBtn() {
+    public LoginPageBase clickNextBtn() {
         nextBtn.click();
-        return initPage(getDriver(), BaseLoginPage.class);
+        return initPage(getDriver(), LoginPageBase.class);
     }
 
-    public boolean isPageOpened () {
-        return title.isElementPresent();
+    public boolean isPageOpened() {
+        return title.isElementPresent(3);
     }
+
 }

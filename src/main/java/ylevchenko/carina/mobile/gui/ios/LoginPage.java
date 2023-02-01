@@ -1,41 +1,40 @@
 package ylevchenko.carina.mobile.gui.ios;
 
-import ylevchenko.carina.mobile.gui.common.BaseCarinaWebViewPage;
-import com.zebrunner.carina.utils.exception.NotImplementedException;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import ylevchenko.carina.mobile.gui.CarinaAbstractPage;
+import ylevchenko.carina.mobile.gui.common.LoginPageBase;
+import ylevchenko.carina.mobile.gui.common.WebViewPageBase;
+import com.zebrunner.carina.utils.exception.NotImplementedException;
 import org.openqa.selenium.WebDriver;
 import ylevchenko.carina.enums.Gender;
-import ylevchenko.carina.mobile.gui.common.BaseLoginPage;
 
-@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = BaseLoginPage.class)
-public class LoginPage extends BaseLoginPage {
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = LoginPageBase.class)
+public class LoginPage extends LoginPageBase {
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
     @Override
-    public void typeName(String name) {
+    public LoginPageBase typeName(String name) {
         throw new NotImplementedException();
     }
 
     @Override
-    public void typePassword(String password) {
+    public LoginPageBase typePassword(String password) {
         throw new NotImplementedException();
     }
 
     @Override
-    public void selectGender(String gender) {
+    public LoginPageBase selectGender(Gender gender) {
         throw new NotImplementedException();
     }
 
     @Override
-    public void checkPrivacyPolicyCheckbox() {
-        throw new NotImplementedException();
-    }
+    public LoginPageBase checkPrivacyPolicyCheckbox() { throw new NotImplementedException();}
 
     @Override
-    public BaseCarinaWebViewPage clickLoginBtn() {
+    public WebViewPageBase clickLoginBtn() {
         throw new NotImplementedException();
     }
 
@@ -45,7 +44,27 @@ public class LoginPage extends BaseLoginPage {
     }
 
     @Override
-    public BaseCarinaWebViewPage login() {
+    public boolean isNameFieldHasText() {
+        return false;
+    }
+
+    @Override
+    public boolean isPasswordFieldHasText() {
+        return false;
+    }
+
+    @Override
+    public boolean isGenderFieldHasTextAndUnchecked(Gender gender) {
+        return false;
+    }
+
+    @Override
+    public boolean isPrivacyPolicyHasTextAndUnchecked() {
+        return false;
+    }
+
+    @Override
+    public WebViewPageBase login() {
         throw new NotImplementedException();
     }
 
@@ -53,7 +72,4 @@ public class LoginPage extends BaseLoginPage {
         throw new NotImplementedException();
     }
 
-    public void selectGender(Gender gender) {
-        throw new NotImplementedException();
-    }
 }
