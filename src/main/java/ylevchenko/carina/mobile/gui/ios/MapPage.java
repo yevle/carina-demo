@@ -1,25 +1,22 @@
-package ylevchenko.carina.mobile.gui.android;
+package ylevchenko.carina.mobile.gui.ios;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ylevchenko.carina.mobile.gui.android.components.MainMenu;
-import ylevchenko.carina.mobile.gui.common.WebViewPageBase;
+import ylevchenko.carina.mobile.gui.common.MapPageBase;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = WebViewPageBase.class)
-public class WebViewPage extends WebViewPageBase {
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = MapPageBase.class)
+public class MapPage extends MapPageBase {
 
-    @FindBy(xpath = "//*[@content-desc='Navigate up']//following-sibling::*[@text = 'Web View']")
     private ExtendedWebElement title;
 
-    @FindBy(xpath = "//*[@content-desc='Navigate up']")
     private ExtendedWebElement mainMenuBtn;
 
-    @FindBy(id = "nav_view")
     private MainMenu mainMenuModal;
 
-    public WebViewPage(WebDriver driver) {
+    public MapPage(WebDriver driver) {
         super(driver);
     }
 

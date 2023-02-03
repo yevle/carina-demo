@@ -40,6 +40,16 @@ public class LoginPage extends LoginPageBase {
     }
 
     @Override
+    public WebViewPageBase login() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public LoginPageBase enterLoginDetails() {
+        throw new NotImplementedException();
+    }
+
+    @Override
     public boolean isLoginBtnActive() {
         throw new NotImplementedException();
     }

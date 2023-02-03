@@ -1,6 +1,7 @@
 package ylevchenko.carina.mobile.gui.android;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import org.apache.commons.lang3.RandomStringUtils;
 import ylevchenko.carina.enums.Gender;
 import ylevchenko.carina.mobile.gui.common.LoginPageBase;
 import ylevchenko.carina.mobile.gui.common.WebViewPageBase;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase {
+
     @FindBy(id = "name")
     private ExtendedWebElement nameInputField;
 
@@ -64,6 +66,19 @@ public class LoginPage extends LoginPageBase {
     public WebViewPageBase clickLoginBtn() {
         loginBtn.click();
         return initPage(getDriver(), WebViewPageBase.class);
+    }
+
+    @Override
+    public WebViewPageBase login() {
+        String loginPass = RandomStringUtils.randomAlphanumeric(LOGIN_SYMBOL_COUNT);
+        typeName(loginPass).typePassword(loginPass).selectGender(Gender.MALE).checkPrivacyPolicyCheckbox(true);
+        return clickLoginBtn();
+    }
+
+    @Override
+    public LoginPageBase enterLoginDetails() {
+        String loginPass = RandomStringUtils.randomAlphanumeric(LOGIN_SYMBOL_COUNT);
+        return typeName(loginPass).typePassword(loginPass).selectGender(Gender.MALE).checkPrivacyPolicyCheckbox(true);
     }
 
     @Override

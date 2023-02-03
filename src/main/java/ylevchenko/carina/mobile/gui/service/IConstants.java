@@ -13,5 +13,7 @@ public interface IConstants {
     public static final String PRIVACY_POLICY_TEXT = "I agree to the Privacy Policy";
 
     public static final String ONE_SPACE_TEXT = " ";
+
     public static final String EMPTY_TEXT = "";
+
 }

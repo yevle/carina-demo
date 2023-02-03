@@ -1,0 +1,90 @@
+package ylevchenko.carina.android;
+
+import com.qaprosoft.carina.core.foundation.IAbstractTest;
+import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
+import com.zebrunner.carina.utils.mobile.IMobileUtils;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+import ylevchenko.carina.enums.MainMenuItems;
+import ylevchenko.carina.mobile.gui.common.MainMenuPageBase;
+import ylevchenko.carina.mobile.gui.common.WebViewPageBase;
+import ylevchenko.carina.mobile.gui.common.WelcomePageBase;
+import ylevchenko.carina.mobile.gui.common.components.MainMenuBase;
+import ylevchenko.carina.mobile.gui.service.IConstants;
+
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
+
+public class MainMenuTest implements IAbstractTest, IMobileUtils, IConstants {
+
+    @BeforeTest
+    public void openAppAndLogin() {
+        initPage(getDriver(), WelcomePageBase.class).clickNextBtn().login();
+    }
+
+    @Test(description = "Main menu items presence testing")
+    @MethodOwner(owner = "ylevchenko")
+    public void mainMenuItemsPresenceTest() {
+
+        SoftAssert softAssert = new SoftAssert();
+
+        MainMenuBase mainMenu = initPage(getDriver(), WebViewPageBase.class).tapMainMenuButton();
+
+        for (MainMenuItems item : MainMenuItems.values()) {
+            softAssert.assertTrue(mainMenu.isMenuElementPresent(item), String.format("[MAIN MENU] - '%s' item is not present", item));
+        }
+
+        softAssert.assertAll();
+    }
+
+    @Test(description = "Main menu items testing against enum")
+    @MethodOwner(owner = "ylevchenko")
+    public void mainMenuEnumTest() {
+
+        SoftAssert softAssert = new SoftAssert();
+
+        MainMenuBase mainMenu = initPage(getDriver(), WebViewPageBase.class).tapMainMenuButton();
+
+        Iterator<MainMenuItems> itemsIterator = Arrays.stream(MainMenuItems.values()).iterator();
+
+        for (MainMenuItems item : MainMenuItems.values()) {
+            softAssert.assertTrue(mainMenu.getMenuItems().contains(item.getText()), String.format("[MAIN MENU] - '%s' item is not present", item));
+        }
+        for (String element : mainMenu.getMenuItems()) {
+            softAssert.assertEquals(element, itemsIterator.next().getText(), String.format("[MAIN MENU] - '%s' item is not equal to enum value", element));
+        }
+
+        softAssert.assertAll();
+    }
+
+    @Test(description = "Main menu items testing by index and text")
+    @MethodOwner(owner = "ylevchenko")
+    public void mainMenuPagesTest() {
+
+        SoftAssert softAssert = new SoftAssert();
+
+        MainMenuPageBase mainMenuPage = initPage(getDriver(), WebViewPageBase.class);
+
+        for (int i = 0; i < MainMenuItems.values().length; i++) {
+            mainMenuPage.tapMainMenuButton().openMenuItemByIndex(i);
+            mainMenuPage = initPage(getDriver(), MainMenuItems.valueByIndex(i).getPageClass());
+            softAssert.assertTrue(mainMenuPage.isPageOpened(), String.format("'%s' page is not opened", mainMenuPage));
+        }
+
+        MainMenuBase mainMenuBase = mainMenuPage.tapMainMenuButton();
+        List <String> menuTextlist = mainMenuBase.getMenuItems();
+        mainMenuBase.openMenuItem(MainMenuItems.WEB_VIEW);
+
+        for (String text : menuTextlist) {
+            mainMenuPage.tapMainMenuButton().openMenuItem(MainMenuItems.valueByText(text));
+            mainMenuPage = initPage(getDriver(), MainMenuItems.valueByText(text).getPageClass());
+            softAssert.assertTrue(mainMenuPage.isPageOpened(), String.format("'%s' page is not opened", mainMenuPage));
+        }
+
+        softAssert.assertAll();
+    }
+
+}
