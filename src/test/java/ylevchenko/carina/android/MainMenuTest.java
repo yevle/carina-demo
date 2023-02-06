@@ -15,7 +15,6 @@ import ylevchenko.carina.mobile.gui.service.IConstants;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.List;
 
 
 public class MainMenuTest implements IAbstractTest, IMobileUtils, IConstants {
@@ -51,10 +50,12 @@ public class MainMenuTest implements IAbstractTest, IMobileUtils, IConstants {
         Iterator<MainMenuItems> itemsIterator = Arrays.stream(MainMenuItems.values()).iterator();
 
         for (MainMenuItems item : MainMenuItems.values()) {
-            softAssert.assertTrue(mainMenu.getMenuItems().contains(item.getText()), String.format("[MAIN MENU] - '%s' item is not present", item));
+            softAssert.assertTrue(mainMenu.getMenuItems().contains(item.getText()),
+                    String.format("[MAIN MENU] - '%s' item is not present", item));
         }
         for (String element : mainMenu.getMenuItems()) {
-            softAssert.assertEquals(element, itemsIterator.next().getText(), String.format("[MAIN MENU] - '%s' item is not equal to enum value", element));
+            softAssert.assertEquals(element, itemsIterator.next().getText(),
+                    String.format("[MAIN MENU] - '%s' item is not equal to enum value", element));
         }
 
         softAssert.assertAll();
@@ -71,17 +72,7 @@ public class MainMenuTest implements IAbstractTest, IMobileUtils, IConstants {
         for (int i = 0; i < MainMenuItems.values().length; i++) {
             mainMenuPage.tapMainMenuButton().openMenuItemByIndex(i);
             mainMenuPage = initPage(getDriver(), MainMenuItems.valueByIndex(i).getPageClass());
-            softAssert.assertTrue(mainMenuPage.isPageOpened(), String.format("'%s' page is not opened", mainMenuPage));
-        }
-
-        MainMenuBase mainMenuBase = mainMenuPage.tapMainMenuButton();
-        List <String> menuTextlist = mainMenuBase.getMenuItems();
-        mainMenuBase.openMenuItem(MainMenuItems.WEB_VIEW);
-
-        for (String text : menuTextlist) {
-            mainMenuPage.tapMainMenuButton().openMenuItem(MainMenuItems.valueByText(text));
-            mainMenuPage = initPage(getDriver(), MainMenuItems.valueByText(text).getPageClass());
-            softAssert.assertTrue(mainMenuPage.isPageOpened(), String.format("'%s' page is not opened", mainMenuPage));
+            softAssert.assertTrue(mainMenuPage.isPageOpened(), String.format("Page with index '%s' is not opened", i));
         }
 
         softAssert.assertAll();

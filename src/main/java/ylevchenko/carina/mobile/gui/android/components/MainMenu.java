@@ -5,6 +5,7 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 import ylevchenko.carina.enums.MainMenuItems;
 import ylevchenko.carina.mobile.gui.CarinaAbstractPage;
 import ylevchenko.carina.mobile.gui.common.components.MainMenuBase;
@@ -40,12 +41,23 @@ public class MainMenu extends MainMenuBase {
     }
 
     public ExtendedWebElement getMenuItemByIndex(int index) {
+        checkListByIndex(index);
         return listMenuItems.get(index);
     }
 
     public CarinaAbstractPage openMenuItemByIndex(int index) {
-        menuItem.format(MainMenuItems.valueByIndex(index).getText()).click();
+        checkListByIndex(index);
+        menuItem.format(getMenuItems().get(index)).click();
         return initPage(getDriver(), MainMenuItems.valueByIndex(index).getPageClass());
+    }
+
+    private void checkListByIndex (int index) {
+        if (listMenuItems.isEmpty()) {
+            Assert.fail("List of menu items is empty!");
+        }
+        if (!indexExists(listMenuItems, index)) {
+            Assert.fail(String.format("List of menu items does not contain %s index!", index));
+        }
     }
 
 }

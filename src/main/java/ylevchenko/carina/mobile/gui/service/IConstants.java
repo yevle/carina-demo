@@ -1,5 +1,7 @@
 package ylevchenko.carina.mobile.gui.service;
 
+import java.util.List;
+
 public interface IConstants {
 
     public static final int LOGIN_SYMBOL_COUNT = 7;
@@ -15,5 +17,9 @@ public interface IConstants {
     public static final String ONE_SPACE_TEXT = " ";
 
     public static final String EMPTY_TEXT = "";
+
+    public default boolean indexExists(List list, int index) {
+        return index >= 0 && index < list.size();
+    }
 
 }
