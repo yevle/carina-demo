@@ -2,9 +2,9 @@ package ylevchenko.carina.mobile.gui.common;
 
 import org.openqa.selenium.WebDriver;
 
-public abstract class WebViewPageBase extends MainMenuPageBase {
+public abstract class ChartsPageBase extends MainMenuPageBase {
 
-    public WebViewPageBase(WebDriver driver) {
+    public ChartsPageBase(WebDriver driver) {
         super(driver);
     }
 

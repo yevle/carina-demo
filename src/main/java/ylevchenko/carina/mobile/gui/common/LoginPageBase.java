@@ -1,5 +1,6 @@
 package ylevchenko.carina.mobile.gui.common;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import ylevchenko.carina.enums.Gender;
 import ylevchenko.carina.mobile.gui.CarinaAbstractPage;
@@ -19,6 +20,10 @@ public abstract class LoginPageBase extends CarinaAbstractPage {
     public abstract LoginPageBase checkPrivacyPolicyCheckbox(boolean check);
 
     public abstract WebViewPageBase clickLoginBtn();
+
+    public abstract WebViewPageBase login();
+
+    public abstract LoginPageBase enterLoginDetails();
 
     public abstract boolean isLoginBtnActive();
 
