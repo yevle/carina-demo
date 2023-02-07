@@ -18,4 +18,23 @@ public class WebViewPage extends WebViewPageBase {
         throw new NotImplementedException();
     }
 
+    @Override
+    public void scrollToFooter() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean isFooterEmailLinkPresent() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean isImageSliderVisible() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean isFooterEmailLinkCorrect() {
+        throw new NotImplementedException();
+    }
 }

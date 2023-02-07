@@ -12,4 +12,12 @@ public abstract class MainMenuPageBase extends CarinaAbstractPage {
 
     public abstract MainMenuBase tapMainMenuButton();
 
+    public abstract void scrollToFooter();
+
+    public abstract boolean isFooterEmailLinkCorrect();
+
+    public abstract boolean isFooterEmailLinkPresent();
+
+    public abstract boolean isImageSliderVisible();
+
 }

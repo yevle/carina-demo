@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import ylevchenko.carina.mobile.gui.android.components.MainMenu;
 import ylevchenko.carina.mobile.gui.common.WebViewPageBase;
 
+import java.util.Arrays;
+
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = WebViewPageBase.class)
 public class WebViewPage extends WebViewPageBase {
 
@@ -15,6 +17,15 @@ public class WebViewPage extends WebViewPageBase {
 
     @FindBy(xpath = "//*[@content-desc='Navigate up']")
     private ExtendedWebElement mainMenuBtn;
+
+    @FindBy(xpath = "//*[(@resource-id='com.solvd.carinademoapplication:id/lin')]/*/child::*")
+    private ExtendedWebElement scrollableContainer;
+
+    @FindBy(xpath = "//*[(@resource-id='t-footer')]/*/child::*[5]/child::*[1]")
+    private ExtendedWebElement footerEmailLink;
+
+    @FindBy(id = "image_slider")
+    private ExtendedWebElement imageSlider;
 
     @FindBy(id = "nav_view")
     private MainMenu mainMenuModal;
@@ -31,6 +42,28 @@ public class WebViewPage extends WebViewPageBase {
 
     public boolean isPageOpened() {
         return title.isElementPresent(TIMEOUT_SHORT);
+    }
+
+    @Override
+    public void scrollToFooter() {
+        swipe(footerEmailLink, scrollableContainer, Direction.UP, ATTEMPTS_FIVE, SWIPE_DURATION_SHORTEST);
+    }
+
+    @Override
+    public boolean isFooterEmailLinkPresent() {
+        return footerEmailLink.isElementPresent(TIMEOUT_SHORT);
+    }
+
+    @Override
+    public boolean isImageSliderVisible() {
+        return imageSlider.isVisible(TIMEOUT_SHORT);
+    }
+
+    @Override
+    public boolean isFooterEmailLinkCorrect() {
+        String emailText = footerEmailLink.getAttribute("content-desc");
+        return Arrays.stream(emailText.strip().split("@"))
+                .allMatch(text -> text.equals(EMAIL_NAME) || text.equals(EMAIL_DOMAIN));
     }
 
 }

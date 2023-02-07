@@ -1,6 +1,7 @@
 package ylevchenko.carina.mobile.gui.ios;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.utils.exception.NotImplementedException;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -30,4 +31,23 @@ public class UiElementsPage extends UiElementsPageBase {
         return title.isElementPresent(TIMEOUT_SHORT);
     }
 
+    @Override
+    public void scrollToFooter() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean isFooterEmailLinkPresent() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean isImageSliderVisible() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean isFooterEmailLinkCorrect() {
+        throw new NotImplementedException();
+    }
 }

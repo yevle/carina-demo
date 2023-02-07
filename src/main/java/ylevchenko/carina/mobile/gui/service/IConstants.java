@@ -1,25 +1,48 @@
 package ylevchenko.carina.mobile.gui.service;
 
+import org.apache.commons.lang3.RandomUtils;
+import org.openqa.selenium.Point;
+
 import java.util.List;
 
 public interface IConstants {
 
-    public static final int LOGIN_SYMBOL_COUNT = 7;
+    int LOGIN_SYMBOL_COUNT = 7;
 
-    public static final int TIMEOUT_SHORT = 3;
+    int TIMEOUT_SHORT = 3;
 
-    public static final String NAME_FIELD_TEXT = "Name";
+    int SWIPE_DURATION_SHORTEST = 50;
 
-    public static final String PASSWORD_FIELD_TEXT = "Password";
+    int SWIPE_DURATION_LONG = 200;
 
-    public static final String PRIVACY_POLICY_TEXT = "I agree to the Privacy Policy";
+    int ATTEMPTS_FIVE = 5;
 
-    public static final String ONE_SPACE_TEXT = " ";
+    String NAME_FIELD_TEXT = "Name";
 
-    public static final String EMPTY_TEXT = "";
+    String PASSWORD_FIELD_TEXT = "Password";
+
+    String PRIVACY_POLICY_TEXT = "I agree to the Privacy Policy";
+
+    String ONE_SPACE_TEXT = " ";
+
+    String EMPTY_TEXT = "";
+
+    String EMAIL_NAME = "support";
+
+    String EMAIL_DOMAIN = "zebrunner.com";
+
 
     public default boolean indexExists(List list, int index) {
         return index >= 0 && index < list.size();
+    }
+
+    public default boolean doesPointInsideRect (Point topLeft, Point bottomRight, Point checkedPoint) {
+        return topLeft.x<=checkedPoint.x&&bottomRight.x>=checkedPoint.x&&topLeft.y<=checkedPoint.y&&bottomRight.y>=checkedPoint.y;
+    }
+
+    public default Point randomPointInsideRect (Point topLeft, Point bottomRight) {
+        return new Point(RandomUtils.nextInt(topLeft.x,++bottomRight.x),
+                RandomUtils.nextInt(topLeft.y,++bottomRight.y));
     }
 
 }
