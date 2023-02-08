@@ -4,7 +4,6 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.zebrunner.carina.utils.exception.NotImplementedException;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 import ylevchenko.carina.mobile.gui.android.components.MainMenu;
 import ylevchenko.carina.mobile.gui.common.ChartsPageBase;
 
@@ -22,19 +21,9 @@ public class ChartsPage extends ChartsPageBase {
     }
 
     @Override
-    public MainMenu tapMainMenuButton() {
+    public MainMenu openMainMenu() {
         mainMenuBtn.click();
         return mainMenuModal;
-    }
-
-    @Override
-    public void scrollToFooter() {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public boolean isFooterEmailLinkPresent() {
-        throw new NotImplementedException();
     }
 
     public boolean isPageOpened() {
@@ -42,12 +31,8 @@ public class ChartsPage extends ChartsPageBase {
     }
 
     @Override
-    public boolean isImageSliderVisible() {
+    public boolean isSliderVisibleAfterSwipe() {
         throw new NotImplementedException();
     }
 
-    @Override
-    public boolean isFooterEmailLinkCorrect() {
-        throw new NotImplementedException();
-    }
 }

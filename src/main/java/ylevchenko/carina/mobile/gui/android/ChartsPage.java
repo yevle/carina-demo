@@ -21,24 +21,17 @@ public class ChartsPage extends ChartsPageBase {
     @FindBy(id = "nav_view")
     private MainMenu mainMenuModal;
 
+    @FindBy(id = "image_slider")
+    private ExtendedWebElement imageSlider;
+
     public ChartsPage(WebDriver driver) {
         super(driver);
     }
 
     @Override
-    public MainMenu tapMainMenuButton() {
-        mainMenuBtn.click();
+    public MainMenu openMainMenu() {
+        if(!mainMenuModal.isMainMenuOpened()) mainMenuBtn.click();
         return mainMenuModal;
-    }
-
-    @Override
-    public void scrollToFooter() {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public boolean isFooterEmailLinkPresent() {
-        return false;
     }
 
     public boolean isPageOpened() {
@@ -46,12 +39,9 @@ public class ChartsPage extends ChartsPageBase {
     }
 
     @Override
-    public boolean isImageSliderVisible() {
-        throw new NotImplementedException();
+    public boolean isSliderVisibleAfterSwipe() {
+        swipeDown(ATTEMPTS_FIVE, SWIPE_DURATION_LONG);
+        return imageSlider.isVisible(TIMEOUT_SHORT);
     }
 
-    @Override
-    public boolean isFooterEmailLinkCorrect() {
-        return false;
-    }
 }

@@ -31,11 +31,15 @@ public class LoginPageTest implements IAbstractTest, IMobileUtils, IConstants {
         softAssert.assertTrue(loginPage.isNameFieldHasText(), "[LOGIN PAGE] - Name field has no text or absent");
         softAssert.assertTrue(loginPage.isPasswordFieldHasText(), "[LOGIN PAGE] - Password field has no text or absent");
         for (Gender gender: Gender.values()) {
-            softAssert.assertFalse(loginPage.isGenderFieldChecked(gender), "[LOGIN PAGE] - "+gender.name()+" gender checkbox initially checked while shouldn't be");
-            softAssert.assertTrue(loginPage.isGenderFieldHasText(gender), "[LOGIN PAGE] - "+gender.name()+" gender checkbox has no text");
+            softAssert.assertFalse(loginPage.isGenderFieldChecked(gender),
+                    String.format("[LOGIN PAGE] - %s gender checkbox initially checked while shouldn't be", gender.name()));
+            softAssert.assertTrue(loginPage.isGenderFieldHasText(gender),
+                    String.format("[LOGIN PAGE] - %s gender checkbox has no text", gender.name()));
         }
-        softAssert.assertFalse(loginPage.isPrivacyPolicyChecked(), "[LOGIN PAGE] - Privacy Policy checkbox initially checked or has no text");
-        softAssert.assertFalse(loginPage.isLoginBtnActive(), "[LOGIN PAGE] - Login button is active while initially shouldn't");
+        softAssert.assertFalse(loginPage.isPrivacyPolicyChecked(),
+                "[LOGIN PAGE] - Privacy Policy checkbox initially checked or has no text");
+        softAssert.assertFalse(loginPage.isLoginBtnActive(),
+                "[LOGIN PAGE] - Login button is active while initially shouldn't");
 
         softAssert.assertAll();
     }

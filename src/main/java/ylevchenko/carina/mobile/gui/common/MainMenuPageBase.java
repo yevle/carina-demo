@@ -10,14 +10,8 @@ public abstract class MainMenuPageBase extends CarinaAbstractPage {
         super(driver);
     }
 
-    public abstract MainMenuBase tapMainMenuButton();
+    public abstract MainMenuBase openMainMenu();
 
-    public abstract void scrollToFooter();
-
-    public abstract boolean isFooterEmailLinkCorrect();
-
-    public abstract boolean isFooterEmailLinkPresent();
-
-    public abstract boolean isImageSliderVisible();
+    public abstract boolean isSliderVisibleAfterSwipe();
 
 }

@@ -30,9 +30,9 @@ public abstract class MainMenuBase extends AbstractUIObject implements ICustomTy
 
     public abstract List<ExtendedWebElement> getMenuItems();
 
-    public abstract void closeBySwipe();
+    public abstract void closeMainMenuBySwipe();
 
-    public abstract void tapOutsideItems(int count);
+    public abstract void tapOutsideMenuItems(int count);
 
     public abstract boolean isMainMenuOpened ();
 

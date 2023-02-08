@@ -21,7 +21,7 @@ public class WebViewPage extends WebViewPageBase {
     @FindBy(xpath = "//*[(@resource-id='com.solvd.carinademoapplication:id/lin')]/*/child::*")
     private ExtendedWebElement scrollableContainer;
 
-    @FindBy(xpath = "//*[(@resource-id='t-footer')]/*/child::*[5]/child::*[1]")
+    @FindBy(xpath = "//*[(@resource-id='t-footer')]/*/child::*[5]/child::*[1]/child::*[1]")
     private ExtendedWebElement footerEmailLink;
 
     @FindBy(id = "image_slider")
@@ -35,8 +35,8 @@ public class WebViewPage extends WebViewPageBase {
     }
 
     @Override
-    public MainMenu tapMainMenuButton() {
-        mainMenuBtn.click();
+    public MainMenu openMainMenu() {
+        if (!mainMenuModal.isMainMenuOpened()) mainMenuBtn.click();
         return mainMenuModal;
     }
 
@@ -45,25 +45,21 @@ public class WebViewPage extends WebViewPageBase {
     }
 
     @Override
-    public void scrollToFooter() {
-        swipe(footerEmailLink, scrollableContainer, Direction.UP, ATTEMPTS_FIVE, SWIPE_DURATION_SHORTEST);
-    }
-
-    @Override
     public boolean isFooterEmailLinkPresent() {
-        return footerEmailLink.isElementPresent(TIMEOUT_SHORT);
+        return swipe(footerEmailLink, scrollableContainer, Direction.UP, ATTEMPTS_FIVE, SWIPE_DURATION_SHORTEST);
     }
 
     @Override
-    public boolean isImageSliderVisible() {
+    public boolean isSliderVisibleAfterSwipe() {
+        swipeDown(ATTEMPTS_FIVE, SWIPE_DURATION_LONG);
         return imageSlider.isVisible(TIMEOUT_SHORT);
     }
 
     @Override
-    public boolean isFooterEmailLinkCorrect() {
-        String emailText = footerEmailLink.getAttribute("content-desc");
+    public boolean isFooterEmailLinkCorrect(String name, String domain) {
+        String emailText = footerEmailLink.getText();
         return Arrays.stream(emailText.strip().split("@"))
-                .allMatch(text -> text.equals(EMAIL_NAME) || text.equals(EMAIL_DOMAIN));
+                .allMatch(text -> text.equals(name) || text.equals(domain));
     }
 
 }

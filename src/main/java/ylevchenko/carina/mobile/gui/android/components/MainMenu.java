@@ -1,6 +1,5 @@
 package ylevchenko.carina.mobile.gui.android.components;
 
-import com.graphbuilder.struc.LinkedList;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.apache.commons.lang3.RandomUtils;
@@ -18,6 +17,8 @@ import ylevchenko.carina.mobile.gui.common.components.MainMenuBase;
 import java.lang.invoke.MethodHandles;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static ylevchenko.carina.utils.UtilMethods.*;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = MainMenuBase.class)
 public class MainMenu extends MainMenuBase {
@@ -81,15 +82,15 @@ public class MainMenu extends MainMenuBase {
 
 
     @Override
-    public void tapOutsideItems(int count) {
+    public void tapOutsideMenuItems(int count) {
         ExtendedWebElement menuLastItem = listClickableMenuItems.get(listClickableMenuItems.size() - 1);
 
         Point menuItemsTopLeft = listClickableMenuItems.get(0).getLocation();
         Point menuItemsBottomRight = new Point(menuLastItem.getLocation().x + menuLastItem.getSize().width,
                 menuLastItem.getLocation().y + menuLastItem.getSize().height);
 
-        LOGGER.info("EXCLUDED rect TopLeft POINT X-" + menuItemsTopLeft.x + " Y-" + menuItemsTopLeft.y +
-                " BottomRight POINT X-" + menuItemsBottomRight.x + " Y-" + menuItemsBottomRight.y);
+        LOGGER.info("EXCLUDED rect TopLeft POINT X-{} Y-{} BottomRight POINT X-{} Y-{}",
+                menuItemsTopLeft.x,+ menuItemsTopLeft.y, menuItemsBottomRight.x, menuItemsBottomRight.y);
 
         Point containerTopLeft = container.getLocation();
         Point containerBottomRight = new Point(container.getLocation().x + container.getSize().width,
@@ -99,7 +100,7 @@ public class MainMenu extends MainMenuBase {
             Point tapPoint = randomPointInsideRect(containerTopLeft, containerBottomRight);
 
             while (doesPointInsideRect(menuItemsTopLeft, menuItemsBottomRight, tapPoint)) {
-                LOGGER.info("POINT: X-" + tapPoint.x + " Y-" + tapPoint.y + " is inside EXCLUDED rect. Generating new...");
+                LOGGER.info("POINT: X-{} Y-{} is inside EXCLUDED rect. Generating new...", tapPoint.x, tapPoint.y);
                 tapPoint = randomPointInsideRect(containerTopLeft, containerBottomRight);
             }
 
@@ -110,11 +111,12 @@ public class MainMenu extends MainMenuBase {
 
     @Override
     public void tapOutsideMenu() {
-        tap(container.getSize().width+2,container.getSize().height/2);
+        tap(RandomUtils.nextInt(container.getSize().width+1, getDriver().manage().window().getSize().width),
+                container.getSize().height/2);
     }
 
     @Override
-    public void closeBySwipe() {
+    public void closeMainMenuBySwipe() {
         swipeLeft(SWIPE_DURATION_LONG);
     }
 

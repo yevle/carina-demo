@@ -14,12 +14,7 @@ public class WebViewPage extends WebViewPageBase {
     }
 
     @Override
-    public MainMenuBase tapMainMenuButton() {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public void scrollToFooter() {
+    public MainMenuBase openMainMenu() {
         throw new NotImplementedException();
     }
 
@@ -29,12 +24,13 @@ public class WebViewPage extends WebViewPageBase {
     }
 
     @Override
-    public boolean isImageSliderVisible() {
+    public boolean isSliderVisibleAfterSwipe() {
         throw new NotImplementedException();
     }
 
     @Override
-    public boolean isFooterEmailLinkCorrect() {
+    public boolean isFooterEmailLinkCorrect(String name, String domain) {
         throw new NotImplementedException();
     }
+
 }

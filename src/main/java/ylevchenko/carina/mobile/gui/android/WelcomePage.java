@@ -27,7 +27,7 @@ public class WelcomePage extends WelcomePageBase {
     }
 
     public boolean isPageOpened() {
-        return title.isElementPresent(3);
+        return title.isElementPresent(TIMEOUT_SHORT);
     }
 
 }
