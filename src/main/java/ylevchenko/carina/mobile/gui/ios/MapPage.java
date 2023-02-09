@@ -1,9 +1,9 @@
 package ylevchenko.carina.mobile.gui.ios;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.utils.exception.NotImplementedException;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 import ylevchenko.carina.mobile.gui.android.components.MainMenu;
 import ylevchenko.carina.mobile.gui.common.MapPageBase;
 
@@ -21,13 +21,18 @@ public class MapPage extends MapPageBase {
     }
 
     @Override
-    public MainMenu tapMainMenuButton() {
+    public MainMenu openMainMenu() {
         mainMenuBtn.click();
         return mainMenuModal;
     }
 
     public boolean isPageOpened() {
         return title.isElementPresent(TIMEOUT_SHORT);
+    }
+
+    @Override
+    public boolean isSliderVisibleAfterSwipe() {
+        throw new NotImplementedException();
     }
 
 }

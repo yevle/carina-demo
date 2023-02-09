@@ -30,7 +30,7 @@ public class MainMenuTest implements IAbstractTest, IMobileUtils, IConstants {
 
         SoftAssert softAssert = new SoftAssert();
 
-        MainMenuBase mainMenu = initPage(getDriver(), WebViewPageBase.class).tapMainMenuButton();
+        MainMenuBase mainMenu = initPage(getDriver(), WebViewPageBase.class).openMainMenu();
 
         for (MainMenuItems item : MainMenuItems.values()) {
             softAssert.assertTrue(mainMenu.isMenuElementPresent(item), String.format("[MAIN MENU] - '%s' item is not present", item));
@@ -45,15 +45,15 @@ public class MainMenuTest implements IAbstractTest, IMobileUtils, IConstants {
 
         SoftAssert softAssert = new SoftAssert();
 
-        MainMenuBase mainMenu = initPage(getDriver(), WebViewPageBase.class).tapMainMenuButton();
+        MainMenuBase mainMenu = initPage(getDriver(), WebViewPageBase.class).openMainMenu();
 
         Iterator<MainMenuItems> itemsIterator = Arrays.stream(MainMenuItems.values()).iterator();
 
         for (MainMenuItems item : MainMenuItems.values()) {
-            softAssert.assertTrue(mainMenu.getMenuItems().contains(item.getText()),
+            softAssert.assertTrue(mainMenu.getMenuItemsText().contains(item.getText()),
                     String.format("[MAIN MENU] - '%s' item is not present", item));
         }
-        for (String element : mainMenu.getMenuItems()) {
+        for (String element : mainMenu.getMenuItemsText()) {
             softAssert.assertEquals(element, itemsIterator.next().getText(),
                     String.format("[MAIN MENU] - '%s' item is not equal to enum value", element));
         }
@@ -70,10 +70,40 @@ public class MainMenuTest implements IAbstractTest, IMobileUtils, IConstants {
         MainMenuPageBase mainMenuPage = initPage(getDriver(), WebViewPageBase.class);
 
         for (int i = 0; i < MainMenuItems.values().length; i++) {
-            mainMenuPage.tapMainMenuButton().openMenuItemByIndex(i);
+            mainMenuPage.openMainMenu().openMenuItemByIndex(i);
             mainMenuPage = initPage(getDriver(), MainMenuItems.valueByIndex(i).getPageClass());
             softAssert.assertTrue(mainMenuPage.isPageOpened(), String.format("Page with index '%s' is not opened", i));
         }
+
+        softAssert.assertAll();
+
+    }
+
+    @Test(description = "Main menu items testing by index and text")
+    @MethodOwner(owner = "ylevchenko")
+    public void mainMenuTapAndSwipeTest() {
+
+        SoftAssert softAssert = new SoftAssert();
+
+        MainMenuPageBase mainMenuPage = initPage(getDriver(), WebViewPageBase.class);
+
+        MainMenuBase mainMenu = mainMenuPage.openMainMenu();
+
+        mainMenu.tapOutsideMenuItems(ATTEMPTS_FIVE);
+
+        softAssert.assertTrue(mainMenu.isMainMenuOpened(), "[MAIN MENU] - Main menu closed while shouldn't be");
+
+        mainMenu.closeMainMenuBySwipe();
+
+        softAssert.assertTrue(mainMenuPage.isPageOpened(), "[MAIN PAGE] - Main page isn't still opened");
+        softAssert.assertFalse(mainMenu.isMenuElementPresent(MainMenuItems.WEB_VIEW),
+                "[MAIN PAGE] - Main menu still opened");
+
+        mainMenu = mainMenuPage.openMainMenu();
+        mainMenu.tapOutsideMenu();
+
+        softAssert.assertTrue(!mainMenu.isMenuElementPresent(MainMenuItems.WEB_VIEW),
+                "[MAIN PAGE] - Main menu still opened");
 
         softAssert.assertAll();
     }

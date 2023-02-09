@@ -14,7 +14,22 @@ public class WebViewPage extends WebViewPageBase {
     }
 
     @Override
-    public MainMenuBase tapMainMenuButton() {
+    public MainMenuBase openMainMenu() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean isFooterEmailLinkPresent() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean isSliderVisibleAfterSwipe() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public boolean isFooterEmailLinkCorrect(String name, String domain) {
         throw new NotImplementedException();
     }
 

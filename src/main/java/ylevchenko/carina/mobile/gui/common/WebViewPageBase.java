@@ -8,4 +8,8 @@ public abstract class WebViewPageBase extends MainMenuPageBase {
         super(driver);
     }
 
+    public abstract boolean isFooterEmailLinkPresent();
+
+    public abstract boolean isFooterEmailLinkCorrect(String name, String domain);
+
 }
