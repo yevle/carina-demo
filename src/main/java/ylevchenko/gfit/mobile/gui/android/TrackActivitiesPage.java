@@ -1,0 +1,32 @@
+package ylevchenko.gfit.mobile.gui.android;
+
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.utils.factory.DeviceType;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
+import ylevchenko.gfit.mobile.gui.common.MainPageBase;
+import ylevchenko.gfit.mobile.gui.common.TrackActivitiesPageBase;
+
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = TrackActivitiesPageBase.class)
+public class TrackActivitiesPage extends TrackActivitiesPageBase {
+
+    @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/heart_logo']//following-sibling::*[@text = 'Track your activities']")
+    private ExtendedWebElement title;
+
+    @FindBy(id = "skip_button")
+    private ExtendedWebElement skipBtn;
+
+    public TrackActivitiesPage(WebDriver driver) {
+        super(driver);
+    }
+
+    public boolean isPageOpened() {
+        return title.isElementPresent(TIMEOUT_SHORT);
+    }
+
+    public MainPageBase clickSkipBtn() {
+        skipBtn.click();
+        return initPage(getDriver(), MainPageBase.class);
+    }
+
+}
