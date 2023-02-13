@@ -30,11 +30,11 @@ public class MainPageTest implements IAbstractTest, IMobileUtils, IConstants {
 
         for (MainPageCards card : MainPageCards.values()) {
 
-            softAssert.assertTrue(mainPageBase.scrollToCard(card), String.format("Card %s wasn't found on its place", card.name()));
+            softAssert.assertTrue(mainPageBase.isMainPageCardPresent(card), String.format("Card %s wasn't found on its place", card.name()));
 
             if (card.equals(MainPageCards.YOUTUBE)) {
                 for (YoutubeCarouselItems item : YoutubeCarouselItems.values()) {
-                    softAssert.assertTrue(mainPageBase.scrollToYTCarouselItem(item),
+                    softAssert.assertTrue(mainPageBase.isYoutubeCarouselItemPresent(item),
                             String.format("%s YouTube carousel item wasn't found on its place", item.name()));
                 }
             }
@@ -43,8 +43,7 @@ public class MainPageTest implements IAbstractTest, IMobileUtils, IConstants {
                     String.format("Initial point %s does not equal to current point %s", initialPoint.toString(), mainPageBase.getPlusBtnPoint().toString()));
         }
 
-        mainPageBase.swipeUp(SWIPE_DURATION_LONG);
-        softAssert.assertTrue(mainPageBase.doesPlusBtnUnderContainer(), "Plus button isn't under last card container");
+        softAssert.assertTrue(mainPageBase.isPlusBtnUnderContainer(), "Plus button isn't under last card container");
 
         softAssert.assertAll();
     }

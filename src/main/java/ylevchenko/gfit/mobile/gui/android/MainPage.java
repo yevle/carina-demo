@@ -21,6 +21,9 @@ public class MainPage extends MainPageBase {
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/card_title'][@text='%s']")
     private ExtendedWebElement mainPageCard;
 
+    @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/card_list']")
+    private ExtendedWebElement cardsContainer;
+
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/card_title'][@content-desc='%s']")
     private ExtendedWebElement youtubeCard;
 
@@ -34,32 +37,33 @@ public class MainPage extends MainPageBase {
         super(driver);
     }
 
+    @Override
     public boolean isPageOpened() {
         return mainGoalsFrame.isElementPresent(TIMEOUT_SHORT);
     }
 
+    @Override
     public boolean isMainPageCardPresent(MainPageCards card) {
-        return mainPageCard.format(card.getText()).isElementPresent(TIMEOUT_SHORT) ||
-                youtubeCard.format(card.getText()).isElementPresent(TIMEOUT_SHORT);
+        ExtendedWebElement cardToCheck = card == MainPageCards.YOUTUBE ? youtubeCard.format(card.getText()) : mainPageCard.format(card.getText());
+        return swipe(cardToCheck, cardsContainer, Direction.UP, ATTEMPTS_FIVE);
     }
 
-    public boolean scrollToCard(MainPageCards card) {
-        if (card == MainPageCards.YOUTUBE) {
-            return swipe(youtubeCard.format(card.getText()), Direction.UP);
-        }
-        return swipe(mainPageCard.format(card.getText()), Direction.UP);
+    @Override
+    public boolean isPlusBtnUnderContainer() {
+        swipeUp(SWIPE_DURATION_SHORTEST);
+        ExtendedWebElement lastMainPageCard = mainPageCard.format(MainPageCards.values()[MainPageCards.values().length-1].getText());
+        return plusBtn.getLocation().y>lastMainPageCard.getLocation().y+lastMainPageCard.getSize().height;
     }
 
-    public boolean doesPlusBtnUnderContainer() {
-        return plusBtn.getLocation().y>mainPageCard.format(MainPageCards.values()[MainPageCards.values().length-1].getText()).getLocation().y;
-    }
-
+    @Override
     public Point getPlusBtnPoint () {
         return plusBtn.getLocation();
     }
 
-    public boolean scrollToYTCarouselItem(YoutubeCarouselItems item) {
-        return swipe(youtubeCarouselItem.format(item.getText()),youtubeCarousel,Direction.LEFT);
+    @Override
+    public boolean isYoutubeCarouselItemPresent(YoutubeCarouselItems item) {
+        ExtendedWebElement itemToCheck = youtubeCarouselItem.format(item.getText());
+        return swipe(itemToCheck,youtubeCarousel,Direction.LEFT, ATTEMPTS_FIVE);
     }
 
 }

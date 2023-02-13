@@ -12,12 +12,12 @@ public abstract class MainPageBase extends GFitAbstractPage {
         super(driver);
     }
 
-    public abstract boolean scrollToCard(MainPageCards card);
+    public abstract boolean isMainPageCardPresent(MainPageCards card);
 
-    public abstract boolean doesPlusBtnUnderContainer();
+    public abstract boolean isPlusBtnUnderContainer();
 
     public abstract Point getPlusBtnPoint();
 
-    public abstract boolean scrollToYTCarouselItem(YoutubeCarouselItems item);
+    public abstract boolean isYoutubeCarouselItemPresent(YoutubeCarouselItems item);
 
 }

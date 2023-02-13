@@ -25,11 +25,7 @@ public class MainPage extends MainPageBase {
         throw new NotImplementedException();
     }
 
-    public boolean scrollToCard(MainPageCards card) {
-        throw new NotImplementedException();
-    }
-
-    public boolean doesPlusBtnUnderContainer() {
+    public boolean isPlusBtnUnderContainer() {
         throw new NotImplementedException();
     }
 
@@ -37,7 +33,7 @@ public class MainPage extends MainPageBase {
         throw new NotImplementedException();
     }
 
-    public boolean scrollToYTCarouselItem(YoutubeCarouselItems item) {
+    public boolean isYoutubeCarouselItemPresent(YoutubeCarouselItems item) {
         throw new NotImplementedException();
     }
 
