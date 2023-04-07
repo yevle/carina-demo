@@ -1,23 +1,30 @@
 package ylevchenko.gfit.mobile.gui.common;
 
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import ylevchenko.gfit.mobile.gui.GFitAbstractPage;
-import ylevchenko.gfit.mobile.gui.enums.MainPageCards;
-import ylevchenko.gfit.mobile.gui.enums.YoutubeCarouselItems;
+import ylevchenko.gfit.mobile.gui.android.components.*;
+import ylevchenko.gfit.mobile.gui.enums.AddActivityTextFields;
 
-public abstract class MainPageBase extends GFitAbstractPage {
+public abstract class AddActivityPageBase extends GFitAbstractPage {
 
-    public MainPageBase(WebDriver driver) {
+    public AddActivityPageBase(WebDriver driver) {
         super(driver);
     }
 
-    public abstract boolean isMainPageCardPresent(MainPageCards card);
+    public abstract SetActivityTypeModal openActivityTypeModal();
 
-    public abstract boolean isPlusBtnUnderContainer();
+    public abstract AddActivityPageBase inputTextField(AddActivityTextFields field, String text);
 
-    public abstract Point getPlusBtnPoint();
+    public abstract SetDateModal openSetDateModal();
 
-    public abstract boolean isYoutubeCarouselItemPresent(YoutubeCarouselItems item);
+    public abstract SetTimeModal openSetStartTimeModal();
+
+    public abstract SetDurationModal openSetDurationModal();
+
+    public abstract SetIntensityModal openSetIntensityModal();
+
+    public abstract boolean closePage();
+
+    public abstract GFitAbstractPage saveChanges(Class<? extends GFitAbstractPage> pageClass);
 
 }

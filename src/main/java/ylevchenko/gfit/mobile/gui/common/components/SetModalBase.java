@@ -6,9 +6,9 @@ import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 
-public abstract class SelectIntensityModalBase extends AbstractUIObject implements ICustomTypePageFactory, IMobileUtils {
+public abstract class SetModalBase extends AbstractUIObject implements ICustomTypePageFactory, IMobileUtils {
 
-    public SelectIntensityModalBase(WebDriver driver, SearchContext searchContext) {
+    public SetModalBase(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 

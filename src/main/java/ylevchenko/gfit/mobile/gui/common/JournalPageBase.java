@@ -1,23 +1,16 @@
 package ylevchenko.gfit.mobile.gui.common;
 
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import ylevchenko.gfit.mobile.gui.GFitAbstractPage;
-import ylevchenko.gfit.mobile.gui.enums.MainPageCards;
-import ylevchenko.gfit.mobile.gui.enums.YoutubeCarouselItems;
 
-public abstract class MainPageBase extends GFitAbstractPage {
+public abstract class JournalPageBase extends GFitAbstractPage {
 
-    public MainPageBase(WebDriver driver) {
+    public JournalPageBase(WebDriver driver) {
         super(driver);
     }
 
-    public abstract boolean isMainPageCardPresent(MainPageCards card);
+    public abstract boolean isPlusBtnPresent();
 
-    public abstract boolean isPlusBtnUnderContainer();
-
-    public abstract Point getPlusBtnPoint();
-
-    public abstract boolean isYoutubeCarouselItemPresent(YoutubeCarouselItems item);
+    public abstract JournalEntityPageBase getJournalEntity (String title);
 
 }

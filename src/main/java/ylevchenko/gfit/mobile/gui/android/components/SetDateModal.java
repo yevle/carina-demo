@@ -5,6 +5,7 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import ylevchenko.gfit.mobile.gui.common.AddActivityPageBase;
 import ylevchenko.gfit.mobile.gui.common.components.SelectDateModalBase;
 import ylevchenko.gfit.mobile.gui.service.IConstants;
 import ylevchenko.gfit.mobile.gui.utils.DateTimeFormat;
@@ -12,7 +13,7 @@ import ylevchenko.gfit.mobile.gui.utils.DateTimeFormat;
 import java.time.LocalDateTime;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SelectDateModalBase.class)
-public class SelectDateModal extends SelectDateModalBase implements IConstants {
+public class SetDateModal extends SelectDateModalBase implements IConstants {
 
     @FindBy(id="mtrl_picker_header_toggle")
     private ExtendedWebElement changeInputBtn;
@@ -23,7 +24,7 @@ public class SelectDateModal extends SelectDateModalBase implements IConstants {
     @FindBy(id = "confirm_button")
     private ExtendedWebElement okButton;
 
-    public SelectDateModal(WebDriver driver, SearchContext searchContext) {
+    public SetDateModal(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
@@ -33,10 +34,11 @@ public class SelectDateModal extends SelectDateModalBase implements IConstants {
     }
 
     @Override
-    public void selectDate(LocalDateTime date) {
+    public AddActivityPageBase selectDate(LocalDateTime date) {
         if (dateInputField.isElementNotPresent(TIMEOUT_SHORT)) changeInputMode();
         dateInputField.type(DateTimeFormat.dateFormat(date));
         okButton.click();
+        return initPage(getDriver(), AddActivityPageBase.class);
     }
 
 }

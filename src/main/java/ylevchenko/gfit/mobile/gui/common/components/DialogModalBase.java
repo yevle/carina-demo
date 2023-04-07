@@ -6,12 +6,12 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import ylevchenko.gfit.mobile.gui.common.JournalPageBase;
 
-public abstract class MoreOptionsModalBase extends AbstractUIObject implements ICustomTypePageFactory {
+public abstract class DialogModalBase extends AbstractUIObject implements ICustomTypePageFactory {
 
-    public MoreOptionsModalBase(WebDriver driver, SearchContext searchContext) {
+    public DialogModalBase(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-    public abstract JournalPageBase deleteEntity();
+    public abstract JournalPageBase delete();
 
 }

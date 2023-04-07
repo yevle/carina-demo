@@ -6,13 +6,14 @@ import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import ylevchenko.gfit.mobile.gui.common.AddActivityPageBase;
+import ylevchenko.gfit.mobile.gui.enums.ActivityTypeItems;
 
-public abstract class ActivityTypeItems extends AbstractUIObject implements ICustomTypePageFactory, IMobileUtils {
+public abstract class SetActivityTypeModalBase extends AbstractUIObject implements ICustomTypePageFactory, IMobileUtils {
 
-    public ActivityTypeItems(WebDriver driver, SearchContext searchContext) {
+    public SetActivityTypeModalBase(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-    public abstract AddActivityPageBase chooseActivityType(ActivityTypeItems activityType);
+    public abstract AddActivityPageBase setActivityType(ActivityTypeItems activityType);
 
 }

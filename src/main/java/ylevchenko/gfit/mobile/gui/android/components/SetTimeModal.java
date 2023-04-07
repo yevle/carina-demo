@@ -5,16 +5,17 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import ylevchenko.gfit.mobile.gui.common.components.SelectTimeModalBase;
+import ylevchenko.gfit.mobile.gui.common.AddActivityPageBase;
+import ylevchenko.gfit.mobile.gui.common.components.SetTimeModalBase;
 import ylevchenko.gfit.mobile.gui.service.IConstants;
 import ylevchenko.gfit.mobile.gui.utils.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SelectTimeModalBase.class)
-public class SelectTimeModal extends SelectTimeModalBase implements IConstants {
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SetTimeModalBase.class)
+public class SetTimeModal extends SetTimeModalBase implements IConstants {
 
-    @FindBy(id="material_timepicker_mode_button")
+    @FindBy(id = "material_timepicker_mode_button")
     private ExtendedWebElement changeInputBtn;
 
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/material_hour_text_input']/*/*/*")
@@ -29,7 +30,7 @@ public class SelectTimeModal extends SelectTimeModalBase implements IConstants {
     @FindBy(id = "material_timepicker_ok_button")
     private ExtendedWebElement okButton;
 
-    public SelectTimeModal(WebDriver driver, SearchContext searchContext) {
+    public SetTimeModal(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
@@ -39,12 +40,13 @@ public class SelectTimeModal extends SelectTimeModalBase implements IConstants {
     }
 
     @Override
-    public void selectTime(LocalDateTime date) {
+    public AddActivityPageBase selectTime(LocalDateTime date) {
         if (hourInputField.isElementNotPresent(TIMEOUT_SHORT)) changeInputMode();
         hourInputField.type(DateTimeFormat.getHour(date));
         minuteChooseField.click();
         minuteInputField.type(String.valueOf(date.getMinute()));
         okButton.click();
+        return initPage(getDriver(), AddActivityPageBase.class);
     }
 
 }

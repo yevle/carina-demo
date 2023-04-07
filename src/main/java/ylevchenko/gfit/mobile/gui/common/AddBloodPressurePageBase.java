@@ -3,11 +3,14 @@ package ylevchenko.gfit.mobile.gui.common;
 import org.openqa.selenium.WebDriver;
 import ylevchenko.gfit.mobile.gui.GFitAbstractPage;
 
-public abstract class TrackActivitiesPageBase extends GFitAbstractPage {
+public abstract class AddBloodPressurePageBase extends GFitAbstractPage {
 
-    public TrackActivitiesPageBase(WebDriver driver) {
+    public AddBloodPressurePageBase(WebDriver driver) {
         super(driver);
     }
-    public abstract MainPageBase clickSkipBtn ();
+
+    public abstract boolean closePage();
+
+    public abstract void saveChanges();
 
 }

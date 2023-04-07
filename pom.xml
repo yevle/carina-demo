@@ -16,7 +16,7 @@
 		<carina-core_version>8.0.5</carina-core_version>
 		<carina-aws-s3.version>1.0.0</carina-aws-s3.version>
 		<java.version>11</java.version>
-		<zebrunner-agent.version>1.9.2</zebrunner-agent.version>
+		<zebrunner-agent.version>1.9.3</zebrunner-agent.version>
 		<suite>helloWorld</suite>
 	</properties>
 
@@ -40,6 +40,12 @@
 			<artifactId>carina-core</artifactId>
 			<version>${carina-core_version}</version>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.zebrunner</groupId>-->
+<!--			<artifactId>agent-testng</artifactId>-->
+<!--			<version>1.9.3</version>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>com.zebrunner</groupId>
 			<artifactId>carina-aws-s3</artifactId>

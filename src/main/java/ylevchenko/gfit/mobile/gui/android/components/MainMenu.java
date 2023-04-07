@@ -6,66 +6,50 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ylevchenko.gfit.mobile.gui.GFitAbstractPage;
-import ylevchenko.gfit.mobile.gui.common.components.PlusMenuBase;
-import ylevchenko.gfit.mobile.gui.enums.PlusMenuItems;
+import ylevchenko.gfit.mobile.gui.common.JournalPageBase;
+import ylevchenko.gfit.mobile.gui.common.components.MainMenuBase;
+import ylevchenko.gfit.mobile.gui.enums.MainMenuItems;
 
 import java.util.List;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = PlusMenuBase.class)
-public class PlusMenu extends PlusMenuBase {
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = MainMenuBase.class)
+public class MainMenu extends MainMenuBase {
 
-    @FindBy(id = "nav_view")
+    @FindBy(id = "bottom_navigation")
     private ExtendedWebElement container;
 
-    @FindBy(xpath = "*//android.widget.CheckedTextView[contains(@text,'%s')]")
+    @FindBy(xpath = "//android.widget.FrameLayout[@content-desc='%s']")
     private ExtendedWebElement menuItem;
 
-    public PlusMenu(WebDriver driver, SearchContext searchContext) {
+    public MainMenu(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
     @Override
-    public boolean isPlusMenuElementPresent(PlusMenuItems menuItem) {
+    public boolean isMainMenuElementPresent(MainMenuItems menuItem) {
         return false;
     }
 
     @Override
-    public List<String> getPlusMenuList() {
+    public List<String> getMainMenuList() {
         return null;
     }
 
     @Override
-    public ExtendedWebElement getPlusMenuItem(int index) {
+    public ExtendedWebElement getMainMenuItem(int index) {
         return null;
     }
 
     @Override
-    public GFitAbstractPage openPlusMenuItem(PlusMenuItems item) {
+    public GFitAbstractPage openMainMenuItem(MainMenuItems item) {
+        menuItem.format(item.getText()).click();
+        return (initPage(getDriver(), JournalPageBase.class));
+    }
+
+    @Override
+    public List<ExtendedWebElement> getMainMenuItems() {
         return null;
     }
 
-    @Override
-    public GFitAbstractPage openMenuItemByIndex(int index) {
-        return null;
-    }
 
-    @Override
-    public List<ExtendedWebElement> getPlusMenuItems() {
-        return null;
-    }
-
-    @Override
-    public boolean isPlusMenuOpened() {
-        return false;
-    }
-
-    @Override
-    public void tapOutsidePlusMenuItems() {
-
-    }
-
-    @Override
-    public void closePlusMenu() {
-
-    }
 }

@@ -5,14 +5,15 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import ylevchenko.gfit.mobile.gui.common.components.SelectTimeModalBase;
+import ylevchenko.gfit.mobile.gui.common.AddActivityPageBase;
+import ylevchenko.gfit.mobile.gui.common.components.SetTimeModalBase;
 import ylevchenko.gfit.mobile.gui.service.IConstants;
 import ylevchenko.gfit.mobile.gui.utils.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SelectTimeModalBase.class)
-public class SelectDurationModal extends SelectTimeModalBase implements IConstants {
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SetTimeModalBase.class)
+public class SetDurationModal extends SetTimeModalBase implements IConstants {
 
     @FindBy(id="material_timepicker_mode_button")
     private ExtendedWebElement changeInputBtn;
@@ -29,7 +30,7 @@ public class SelectDurationModal extends SelectTimeModalBase implements IConstan
     @FindBy(id = "material_timepicker_ok_button")
     private ExtendedWebElement okButton;
 
-    public SelectDurationModal(WebDriver driver, SearchContext searchContext) {
+    public SetDurationModal(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
@@ -39,12 +40,13 @@ public class SelectDurationModal extends SelectTimeModalBase implements IConstan
     }
 
     @Override
-    public void selectTime(LocalDateTime date) {
+    public AddActivityPageBase selectTime(LocalDateTime date) {
         if (hourInputField.isElementNotPresent(TIMEOUT_SHORT)) changeInputMode();
         hourInputField.type(DateTimeFormat.getHour(date));
         minuteChooseField.click();
         minuteInputField.type(String.valueOf(date.getMinute()));
         okButton.click();
+        return initPage(getDriver(),AddActivityPageBase.class);
     }
 
 }

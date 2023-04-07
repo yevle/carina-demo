@@ -7,32 +7,24 @@ import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import ylevchenko.gfit.mobile.gui.GFitAbstractPage;
-import ylevchenko.gfit.mobile.gui.enums.PlusMenuItems;
+import ylevchenko.gfit.mobile.gui.enums.MainMenuItems;
 
 import java.util.List;
 
-public abstract class PlusMenuBase extends AbstractUIObject implements ICustomTypePageFactory, IMobileUtils {
+public abstract class MainMenuBase extends AbstractUIObject implements ICustomTypePageFactory, IMobileUtils {
 
-    public PlusMenuBase(WebDriver driver, SearchContext searchContext) {
+    public MainMenuBase(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-    public abstract boolean isPlusMenuElementPresent(PlusMenuItems menuItem);
+    public abstract boolean isMainMenuElementPresent(MainMenuItems menuItem);
 
-    public abstract List<String> getPlusMenuList();
+    public abstract List<String> getMainMenuList();
 
-    public abstract ExtendedWebElement getPlusMenuItem(int index);
+    public abstract ExtendedWebElement getMainMenuItem(int index);
 
-    public abstract GFitAbstractPage openPlusMenuItem(PlusMenuItems item);
+    public abstract GFitAbstractPage openMainMenuItem(MainMenuItems item);
 
-    public abstract GFitAbstractPage openMenuItemByIndex(int index);
-
-    public abstract List<ExtendedWebElement> getPlusMenuItems();
-
-    public abstract boolean isPlusMenuOpened();
-
-    public abstract void tapOutsidePlusMenuItems();
-
-    public abstract void closePlusMenu();
+    public abstract List<ExtendedWebElement> getMainMenuItems();
 
 }
