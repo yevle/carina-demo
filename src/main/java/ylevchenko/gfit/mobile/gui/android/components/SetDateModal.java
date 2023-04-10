@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SelectDateModalBase.class)
 public class SetDateModal extends SelectDateModalBase implements IConstants {
 
-    @FindBy(id="mtrl_picker_header_toggle")
+    @FindBy(id = "mtrl_picker_header_toggle")
     private ExtendedWebElement changeInputBtn;
 
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/mtrl_picker_text_input_date']//*[@class='android.widget.EditText']")
@@ -35,8 +35,13 @@ public class SetDateModal extends SelectDateModalBase implements IConstants {
 
     @Override
     public AddActivityPageBase selectDate(LocalDateTime date) {
-        if (dateInputField.isElementNotPresent(TIMEOUT_SHORT)) changeInputMode();
+        if (dateInputField.isElementNotPresent(TIMEOUT_SHORT)) {
+            changeInputMode();
+        }
         dateInputField.type(DateTimeFormat.dateFormat(date));
+        if (okButton.isElementNotPresent(TIMEOUT_SHORT)) {
+            getDriver().navigate().back();
+        }
         okButton.click();
         return initPage(getDriver(), AddActivityPageBase.class);
     }

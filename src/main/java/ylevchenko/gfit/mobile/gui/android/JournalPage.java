@@ -27,7 +27,7 @@ public class JournalPage extends JournalPageBase {
 
     @Override
     public boolean isPlusBtnPresent() {
-        return false;
+        return plusBtn.isElementPresent(TIMEOUT_SHORT);
     }
 
     @Override

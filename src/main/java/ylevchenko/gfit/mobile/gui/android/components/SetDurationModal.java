@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SetTimeModalBase.class)
 public class SetDurationModal extends SetTimeModalBase implements IConstants {
 
-    @FindBy(id="material_timepicker_mode_button")
+    @FindBy(id = "material_timepicker_mode_button")
     private ExtendedWebElement changeInputBtn;
 
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/material_hour_text_input']/*/*/*")
@@ -40,13 +40,20 @@ public class SetDurationModal extends SetTimeModalBase implements IConstants {
     }
 
     @Override
-    public AddActivityPageBase selectTime(LocalDateTime date) {
-        if (hourInputField.isElementNotPresent(TIMEOUT_SHORT)) changeInputMode();
-        hourInputField.type(DateTimeFormat.getHour(date));
-        minuteChooseField.click();
-        minuteInputField.type(String.valueOf(date.getMinute()));
+    public AddActivityPageBase selectTime(LocalDateTime dateTime) {
+        if (hourInputField.isElementNotPresent(TIMEOUT_SHORT)) {
+            changeInputMode();
+        }
+        hourInputField.type(String.valueOf(dateTime.getHour()));
+        if (minuteInputField.isElementNotPresent(TIMEOUT_SHORT)) {
+            minuteChooseField.click();
+        }
+        minuteInputField.type(String.valueOf(dateTime.getMinute()));
+        if (okButton.isElementNotPresent(TIMEOUT_SHORT)) {
+            getDriver().navigate().back();
+        }
         okButton.click();
-        return initPage(getDriver(),AddActivityPageBase.class);
+        return initPage(getDriver(), AddActivityPageBase.class);
     }
 
 }

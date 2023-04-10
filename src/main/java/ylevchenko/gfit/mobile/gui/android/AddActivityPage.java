@@ -69,7 +69,9 @@ public class AddActivityPage extends AddActivityPageBase {
     @Override
     public AddActivityPageBase inputTextField(AddActivityTextFields field, String text) {
         ExtendedWebElement textField = activityTextField.format(field.getText());
-        if (textField.isElementNotPresent(TIMEOUT_SHORT)) getDriver().navigate().back();
+        if (textField.isElementNotPresent(TIMEOUT_SHORT)) {
+            getDriver().navigate().back();
+        }
         textField.type(text);
         return initPage(getDriver(), AddActivityPageBase.class);
     }
@@ -96,11 +98,6 @@ public class AddActivityPage extends AddActivityPageBase {
     public SetIntensityModal openSetIntensityModal() {
         intensityBtn.click();
         return setIntensityModal;
-    }
-
-    @Override
-    public boolean closePage() {
-        return false;
     }
 
     @Override

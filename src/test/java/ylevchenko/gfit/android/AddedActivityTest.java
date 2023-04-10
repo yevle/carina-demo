@@ -17,7 +17,6 @@ import ylevchenko.gfit.mobile.gui.service.IConstants;
 import ylevchenko.gfit.mobile.gui.utils.DateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class AddedActivityTest implements IAbstractTest, IMobileUtils, IConstants {
 
@@ -26,7 +25,7 @@ public class AddedActivityTest implements IAbstractTest, IMobileUtils, IConstant
         initPage(getDriver(), LoginPageBase.class).login().clickNextBtn().clickSkipBtn();
     }
 
-    @Test(description = "Comparing inserted data to new activity with it's data saved in journal")
+    @Test(description = "Comparing inserted data to new activity with one which saved in journal")
     @MethodOwner(owner = "ylevchenko")
     public void addActivityTest() {
 
@@ -54,10 +53,8 @@ public class AddedActivityTest implements IAbstractTest, IMobileUtils, IConstant
         JournalPageBase journalPage = (JournalPageBase) mainPage.openMainMenuItem(MainMenuItems.JOURNAL);
         JournalEntityPageBase journalEntityPage = journalPage.getJournalEntity(activity.getText());
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-
         softAssert.assertEquals(journalEntityPage.getTitle(), activity.getText(), "Activity title is inappropriate");
-        softAssert.assertEquals(journalEntityPage.getDateTime().toString(), dateTime.format(formatter), "Activity start date or time is inappropriate");
+        softAssert.assertEquals(journalEntityPage.getDateTime().toString(), dateTime.format(ISO_FORMAT), "Activity start date or time is inappropriate");
         softAssert.assertEquals(journalEntityPage.getDuration(), DateTimeFormat.timeParser(dateTime), "Activity duration is inappropriate");
         softAssert.assertEquals(journalEntityPage.getEnergy(), energyExpended, "Energy expended is inappropriate");
         softAssert.assertEquals(journalEntityPage.getIntensity(), intensity, "Activity intensity is inappropriate");

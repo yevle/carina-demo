@@ -31,24 +31,9 @@ public class PlusMenu extends PlusMenuBase {
     }
 
     @Override
-    public boolean isPlusMenuElementPresent(PlusMenuItems menuItem) {
-        return false;
-    }
-
-    @Override
     public GFitAbstractPage openPlusMenuItem(PlusMenuItems item) {
         menuItem.format(item.getText()).click();
         return initPage(getDriver(), item.getPageClass());
-    }
-
-    @Override
-    public boolean isPlusMenuOpened() {
-        return false;
-    }
-
-    @Override
-    public void tapOutsidePlusMenuItems() {
-
     }
 
     @Override

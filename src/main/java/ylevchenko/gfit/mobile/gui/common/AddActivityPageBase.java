@@ -23,8 +23,6 @@ public abstract class AddActivityPageBase extends GFitAbstractPage {
 
     public abstract SetIntensityModal openSetIntensityModal();
 
-    public abstract boolean closePage();
-
     public abstract GFitAbstractPage saveChanges(Class<? extends GFitAbstractPage> pageClass);
 
 }

@@ -17,12 +17,6 @@ public abstract class MainMenuBase extends AbstractUIObject implements ICustomTy
         super(driver, searchContext);
     }
 
-    public abstract boolean isMainMenuElementPresent(MainMenuItems menuItem);
-
-    public abstract List<String> getMainMenuList();
-
-    public abstract ExtendedWebElement getMainMenuItem(int index);
-
     public abstract GFitAbstractPage openMainMenuItem(MainMenuItems item);
 
     public abstract List<ExtendedWebElement> getMainMenuItems();

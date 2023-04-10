@@ -16,13 +16,7 @@ public abstract class PlusMenuBase extends AbstractUIObject implements ICustomTy
         super(driver, searchContext);
     }
 
-    public abstract boolean isPlusMenuElementPresent(PlusMenuItems menuItem);
-
     public abstract GFitAbstractPage openPlusMenuItem(PlusMenuItems item);
-
-    public abstract boolean isPlusMenuOpened();
-
-    public abstract void tapOutsidePlusMenuItems();
 
     public abstract void closePlusMenu();
 

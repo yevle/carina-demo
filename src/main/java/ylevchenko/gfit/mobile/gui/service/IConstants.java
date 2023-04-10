@@ -14,4 +14,6 @@ public interface IConstants {
 
     DateTimeFormatter EN_US = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
+    DateTimeFormatter ISO_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+
 }
