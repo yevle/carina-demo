@@ -3,13 +3,8 @@ package ylevchenko.gfit.mobile.gui.utils;
 import com.zebrunner.carina.utils.R;
 import ylevchenko.gfit.mobile.gui.service.IConstants;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
-import java.util.Properties;
-
-import static com.zebrunner.carina.utils.R.CONFIG;
 
 public class DateTimeFormat implements IConstants {
 
@@ -34,8 +29,10 @@ public class DateTimeFormat implements IConstants {
     public static String getHour(LocalDateTime dateTime) {
 //        String locale = props.isEmpty() ? readProperty().getProperty("locale") : props.getProperty("locale");
         String locale = R.CONFIG.get("locale");
-        if (locale.equalsIgnoreCase("en_US")) return String.valueOf(Math.abs(dateTime.toLocalTime().getHour() - 12));
-        else throw new DateTimeException("Wrong date format");
+        if (locale.equalsIgnoreCase("en_US")&&dateTime.getHour()>12) {
+            return String.valueOf(Math.abs(dateTime.toLocalTime().getHour() - 12));
+        }
+        else return String.valueOf(dateTime.getHour());
     }
 
     public static String timeParser(LocalDateTime dateTime) {

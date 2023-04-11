@@ -63,7 +63,7 @@ public class JournalEntityPage extends JournalEntityPageBase {
 
     public int getEnergy() {
         String text = energyField.getText();
-        return Integer.parseInt(text.substring(0, text.indexOf(" ")));
+        return Integer.parseInt(text.substring(0, text.indexOf(" ")).replace(",",""));
     }
 
     public String getDuration() {
