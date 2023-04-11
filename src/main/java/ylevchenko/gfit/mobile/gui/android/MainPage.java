@@ -5,7 +5,11 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import ylevchenko.gfit.mobile.gui.GFitAbstractPage;
+import ylevchenko.gfit.mobile.gui.android.components.MainMenu;
+import ylevchenko.gfit.mobile.gui.android.components.PlusMenu;
 import ylevchenko.gfit.mobile.gui.common.MainPageBase;
+import ylevchenko.gfit.mobile.gui.enums.MainMenuItems;
 import ylevchenko.gfit.mobile.gui.enums.MainPageCards;
 import ylevchenko.gfit.mobile.gui.enums.YoutubeCarouselItems;
 
@@ -33,6 +37,12 @@ public class MainPage extends MainPageBase {
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/card_list']//*[@resource-id='com.google.android.apps.fitness:id/playlist_carousel']//*[@text='%s']")
     private ExtendedWebElement youtubeCarouselItem;
 
+    @FindBy(id = "bottom_navigation")
+    private MainMenu mainMenu;
+
+    @FindBy(id = "add_entry_speed_dial")
+    private PlusMenu plusMenu;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -51,19 +61,30 @@ public class MainPage extends MainPageBase {
     @Override
     public boolean isPlusBtnUnderContainer() {
         swipeUp(SWIPE_DURATION_SHORTEST);
-        ExtendedWebElement lastMainPageCard = mainPageCard.format(MainPageCards.values()[MainPageCards.values().length-1].getText());
-        return plusBtn.getLocation().y>lastMainPageCard.getLocation().y+lastMainPageCard.getSize().height;
+        ExtendedWebElement lastMainPageCard = mainPageCard.format(MainPageCards.values()[MainPageCards.values().length - 1].getText());
+        return plusBtn.getLocation().y > lastMainPageCard.getLocation().y + lastMainPageCard.getSize().height;
     }
 
     @Override
-    public Point getPlusBtnPoint () {
+    public Point getPlusBtnPoint() {
         return plusBtn.getLocation();
     }
 
     @Override
     public boolean isYoutubeCarouselItemPresent(YoutubeCarouselItems item) {
         ExtendedWebElement itemToCheck = youtubeCarouselItem.format(item.getText());
-        return swipe(itemToCheck,youtubeCarousel,Direction.LEFT, ATTEMPTS_FIVE);
+        return swipe(itemToCheck, youtubeCarousel, Direction.LEFT, ATTEMPTS_FIVE);
+    }
+
+    @Override
+    public GFitAbstractPage openMainMenuItem(MainMenuItems item) {
+        return mainMenu.openMainMenuItem(item);
+    }
+
+    @Override
+    public PlusMenu openPlusMenu() {
+        plusBtn.click();
+        return plusMenu;
     }
 
 }

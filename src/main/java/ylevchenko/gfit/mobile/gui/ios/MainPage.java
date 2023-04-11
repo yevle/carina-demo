@@ -1,12 +1,13 @@
 package ylevchenko.gfit.mobile.gui.ios;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.exception.NotImplementedException;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
+import ylevchenko.gfit.mobile.gui.GFitAbstractPage;
+import ylevchenko.gfit.mobile.gui.android.components.PlusMenu;
 import ylevchenko.gfit.mobile.gui.common.MainPageBase;
+import ylevchenko.gfit.mobile.gui.enums.MainMenuItems;
 import ylevchenko.gfit.mobile.gui.enums.MainPageCards;
 import ylevchenko.gfit.mobile.gui.enums.YoutubeCarouselItems;
 
@@ -34,6 +35,16 @@ public class MainPage extends MainPageBase {
     }
 
     public boolean isYoutubeCarouselItemPresent(YoutubeCarouselItems item) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public GFitAbstractPage openMainMenuItem(MainMenuItems item) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public PlusMenu openPlusMenu() {
         throw new NotImplementedException();
     }
 
