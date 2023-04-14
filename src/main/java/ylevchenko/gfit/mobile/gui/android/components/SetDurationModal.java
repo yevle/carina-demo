@@ -8,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import ylevchenko.gfit.mobile.gui.common.AddActivityPageBase;
 import ylevchenko.gfit.mobile.gui.common.components.SetTimeModalBase;
 import ylevchenko.gfit.mobile.gui.service.IConstants;
-import ylevchenko.gfit.mobile.gui.utils.DateTimeFormat;
 
 import java.time.LocalDateTime;
 

@@ -25,10 +25,4 @@ public class MainMenu extends MainMenuBase {
         throw new NotImplementedException();
     }
 
-    @Override
-    public List<ExtendedWebElement> getMainMenuItems() {
-        throw new NotImplementedException();
-    }
-
-
 }

@@ -6,12 +6,12 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import ylevchenko.gfit.mobile.gui.common.components.SetModalBase;
+import ylevchenko.gfit.mobile.gui.common.components.SetIntensityModalBase;
 import ylevchenko.gfit.mobile.gui.service.IConstants;
-import ylevchenko.gfit.mobile.gui.utils.PointUtil;
+import ylevchenko.gfit.mobile.gui.utils.CoordinatesUtils;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SetModalBase.class)
-public class SetIntensityModal extends SetModalBase implements IConstants {
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SetIntensityModalBase.class)
+public class SetIntensityModal extends SetIntensityModalBase implements IConstants {
 
     @FindBy(id = "seek_bar")
     private ExtendedWebElement seekBarContainer;
@@ -30,7 +30,7 @@ public class SetIntensityModal extends SetModalBase implements IConstants {
     public int setIntensity() {
         Point topLeft = seekBarContainer.getLocation();
         Point bottomRight = new Point(topLeft.x + seekBarContainer.getSize().width, topLeft.y + seekBarContainer.getSize().height);
-        Point random = PointUtil.randomPointInsideRect(topLeft, bottomRight);
+        Point random = CoordinatesUtils.randomPointInsideRect(topLeft, bottomRight);
         tap(random.x, random.y);
         int heartPts = Integer.parseInt(heartPoints.getText().replace(",",""));
         okButton.click();

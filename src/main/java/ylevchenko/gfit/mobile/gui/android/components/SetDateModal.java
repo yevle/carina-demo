@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import ylevchenko.gfit.mobile.gui.common.AddActivityPageBase;
 import ylevchenko.gfit.mobile.gui.common.components.SelectDateModalBase;
 import ylevchenko.gfit.mobile.gui.service.IConstants;
-import ylevchenko.gfit.mobile.gui.utils.DateTimeFormat;
+import ylevchenko.gfit.mobile.gui.utils.DateTimeUtils;
 
 import java.time.LocalDateTime;
 
@@ -38,7 +38,7 @@ public class SetDateModal extends SelectDateModalBase implements IConstants {
         if (dateInputField.isElementNotPresent(TIMEOUT_SHORT)) {
             changeInputMode();
         }
-        dateInputField.type(DateTimeFormat.dateFormat(date));
+        dateInputField.type(DateTimeUtils.dateFormat(date));
         if (okButton.isElementNotPresent(TIMEOUT_SHORT)) {
             getDriver().navigate().back();
         }
