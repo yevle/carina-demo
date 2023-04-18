@@ -8,8 +8,7 @@ import ylevchenko.gfit.mobile.gui.common.ProfilePageBase;
 import ylevchenko.gfit.mobile.gui.common.SetBirthdayPageBase;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
+import java.util.List;
 
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SetBirthdayPageBase.class)
@@ -19,14 +18,17 @@ public class SetBirthdayPage extends SetBirthdayPageBase {
     @FindBy(xpath = "//*[@resource-id='com.google.android.gms:id/octarine_webview_container']//*[@text='Birthday']")
     private ExtendedWebElement title;
 
-    @FindBy(xpath = "//*[@class='android.widget.Spinner'][contains(@text,'Month')]")
+    @FindBy(xpath = "//*[@text='Update birthday']/following-sibling::*//*[@class='android.widget.Spinner']")
     private ExtendedWebElement monthField;
 
-    @FindBy(xpath = "//*[@class='android.widget.Spinner'][contains(@text,'Month')]/parent::*//*[contains(@text,'%s')]")
+    @FindBy(xpath = "//*[@text='Update birthday']/following-sibling::*//*[@class='android.widget.Spinner']/parent::*//*[contains(@text,'%s')]")
     private ExtendedWebElement monthByText;
 
-    @FindBy(xpath = "(//*[@class='android.widget.Spinner'][contains(@text,'Month')]/parent::*/child::*[2]/*/*)[%s]")
+    @FindBy(xpath = "(//*[@text='Update birthday']/following-sibling::*//*[@class='android.widget.Spinner']/parent::*/child::*[2]/*/*)[%s]")
     private ExtendedWebElement monthByIndex;
+
+    @FindBy(xpath = "//*[@text='Update birthday']/following-sibling::*//*[@class='android.widget.Spinner']/parent::*/child::*[2]/*/*")
+    private List<ExtendedWebElement> monthList;
 
     @FindBy(xpath = "//*[@class='android.widget.Spinner']/following-sibling::*")
     private ExtendedWebElement monthSpinner;
@@ -59,17 +61,12 @@ public class SetBirthdayPage extends SetBirthdayPageBase {
 
     @Override
     public SetBirthdayPageBase setBirthday(LocalDate date) {
-        LocalDate presetDate = LocalDate.parse(monthField.getText().replace("Month ", "") + " " + dayField.getText() +
-                " " + yearField.getText(), DateTimeFormatter.ofPattern("MMMM d yyyy", Locale.ENGLISH));
+        ExtendedWebElement month = monthByIndex.format(String.valueOf(date.getMonthValue()));
         if (!monthField.getText().contains(date.format(TEXT_MONTH))) {
             monthField.click();
             if (monthByIndex.format(String.valueOf(date.getMonthValue())).isElementNotPresent(SHORT_TIMEOUT)) {
-                Direction direction = Direction.UP;
-                if (presetDate.getMonthValue() > date.getMonthValue()) {
-                    direction = Direction.DOWN;
-                }
-                swipe(monthByIndex.format(String.valueOf(date.getMonthValue())), monthSpinner, direction, ATTEMPTS_FIVE, SWIPE_DURATION_LONG);
-
+                Direction direction = (selectedMonthIndex() > date.getMonthValue()) ? Direction.DOWN : Direction.UP;
+                swipe(month, monthSpinner, direction, ATTEMPTS_FIVE, SWIPE_DURATION_LONG);
             }
             monthByIndex.format(String.valueOf(date.getMonthValue())).click();
         }
@@ -82,13 +79,22 @@ public class SetBirthdayPage extends SetBirthdayPageBase {
         return initPage(getDriver(), SetBirthdayPageBase.class);
     }
 
+    public int selectedMonthIndex() {
+        for (ExtendedWebElement month : monthList) {
+            if (Boolean.parseBoolean(month.getAttribute("selected"))) {
+                return monthList.indexOf(month);
+            }
+        }
+        return 0;
+    }
+
     @Override
     public ProfilePageBase saveChanges() {
         saveBtn.click(TIMEOUT_SHORT);
         if (confirmBtn.isElementPresent(TIMEOUT_SHORT)) {
             confirmBtn.click(TIMEOUT_SHORT);
         }
-        backBtn.click(TIMEOUT_SHORT);
+        backBtn.click();
         return initPage(getDriver(), ProfilePageBase.class);
     }
 

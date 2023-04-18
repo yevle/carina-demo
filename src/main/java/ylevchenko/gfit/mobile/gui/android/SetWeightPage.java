@@ -52,20 +52,18 @@ public class SetWeightPage extends SetWeightPageBase {
 
     @Override
     public SetWeightPageBase setWeight(double weight) {
-        int wholePart = (int) weight;
+        int wholeDigits = (int) weight;
         int decimalDigit = (int) ((weight - (int) weight) * 10);
-        String[] textWeight = String.format("%.1f", weight).split(",");
-        Direction direction = Direction.UP;
 
-        if (Integer.parseInt(unitValue.format("1").getText()) > wholePart) {
-            direction = Direction.DOWN;
-        }
-        swipe(selectValue.format(textWeight[0], "1"), numberPicker.format("1"), direction, ATTEMPTS_FIFTY, SWIPE_DURATION_LONG);
-        direction = Direction.UP;
-        if (Integer.parseInt(unitValue.format("2").getText()) > decimalDigit) {
-            direction = Direction.DOWN;
-        }
-        swipe(selectValue.format(textWeight[1], "1"), numberPicker.format("2"), direction, ATTEMPTS_FIFTY, SWIPE_DURATION_LONG);
+        ExtendedWebElement wholePart = selectValue.format(String.valueOf(wholeDigits), "1");
+        ExtendedWebElement decimalPart = selectValue.format(String.valueOf(decimalDigit), "1");
+
+
+        Direction direction = (Integer.parseInt(unitValue.format("1").getText()) > wholeDigits) ? Direction.DOWN : Direction.UP;
+        swipe(wholePart, numberPicker.format("1"), direction, ATTEMPTS_FIFTY, SWIPE_DURATION_LONG);
+
+        direction = (Integer.parseInt(unitValue.format("2").getText()) > decimalDigit) ? Direction.DOWN : Direction.UP;
+        swipe(decimalPart, numberPicker.format("2"), direction, ATTEMPTS_FIFTY, SWIPE_DURATION_LONG);
 
         return initPage(getDriver(), SetWeightPageBase.class);
     }

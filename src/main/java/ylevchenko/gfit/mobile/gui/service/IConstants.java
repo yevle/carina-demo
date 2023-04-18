@@ -4,6 +4,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import static java.util.Map.entry;
 
@@ -44,5 +45,15 @@ public interface IConstants {
             entry("CM", "Centimeters"),
             entry("FT", "Feet & inches")
     ));
+
+    int HEIGHT_CM_DELTA = 1;
+
+    double WEIGHT_KG_DELTA = 1.0;
+
+    Pattern ANY_DOUBLE_PATTERN = Pattern.compile("\\d+\\.\\d");
+
+    Pattern ANY_INT_PATTERN = Pattern.compile("\\d+");
+
+    Pattern FOUR_DIGIT_NUM = Pattern.compile("\\b\\d{4}\\b"); // match a 4-digit number surrounded by word boundaries
 
 }

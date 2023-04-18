@@ -15,4 +15,6 @@ public abstract class SetBirthdayPageBase extends GFitAbstractPage {
 
     public abstract ProfilePageBase saveChanges();
 
+    public abstract int selectedMonthIndex();
+
 }

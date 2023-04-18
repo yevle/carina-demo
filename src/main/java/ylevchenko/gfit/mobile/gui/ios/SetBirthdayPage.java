@@ -30,4 +30,9 @@ public class SetBirthdayPage extends SetBirthdayPageBase {
         throw new NotImplementedException();
     }
 
+    @Override
+    public int selectedMonthIndex() {
+        throw new NotImplementedException();
+    }
+
 }

@@ -52,15 +52,14 @@ public class SetHeightPage extends SetHeightPageBase {
 
     @Override
     public SetHeightPageBase setHeight(int height) {
+        ExtendedWebElement selectHeight = selectValue.format(String.valueOf(height));
         if (!unitsSpinnerText.getText().equals(UNITS.get("CM"))) {
             setUnits(UNITS.get("CM"));
         }
         int presetHeight = ExtractorUtils.extractIntValue(unitValue.format("1").getText());
-        Direction direction = Direction.UP;
-        if (presetHeight > height) {
-            direction = Direction.DOWN;
-        }
-        swipe(selectValue.format(String.valueOf(height)), numberPicker.format("1"), direction, ATTEMPTS_FIFTY, SWIPE_DURATION_LONG);
+        Direction direction = (presetHeight > height) ? Direction.DOWN : Direction.UP;
+
+        swipe(selectHeight, numberPicker.format("1"), direction, ATTEMPTS_FIFTY, SWIPE_DURATION_LONG);
 
         return initPage(getDriver(), SetHeightPageBase.class);
     }

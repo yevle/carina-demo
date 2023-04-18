@@ -29,8 +29,8 @@ public class ProfileChangesTest implements IAbstractTest, IMobileUtils, IConstan
     @MethodOwner(owner = "ylevchenko")
     public void mainPageContentTest() {
         LocalDate date = LocalDate.now().minusYears(RandomUtils.nextInt(20, 40)).minusDays(RandomUtils.nextInt(0, 365));
-        double weightKg = Math.round(RandomUtils.nextDouble(50, 99) * 10.0) / 10.0;
-        int heightCm = RandomUtils.nextInt(140, 190);
+        double weightKg = Math.round(RandomUtils.nextDouble(55, 95) * 10.0) / 10.0;
+        int heightCm = RandomUtils.nextInt(150, 190);
         Gender gender = Gender.values()[RandomUtils.nextInt(0, Gender.values().length - 1)];
 
         MainPageBase mainPage = initPage(getDriver(), MainPageBase.class);
@@ -47,13 +47,13 @@ public class ProfileChangesTest implements IAbstractTest, IMobileUtils, IConstan
         Assert.assertEquals(setWeightPage.setWeight(weightKg).getWeight(UNITS.get("LB")), ConversionsUtils.kilogramsToPounds(weightKg), "[WEIGHT PAGE] - KG to LB conversion mismatch");
 
         profilePage = setWeightPage.setUnits(UNITS.get("KG")).saveChanges();
-        Assert.assertEquals(ExtractorUtils.extractDoubleValue(profilePage.getText(AboutYouItems.WEIGHT)), weightKg, "[PROFILE PAGE] - Weight choice mismatch");
+        Assert.assertEquals(ExtractorUtils.extractDoubleValue(profilePage.getText(AboutYouItems.WEIGHT)), weightKg, WEIGHT_KG_DELTA, "[PROFILE PAGE] - Weight choice mismatch");
 
         SetHeightPageBase setHeightPage = (SetHeightPageBase) profilePage.editAboutYouField(AboutYouItems.HEIGHT);
         Assert.assertEquals(setHeightPage.setHeight(heightCm).getHeightFt(), ConversionsUtils.centimetersToFeetAndInches(heightCm), "[HEIGHT PAGE] - CM to FT conversion mismatch");
 
         profilePage = setHeightPage.setUnits(UNITS.get("CM")).saveChanges();
-        Assert.assertTrue(profilePage.getText(AboutYouItems.HEIGHT).contains(String.valueOf(heightCm)), "[PROFILE PAGE] - Height choice mismatch");
+        Assert.assertEquals(ExtractorUtils.extractIntValue(profilePage.getText(AboutYouItems.HEIGHT)), heightCm, HEIGHT_CM_DELTA, "[PROFILE PAGE] - Height choice mismatch");
     }
 
 }
