@@ -49,7 +49,7 @@ public class MainPage extends MainPageBase {
 
     @Override
     public boolean isPageOpened() {
-        return mainGoalsFrame.isElementPresent(TIMEOUT_SHORT);
+        return mainGoalsFrame.isElementPresent(TIMEOUT_SHORTEST);
     }
 
     @Override

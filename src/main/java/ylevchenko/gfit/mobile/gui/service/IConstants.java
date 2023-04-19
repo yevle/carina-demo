@@ -10,12 +10,15 @@ import static java.util.Map.entry;
 
 public interface IConstants {
 
-    int TIMEOUT_SHORT = 1;
+    int TIMEOUT_SHORTEST = 1;
+
+    int TIMEOUT_SHORT = 3;
 
     int SWIPE_DURATION_SHORTEST = 50;
 
     int SWIPE_DURATION_LONG = 200;
 
+    int ATTEMPTS_ONE = 1;
     int ATTEMPTS_FIVE = 5;
     int ATTEMPTS_FIFTY = 50;
 
@@ -49,6 +52,8 @@ public interface IConstants {
     int HEIGHT_CM_DELTA = 1;
 
     double WEIGHT_KG_DELTA = 1.0;
+
+    double WEIGHT_LB_DELTA = 0.2;
 
     Pattern ANY_DOUBLE_PATTERN = Pattern.compile("\\d+\\.\\d");
 

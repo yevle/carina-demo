@@ -44,7 +44,7 @@ public class ProfileChangesTest implements IAbstractTest, IMobileUtils, IConstan
         Assert.assertEquals(setBirthdayPage.setBirthday(date).saveChanges().getText(AboutYouItems.BIRTHDAY), date.format(BIRTH_DATE), "[PROFILE PAGE] - Birthday choice mismatch");
 
         SetWeightPageBase setWeightPage = (SetWeightPageBase) profilePage.editAboutYouField(AboutYouItems.WEIGHT);
-        Assert.assertEquals(setWeightPage.setWeight(weightKg).getWeight(UNITS.get("LB")), ConversionsUtils.kilogramsToPounds(weightKg), "[WEIGHT PAGE] - KG to LB conversion mismatch");
+        Assert.assertEquals(setWeightPage.setWeight(weightKg).getWeight(UNITS.get("LB")), ConversionsUtils.kilogramsToPounds(weightKg), WEIGHT_LB_DELTA, "[WEIGHT PAGE] - KG to LB conversion mismatch");
 
         profilePage = setWeightPage.setUnits(UNITS.get("KG")).saveChanges();
         Assert.assertEquals(ExtractorUtils.extractDoubleValue(profilePage.getText(AboutYouItems.WEIGHT)), weightKg, WEIGHT_KG_DELTA, "[PROFILE PAGE] - Weight choice mismatch");

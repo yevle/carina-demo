@@ -41,7 +41,7 @@ public class SetTimeModal extends SetTimeModalBase implements IConstants {
 
     @Override
     public AddActivityPageBase selectTime(LocalDateTime date) {
-        if (hourInputField.isElementNotPresent(TIMEOUT_SHORT)) changeInputMode();
+        if (hourInputField.isElementNotPresent(TIMEOUT_SHORTEST)) changeInputMode();
         hourInputField.type(DateTimeUtils.getHour(date));
         minuteChooseField.click();
         minuteInputField.type(String.valueOf(date.getMinute()));

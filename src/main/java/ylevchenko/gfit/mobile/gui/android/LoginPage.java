@@ -27,7 +27,7 @@ public class LoginPage extends LoginPageBase {
     }
 
     public boolean isPageOpened() {
-        return appIcon.isElementPresent(TIMEOUT_SHORT) && headline.isElementPresent(TIMEOUT_SHORT);
+        return appIcon.isElementPresent(TIMEOUT_SHORTEST) && headline.isElementPresent(TIMEOUT_SHORTEST);
     }
 
     public AboutYouPageBase login() {

@@ -21,7 +21,7 @@ public class TrackActivitiesPage extends TrackActivitiesPageBase {
     }
 
     public boolean isPageOpened() {
-        return title.isElementPresent(TIMEOUT_SHORT);
+        return title.isElementPresent(TIMEOUT_SHORTEST);
     }
 
     public MainPageBase clickSkipBtn() {

@@ -35,11 +35,11 @@ public class SetDateModal extends SelectDateModalBase implements IConstants {
 
     @Override
     public AddActivityPageBase selectDate(LocalDateTime date) {
-        if (dateInputField.isElementNotPresent(TIMEOUT_SHORT)) {
+        if (dateInputField.isElementNotPresent(TIMEOUT_SHORTEST)) {
             changeInputMode();
         }
         dateInputField.type(DateTimeUtils.dateFormat(date));
-        if (okButton.isElementNotPresent(TIMEOUT_SHORT)) {
+        if (okButton.isElementNotPresent(TIMEOUT_SHORTEST)) {
             getDriver().navigate().back();
         }
         okButton.click();

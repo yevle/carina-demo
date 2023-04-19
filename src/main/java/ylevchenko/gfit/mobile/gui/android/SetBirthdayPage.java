@@ -14,7 +14,6 @@ import java.util.List;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SetBirthdayPageBase.class)
 public class SetBirthdayPage extends SetBirthdayPageBase {
 
-
     @FindBy(xpath = "//*[@resource-id='com.google.android.gms:id/octarine_webview_container']//*[@text='Birthday']")
     private ExtendedWebElement title;
 
@@ -56,20 +55,25 @@ public class SetBirthdayPage extends SetBirthdayPageBase {
     }
 
     public boolean isPageOpened() {
-        return title.isElementPresent();
+        return title.isElementPresent(TIMEOUT_SHORT);
     }
 
     @Override
     public SetBirthdayPageBase setBirthday(LocalDate date) {
         ExtendedWebElement month = monthByIndex.format(String.valueOf(date.getMonthValue()));
-        if (!monthField.getText().contains(date.format(TEXT_MONTH))) {
-            monthField.click();
-            if (monthByIndex.format(String.valueOf(date.getMonthValue())).isElementNotPresent(SHORT_TIMEOUT)) {
-                Direction direction = (selectedMonthIndex() > date.getMonthValue()) ? Direction.DOWN : Direction.UP;
-                swipe(month, monthSpinner, direction, ATTEMPTS_FIVE, SWIPE_DURATION_LONG);
-            }
-            monthByIndex.format(String.valueOf(date.getMonthValue())).click();
+        monthField.click();
+        if (!month.isVisible(SHORT_TIMEOUT)) {
+            Direction direction = (selectedMonthIndex() > date.getMonthValue()) ? Direction.DOWN : Direction.UP;
+            swipe(month, monthSpinner, direction, ATTEMPTS_FIVE, SWIPE_DURATION_LONG);
         }
+        while (month.getLocation().y < monthField.getLocation().y) {
+            int initY = month.getLocation().y;
+            swipeInContainer(monthSpinner, Direction.DOWN, ATTEMPTS_ONE, SWIPE_DURATION_LONG);
+            if (initY == month.getLocation().y) {
+                break;
+            }
+        }
+        month.click();
         if (!dayField.getText().equals(String.valueOf(date.getDayOfMonth()))) {
             dayField.type(String.valueOf(date.getDayOfMonth()));
         }
@@ -90,11 +94,14 @@ public class SetBirthdayPage extends SetBirthdayPageBase {
 
     @Override
     public ProfilePageBase saveChanges() {
-        saveBtn.click(TIMEOUT_SHORT);
-        if (confirmBtn.isElementPresent(TIMEOUT_SHORT)) {
-            confirmBtn.click(TIMEOUT_SHORT);
+        saveBtn.click(TIMEOUT_SHORTEST);
+        if (confirmBtn.isElementPresent(TIMEOUT_SHORTEST)) {
+            confirmBtn.click(TIMEOUT_SHORTEST);
         }
         backBtn.click();
+        if (isPageOpened()) {
+            backBtn.click();
+        }
         return initPage(getDriver(), ProfilePageBase.class);
     }
 

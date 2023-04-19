@@ -27,7 +27,7 @@ public class AboutYouPage extends AboutYouPageBase {
     }
 
     public boolean isPageOpened() {
-        return title.isElementPresent(TIMEOUT_SHORT);
+        return title.isElementPresent(TIMEOUT_SHORTEST);
     }
 
     public TrackActivitiesPageBase clickNextBtn() {
