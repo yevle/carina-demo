@@ -1,15 +1,12 @@
 package ylevchenko.gfit.mobile.gui.ios;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.exception.NotImplementedException;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 import ylevchenko.gfit.mobile.gui.GFitAbstractPage;
 import ylevchenko.gfit.mobile.gui.android.components.*;
 import ylevchenko.gfit.mobile.gui.common.AddActivityPageBase;
 import ylevchenko.gfit.mobile.gui.enums.AddActivityTextFields;
-import ylevchenko.gfit.mobile.gui.enums.PlusMenuItems;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = AddActivityPageBase.class)
 public class AddActivityPage extends AddActivityPageBase {

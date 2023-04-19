@@ -69,7 +69,7 @@ public class AddActivityPage extends AddActivityPageBase {
     @Override
     public AddActivityPageBase inputTextField(AddActivityTextFields field, String text) {
         ExtendedWebElement textField = activityTextField.format(field.getText());
-        if (textField.isElementNotPresent(TIMEOUT_SHORT)) {
+        if (textField.isElementNotPresent(TIMEOUT_SHORTEST)) {
             getDriver().navigate().back();
         }
         textField.type(text);

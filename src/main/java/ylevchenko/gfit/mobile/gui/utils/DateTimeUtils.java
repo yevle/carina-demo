@@ -6,7 +6,7 @@ import ylevchenko.gfit.mobile.gui.service.IConstants;
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
 
-public class DateTimeFormat implements IConstants {
+public class DateTimeUtils implements IConstants {
 
 //    private static final Properties props = new Properties();
 //
@@ -29,10 +29,9 @@ public class DateTimeFormat implements IConstants {
     public static String getHour(LocalDateTime dateTime) {
 //        String locale = props.isEmpty() ? readProperty().getProperty("locale") : props.getProperty("locale");
         String locale = R.CONFIG.get("locale");
-        if (locale.equalsIgnoreCase("en_US")&&dateTime.getHour()>12) {
+        if (locale.equalsIgnoreCase("en_US") && dateTime.getHour() > 12) {
             return String.valueOf(Math.abs(dateTime.toLocalTime().getHour() - 12));
-        }
-        else return String.valueOf(dateTime.getHour());
+        } else return String.valueOf(dateTime.getHour());
     }
 
     public static String timeParser(LocalDateTime dateTime) {

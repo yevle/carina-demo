@@ -14,7 +14,7 @@ import ylevchenko.gfit.mobile.gui.enums.AddActivityTextFields;
 import ylevchenko.gfit.mobile.gui.enums.MainMenuItems;
 import ylevchenko.gfit.mobile.gui.enums.PlusMenuItems;
 import ylevchenko.gfit.mobile.gui.service.IConstants;
-import ylevchenko.gfit.mobile.gui.utils.DateTimeFormat;
+import ylevchenko.gfit.mobile.gui.utils.DateTimeUtils;
 
 import java.time.LocalDateTime;
 
@@ -55,7 +55,7 @@ public class AddedActivityTest implements IAbstractTest, IMobileUtils, IConstant
 
         softAssert.assertEquals(journalEntityPage.getTitle(), activity.getText(), "Activity title is inappropriate");
         softAssert.assertEquals(journalEntityPage.getDateTime().toString(), dateTime.format(ISO_FORMAT), "Activity start date or time is inappropriate");
-        softAssert.assertEquals(journalEntityPage.getDuration(), DateTimeFormat.timeParser(dateTime), "Activity duration is inappropriate");
+        softAssert.assertEquals(journalEntityPage.getDuration(), DateTimeUtils.timeParser(dateTime), "Activity duration is inappropriate");
         softAssert.assertEquals(journalEntityPage.getEnergy(), energyExpended, "Energy expended is inappropriate");
         softAssert.assertEquals(journalEntityPage.getIntensity(), intensity, "Activity intensity is inappropriate");
 

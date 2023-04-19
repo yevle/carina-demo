@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = JournalEntityPageBase.class)
 public class JournalEntityPage extends JournalEntityPageBase {
@@ -90,8 +89,7 @@ public class JournalEntityPage extends JournalEntityPageBase {
     public LocalDateTime getDateTime() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy, h:mm a", Locale.ENGLISH);
         String[] dateTime = dateTimeField.getText().split("–");
-        Pattern pattern = Pattern.compile("\\b\\d{4}\\b"); // match a 4-digit number surrounded by word boundaries
-        Matcher matcher = pattern.matcher(dateTime[0]);
+        Matcher matcher = FOUR_DIGIT_NUM.matcher(dateTime[0]);
         if (!matcher.find()) {
             dateTime[0] = dateTime[0].replaceFirst(dateTime[0].substring(0, dateTime[0].indexOf(',') + 1), dateTime[0].substring(0, dateTime[0].indexOf(',') + 1) + " 2023,");
         }

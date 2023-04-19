@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import ylevchenko.gfit.mobile.gui.common.AddActivityPageBase;
 import ylevchenko.gfit.mobile.gui.common.components.SetTimeModalBase;
 import ylevchenko.gfit.mobile.gui.service.IConstants;
-import ylevchenko.gfit.mobile.gui.utils.DateTimeFormat;
+import ylevchenko.gfit.mobile.gui.utils.DateTimeUtils;
 
 import java.time.LocalDateTime;
 
@@ -41,8 +41,8 @@ public class SetTimeModal extends SetTimeModalBase implements IConstants {
 
     @Override
     public AddActivityPageBase selectTime(LocalDateTime date) {
-        if (hourInputField.isElementNotPresent(TIMEOUT_SHORT)) changeInputMode();
-        hourInputField.type(DateTimeFormat.getHour(date));
+        if (hourInputField.isElementNotPresent(TIMEOUT_SHORTEST)) changeInputMode();
+        hourInputField.type(DateTimeUtils.getHour(date));
         minuteChooseField.click();
         minuteInputField.type(String.valueOf(date.getMinute()));
         okButton.click();
