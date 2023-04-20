@@ -1,11 +1,8 @@
 package ylevchenko.gfit.android;
 
-import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
-import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import ylevchenko.gfit.mobile.gui.common.*;
@@ -13,17 +10,11 @@ import ylevchenko.gfit.mobile.gui.enums.ActivityTypeItems;
 import ylevchenko.gfit.mobile.gui.enums.AddActivityTextFields;
 import ylevchenko.gfit.mobile.gui.enums.MainMenuItems;
 import ylevchenko.gfit.mobile.gui.enums.PlusMenuItems;
-import ylevchenko.gfit.mobile.gui.service.IConstants;
 import ylevchenko.gfit.mobile.gui.utils.DateTimeUtils;
 
 import java.time.LocalDateTime;
 
-public class AddedActivityTest implements IAbstractTest, IMobileUtils, IConstants {
-
-    @BeforeTest
-    public void loginApp() {
-        initPage(getDriver(), LoginPageBase.class).login().clickNextBtn().clickSkipBtn();
-    }
+public class AddedActivityTest extends BaseTest {
 
     @Test(description = "Comparing inserted data to new activity with one which saved in journal")
     @MethodOwner(owner = "ylevchenko")

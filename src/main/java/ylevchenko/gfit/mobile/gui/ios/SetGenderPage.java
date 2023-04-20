@@ -25,7 +25,7 @@ public class SetGenderPage extends SetGenderPageBase {
     }
 
     @Override
-    public ProfilePageBase exit() {
+    public ProfilePageBase backToProfilePage() {
         throw new NotImplementedException();
     }
 

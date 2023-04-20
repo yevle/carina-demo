@@ -1,24 +1,14 @@
 package ylevchenko.gfit.android;
 
-import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
-import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.openqa.selenium.Point;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import ylevchenko.gfit.mobile.gui.service.IConstants;
-import ylevchenko.gfit.mobile.gui.common.LoginPageBase;
 import ylevchenko.gfit.mobile.gui.common.MainPageBase;
 import ylevchenko.gfit.mobile.gui.enums.MainPageCards;
 import ylevchenko.gfit.mobile.gui.enums.YoutubeCarouselItems;
 
-public class MainPageTest implements IAbstractTest, IMobileUtils, IConstants {
-
-    @BeforeTest
-    public void loginApp() {
-        initPage(getDriver(), LoginPageBase.class).login().clickNextBtn().clickSkipBtn();
-    }
+public class MainPageTest extends BaseTest {
 
     @Test(description = "Checking all cards and items on main page")
     @MethodOwner(owner = "ylevchenko")

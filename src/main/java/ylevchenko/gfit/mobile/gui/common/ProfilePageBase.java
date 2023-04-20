@@ -14,6 +14,6 @@ public abstract class ProfilePageBase extends GFitAbstractPage {
 
     public abstract GFitAbstractPage editAboutYouField(AboutYouItems field);
 
-    public abstract String getText(AboutYouItems field);
+    public abstract String getAboutYouFieldText(AboutYouItems field);
 
 }

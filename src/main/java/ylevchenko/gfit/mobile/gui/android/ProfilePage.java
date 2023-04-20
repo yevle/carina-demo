@@ -47,7 +47,7 @@ public class ProfilePage extends ProfilePageBase {
     }
 
     @Override
-    public String getText(AboutYouItems field) {
+    public String getAboutYouFieldText(AboutYouItems field) {
         return aboutYouField.format(field.getText()).getText();
     }
 
