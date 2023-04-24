@@ -1,10 +1,14 @@
 package ylevchenko.gfit.mobile.gui.android;
 
+import com.qaprosoft.carina.core.foundation.webdriver.Screenshot;
+import com.qaprosoft.carina.core.foundation.webdriver.ScreenshotType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ylevchenko.gfit.mobile.gui.GFitAbstractPage;
 import ylevchenko.gfit.mobile.gui.android.components.MainMenu;
 import ylevchenko.gfit.mobile.gui.android.components.PlusMenu;
@@ -12,6 +16,10 @@ import ylevchenko.gfit.mobile.gui.common.MainPageBase;
 import ylevchenko.gfit.mobile.gui.enums.MainMenuItems;
 import ylevchenko.gfit.mobile.gui.enums.MainPageCards;
 import ylevchenko.gfit.mobile.gui.enums.YoutubeCarouselItems;
+import ylevchenko.gfit.mobile.gui.utils.ScreenshotUtils;
+
+import java.io.IOException;
+import java.time.Duration;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = MainPageBase.class)
 public class MainPage extends MainPageBase {
@@ -36,6 +44,9 @@ public class MainPage extends MainPageBase {
 
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/card_list']//*[@resource-id='com.google.android.apps.fitness:id/playlist_carousel']//*[@text='%s']")
     private ExtendedWebElement youtubeCarouselItem;
+
+    @FindBy(xpath = "//*[@content-desc='Heart Points history']/*[contains(@class,'ImageView')]")
+    private ExtendedWebElement heartPtsLogo;
 
     @FindBy(id = "bottom_navigation")
     private MainMenu mainMenu;
@@ -86,5 +97,19 @@ public class MainPage extends MainPageBase {
         plusBtn.click();
         return plusMenu;
     }
+
+    @Override
+    public void getHeartPtsScreenshot() {
+
+
+        waitUntil(ExpectedConditions.visibilityOfElementLocated(heartPtsLogo.getBy()), TIMEOUT_SHORT);
+        try {
+            ScreenshotUtils.takeScreenshot(getDriver(), heartPtsLogo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

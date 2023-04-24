@@ -26,4 +26,6 @@ public abstract class MainPageBase extends GFitAbstractPage {
 
     public abstract PlusMenu openPlusMenu();
 
+    public abstract void getHeartPtsScreenshot();
+
 }

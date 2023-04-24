@@ -48,4 +48,10 @@ public class MainPage extends MainPageBase {
         throw new NotImplementedException();
     }
 
+    @Override
+    public void getHeartPtsScreenshot() {
+        throw new NotImplementedException();
+    }
+
+
 }
