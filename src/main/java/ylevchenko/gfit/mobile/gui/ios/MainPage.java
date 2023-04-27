@@ -49,9 +49,23 @@ public class MainPage extends MainPageBase {
     }
 
     @Override
-    public void getHeartPtsScreenshot() {
+    public String getStepsLogoColor() {
         throw new NotImplementedException();
     }
 
+    @Override
+    public String getHeartPtsLogoColor() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String getMainValuesColor() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String getAccLogoColor() {
+        throw new NotImplementedException();
+    }
 
 }
