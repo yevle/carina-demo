@@ -76,12 +76,6 @@ public class LoginPage extends LoginPageBase {
     }
 
     @Override
-    public LoginPageBase enterLoginDetails() {
-        String loginPass = RandomStringUtils.randomAlphanumeric(LOGIN_SYMBOL_COUNT);
-        return typeName(loginPass).typePassword(loginPass).selectGender(Gender.MALE).checkPrivacyPolicyCheckbox(true);
-    }
-
-    @Override
     public boolean isLoginBtnActive() {
         return loginBtn.isClickable(TIMEOUT_SHORT);
     }
@@ -109,11 +103,6 @@ public class LoginPage extends LoginPageBase {
     @Override
     public boolean isPrivacyPolicyChecked() {
         return privacyPolicyCheckbox.isChecked();
-    }
-
-    @Override
-    public boolean isPrivacyPolicyHasText() {
-        return privacyPolicyCheckbox.isElementWithTextPresent(PRIVACY_POLICY_TEXT, TIMEOUT_SHORT);
     }
 
 }

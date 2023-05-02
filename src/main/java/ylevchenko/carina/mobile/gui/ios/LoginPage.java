@@ -1,6 +1,11 @@
 package ylevchenko.carina.mobile.gui.ios;
 
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.annotations.ClassChain;
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.annotations.Predicate;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.support.FindBy;
 import ylevchenko.carina.mobile.gui.common.LoginPageBase;
 import ylevchenko.carina.mobile.gui.common.WebViewPageBase;
 import com.zebrunner.carina.utils.exception.NotImplementedException;
@@ -10,48 +15,70 @@ import ylevchenko.carina.enums.Gender;
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase {
 
+    @FindBy(xpath = "type = 'XCUIElementTypeTextField'")
+    @Predicate
+    private ExtendedWebElement nameInputField;
+
+    @FindBy(xpath = "type = 'XCUIElementTypeSecureTextField'")
+    @Predicate
+    private ExtendedWebElement passwordInputField;
+
+    @FindBy(xpath = "**/XCUIElementTypeStaticText[`label == '%s'`]")
+    @ClassChain
+    private ExtendedWebElement genderRadioBtn;
+
+    @FindBy(xpath = "**/XCUIElementTypeButton[`name CONTAINS 'checkbox'`]")
+    @ClassChain
+    private ExtendedWebElement privacyPolicyCheckbox;
+
+    @FindBy(xpath = "name = 'LOGIN'")
+    @Predicate
+    private ExtendedWebElement loginBtn;
+
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
     @Override
     public LoginPageBase typeName(String name) {
-        throw new NotImplementedException();
+        nameInputField.type(name, TIMEOUT_SHORT);
+        return initPage(getDriver(), LoginPageBase.class);
     }
 
     @Override
     public LoginPageBase typePassword(String password) {
-        throw new NotImplementedException();
+        passwordInputField.type(password, TIMEOUT_SHORT);
+        return initPage(getDriver(), LoginPageBase.class);
     }
 
     @Override
     public LoginPageBase selectGender(Gender gender) {
-        throw new NotImplementedException();
+        genderRadioBtn.format(gender.getText()).click();
+        return initPage(getDriver(), LoginPageBase.class);
     }
 
     @Override
     public LoginPageBase checkPrivacyPolicyCheckbox(boolean check) {
-        throw new NotImplementedException();
+        privacyPolicyCheckbox.click();
+        return initPage(getDriver(), LoginPageBase.class);
     }
 
     @Override
     public WebViewPageBase clickLoginBtn() {
-        throw new NotImplementedException();
+        loginBtn.click();
+        return initPage(getDriver(), WebViewPageBase.class);
     }
 
     @Override
     public WebViewPageBase login() {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public LoginPageBase enterLoginDetails() {
-        throw new NotImplementedException();
+        String loginPass = RandomStringUtils.randomAlphanumeric(LOGIN_SYMBOL_COUNT);
+        typeName(loginPass).typePassword(loginPass).selectGender(Gender.MALE).checkPrivacyPolicyCheckbox(true);
+        return clickLoginBtn();
     }
 
     @Override
     public boolean isLoginBtnActive() {
-        throw new NotImplementedException();
+        return loginBtn.isClickable(TIMEOUT_SHORT);
     }
 
     @Override
@@ -76,11 +103,6 @@ public class LoginPage extends LoginPageBase {
 
     @Override
     public boolean isPrivacyPolicyChecked() {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public boolean isPrivacyPolicyHasText() {
         throw new NotImplementedException();
     }
 

@@ -1,13 +1,18 @@
 package ylevchenko.carina.mobile.gui.ios;
 
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.exception.NotImplementedException;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 import ylevchenko.carina.mobile.gui.common.WebViewPageBase;
 import ylevchenko.carina.mobile.gui.common.components.MainMenuBase;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = WebViewPageBase.class)
 public class WebViewPage extends WebViewPageBase {
+
+    @FindBy (xpath = "//XCUIElementTypeOther[@name='Carina - open source test automation framework']")
+    ExtendedWebElement title;
 
     public WebViewPage(WebDriver driver) {
         super(driver);
@@ -31,6 +36,10 @@ public class WebViewPage extends WebViewPageBase {
     @Override
     public boolean isFooterEmailLinkCorrect(String name, String domain) {
         throw new NotImplementedException();
+    }
+
+    public boolean isPageOpened(){
+        return title.isPresent();
     }
 
 }
