@@ -1,6 +1,7 @@
 package ylevchenko.gfit.mobile.gui.android;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -10,9 +11,8 @@ import ylevchenko.gfit.mobile.gui.common.JournalEntityPageBase;
 import ylevchenko.gfit.mobile.gui.common.JournalPageBase;
 import ylevchenko.gfit.mobile.gui.enums.PlusMenuItems;
 
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 import java.util.regex.Matcher;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = JournalEntityPageBase.class)
@@ -42,10 +42,10 @@ public class JournalEntityPage extends JournalEntityPageBase {
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/active_minutes']//*[@content-desc]")
     private ExtendedWebElement activeMinutesField;
 
-    @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/toolbar']//*[@content-desc='More options']")
+    @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/toolbar']//*[@content-desc='{L10N:moreOptions}']")
     private ExtendedWebElement moreOptionsBtn;
 
-    @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/content']//*[@text='Delete']/ancestor::*[position()=5]")
+    @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/content']//*[@text='{L10N:delete}']/ancestor::*[position()=5]")
     private MoreOptionsModal moreOptionsMenu;
 
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/action_bar_root']//*[@resource-id='com.google.android.apps.fitness:id/parentPanel']")
@@ -62,7 +62,7 @@ public class JournalEntityPage extends JournalEntityPageBase {
 
     public int getEnergy() {
         String text = energyField.getText();
-        return Integer.parseInt(text.substring(0, text.indexOf(" ")).replace(",",""));
+        return Integer.parseInt(text.substring(0, text.indexOf(SPACE)).replace(COMMA, EMPTY_STRING).replace(POINT, EMPTY_STRING));
     }
 
     public String getDuration() {
@@ -82,21 +82,31 @@ public class JournalEntityPage extends JournalEntityPageBase {
 
     @Override
     public int getIntensity() {
-        return Integer.parseInt(heartPoints.getText().replace(",", ""));
+        return Integer.parseInt(heartPoints.getText().replace(COMMA, EMPTY_STRING).replace(POINT, EMPTY_STRING));
     }
 
     @Override
     public LocalDateTime getDateTime() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy, h:mm a", Locale.ENGLISH);
-        String[] dateTime = dateTimeField.getText().split("–");
-        Matcher matcher = FOUR_DIGIT_NUM.matcher(dateTime[0]);
-        if (!matcher.find()) {
-            dateTime[0] = dateTime[0].replaceFirst(dateTime[0].substring(0, dateTime[0].indexOf(',') + 1), dateTime[0].substring(0, dateTime[0].indexOf(',') + 1) + " 2023,");
+        String locale = R.CONFIG.get("locale");
+        if (locale.equalsIgnoreCase("en_US")) {
+            String[] dateTime = dateTimeField.getText().split("–");
+            Matcher matcher = FOUR_DIGIT_NUM.matcher(dateTime[0]);
+            if (!matcher.find()) {
+                dateTime[0] = dateTime[0].replaceFirst(dateTime[0].substring(0, dateTime[0].indexOf(COMMA) + 1), dateTime[0].substring(0, dateTime[0].indexOf(COMMA) + 1) + CURRENT_YEAR);
+            }
+            if (dateTime[0].contains("PM") || dateTime[0].contains("AM")) {
+                return LocalDateTime.parse(dateTime[0].strip(), EN_FORMATTER);
+            }
+            return LocalDateTime.parse(dateTime[0] + dateTime[1].substring(dateTime[1].lastIndexOf(SPACE) + 1), EN_FORMATTER);
         }
-        if (dateTime[0].contains("PM") || dateTime[0].contains("AM")) {
-            return LocalDateTime.parse(dateTime[0].strip(), formatter);
-        }
-        return LocalDateTime.parse(dateTime[0] + dateTime[1].substring(dateTime[1].lastIndexOf(" ") + 1), formatter);
+        if (locale.equalsIgnoreCase("de_DE")) {
+            String dateTime = dateTimeField.getText().substring(0, dateTimeField.getText().indexOf("–") - 1);
+            Matcher matcher = FOUR_DIGIT_NUM.matcher(dateTime);
+            if (!matcher.find()) {
+                dateTime = dateTime.replaceFirst(dateTime.substring(0, dateTime.indexOf(COMMA)), dateTime.substring(0, dateTime.indexOf(COMMA)) + CURRENT_YEAR);
+            }
+            return LocalDateTime.parse(dateTime, DE_FORMATTER);
+        } else throw new DateTimeException("No formatter found for defined locale");
     }
 
     public boolean isPageOpened() {

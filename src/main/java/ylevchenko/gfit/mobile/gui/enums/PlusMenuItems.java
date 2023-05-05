@@ -1,5 +1,6 @@
 package ylevchenko.gfit.mobile.gui.enums;
 
+import com.zebrunner.carina.utils.resources.L10N;
 import ylevchenko.gfit.mobile.gui.GFitAbstractPage;
 import ylevchenko.gfit.mobile.gui.common.AddActivityPageBase;
 import ylevchenko.gfit.mobile.gui.common.AddBloodPressurePageBase;
@@ -7,12 +8,12 @@ import ylevchenko.gfit.mobile.gui.common.AddWeightPageBase;
 import ylevchenko.gfit.mobile.gui.common.TrackWorkoutPageBase;
 
 public enum PlusMenuItems {
-    ADD_BLOOD_PRESSURE("Add blood pressure", AddBloodPressurePageBase.class), ADD_WEIGHT("Add weight", AddWeightPageBase.class),
-    ADD_ACTIVITY("Add activity", AddActivityPageBase.class), TRACK_WORKOUT("Track workout", TrackWorkoutPageBase.class);
+    ADD_BLOOD_PRESSURE(L10N.getText("addBloodPressure"), AddBloodPressurePageBase.class), ADD_WEIGHT(L10N.getText("addWeight"), AddWeightPageBase.class),
+    ADD_ACTIVITY(L10N.getText("addActivity"), AddActivityPageBase.class), TRACK_WORKOUT(L10N.getText("trackWorkout"), TrackWorkoutPageBase.class);
 
-    String text;
+    final String text;
 
-    private Class<? extends GFitAbstractPage> pageClass;
+    private final Class<? extends GFitAbstractPage> pageClass;
 
     PlusMenuItems(String text, Class<? extends GFitAbstractPage> pageClass) {
         this.text = text;

@@ -23,7 +23,7 @@ public class ProfilePage extends ProfilePageBase {
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/toolbar']/parent::*[contains(@content-desc,'Profile')]")
     private ExtendedWebElement title;
 
-    @FindBy(xpath = "//android.widget.Button[@content-desc='Settings']")
+    @FindBy(xpath = "//android.widget.Button[@content-desc='{L10N:settings}']")
     private ExtendedWebElement settingsBtn;
 
     @FindBy(id = "og_apd_internal_image_view")
@@ -67,10 +67,10 @@ public class ProfilePage extends ProfilePageBase {
 
     @Override
     public ProfilePageBase sleepSwitchChecker(Boolean toCheck) {
-        if (!sleepSwitch.isChecked()&&toCheck) {
+        if (!sleepSwitch.isChecked() && toCheck) {
             sleepSwitch.check();
         }
-        if (sleepSwitch.isChecked()&&!toCheck) {
+        if (sleepSwitch.isChecked() && !toCheck) {
             sleepSwitch.uncheck();
         }
         return initPage(getDriver(), ProfilePageBase.class);

@@ -8,6 +8,8 @@ import ylevchenko.gfit.mobile.gui.common.MainPageBase;
 import ylevchenko.gfit.mobile.gui.enums.MainPageCards;
 import ylevchenko.gfit.mobile.gui.enums.YoutubeCarouselItems;
 
+import java.util.Objects;
+
 public class MainPageTest extends BaseTest {
 
     @Test(description = "Checking all cards and items on main page")
@@ -19,9 +21,10 @@ public class MainPageTest extends BaseTest {
         Point initialPoint = mainPageBase.getPlusBtnPoint();
 
         for (MainPageCards card : MainPageCards.values()) {
-
+            if (Objects.equals(card.getText(), "")) {
+                continue;
+            }
             softAssert.assertTrue(mainPageBase.isMainPageCardPresent(card), String.format("Card %s wasn't found on its place", card.name()));
-
             if (card.equals(MainPageCards.YOUTUBE)) {
                 for (YoutubeCarouselItems item : YoutubeCarouselItems.values()) {
                     softAssert.assertTrue(mainPageBase.isYoutubeCarouselItemPresent(item),

@@ -1,5 +1,7 @@
 package ylevchenko.gfit.mobile.gui.service;
 
+import com.zebrunner.carina.utils.resources.L10N;
+
 import java.awt.*;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -23,9 +25,15 @@ public interface IConstants {
 
     int ATTEMPTS_ONE = 1;
     int ATTEMPTS_FIVE = 5;
+    int ATTEMPTS_FIFTEEN = 15;
     int ATTEMPTS_FIFTY = 50;
 
     DateTimeFormatter EN_US = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+    DateTimeFormatter DE_DE = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+    DateTimeFormatter EN_FORMATTER = DateTimeFormatter.ofPattern("MMMM d, yyyy, h:mm a", Locale.ENGLISH);
+    DateTimeFormatter DE_FORMATTER = DateTimeFormatter.ofPattern("d. MMMM yyyy, HH:mm", Locale.GERMAN);
+
     DateTimeFormatter ISO_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
     DateTimeFormatter TEXT_MONTH = DateTimeFormatter.ofPattern("MMMM");
     DateTimeFormatter BIRTH_DATE = DateTimeFormatter.ofPattern("MMM d, yyyy", Locale.ENGLISH);
@@ -35,8 +43,12 @@ public interface IConstants {
     String FEET_TEXT = " ft";
     String INCH_TEXT = " in";
 
+    String EMPTY_STRING = "";
+    String SPACE = " ";
     String COMMA = ",";
     String POINT = ".";
+
+    String CURRENT_YEAR = SPACE + L10N.getText("currentYear");
 
     Map<String, String> UNITS = new HashMap<>(Map.ofEntries(
             entry("KG", "Kilograms"),
@@ -61,6 +73,7 @@ public interface IConstants {
 
     int COLOR_DISTANCE = 43;
 
-    String LAST_SETTING_ELEM = "Display";
+    String LAST_SETTING_ELEM = L10N.getText("display");
+    String LAST_ACTIVITY_ELEM = L10N.getText("zumba");
 
 }

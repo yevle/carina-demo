@@ -6,13 +6,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import ylevchenko.gfit.mobile.gui.common.*;
-import ylevchenko.gfit.mobile.gui.enums.ActivityTypeItems;
 import ylevchenko.gfit.mobile.gui.enums.AddActivityTextFields;
 import ylevchenko.gfit.mobile.gui.enums.MainMenuItems;
 import ylevchenko.gfit.mobile.gui.enums.PlusMenuItems;
 import ylevchenko.gfit.mobile.gui.utils.DateTimeUtils;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class AddedActivityTest extends BaseTest {
 
@@ -22,7 +22,6 @@ public class AddedActivityTest extends BaseTest {
 
         SoftAssert softAssert = new SoftAssert();
 
-        ActivityTypeItems activity = ActivityTypeItems.values()[RandomUtils.nextInt(0, ActivityTypeItems.values().length - 1)];
         LocalDateTime dateTime = LocalDateTime.now().minusDays(RandomUtils.nextInt(0, 500));
         int energyExpended = RandomUtils.nextInt(0, 999);
 
@@ -30,7 +29,10 @@ public class AddedActivityTest extends BaseTest {
         AddActivityPageBase addActivityPage = (AddActivityPageBase) mainPage.openPlusMenu().openPlusMenuItem(PlusMenuItems.ADD_ACTIVITY);
         Assert.assertTrue(addActivityPage.isPageOpened(), "Add Activity page isn't opened");
 
-        addActivityPage.inputTextField(AddActivityTextFields.TITLE, activity.getText());
+        List<String> activityTypes = addActivityPage.openActivityTypeModal().fillElemList();
+        String activity = activityTypes.get(RandomUtils.nextInt(0,activityTypes.size()));
+
+        addActivityPage.inputTextField(AddActivityTextFields.TITLE, activity);
         addActivityPage.openActivityTypeModal().setActivityType(activity);
         addActivityPage.openSetDateModal().selectDate(dateTime);
         addActivityPage.openSetStartTimeModal().selectTime(dateTime);
@@ -42,9 +44,9 @@ public class AddedActivityTest extends BaseTest {
         mainPage = (MainPageBase) addActivityPage.saveChanges(MainPageBase.class);
 
         JournalPageBase journalPage = (JournalPageBase) mainPage.openMainMenuItem(MainMenuItems.JOURNAL);
-        JournalEntityPageBase journalEntityPage = journalPage.getJournalEntity(activity.getText());
+        JournalEntityPageBase journalEntityPage = journalPage.getJournalEntity(activity);
 
-        softAssert.assertEquals(journalEntityPage.getTitle(), activity.getText(), "Activity title is inappropriate");
+        softAssert.assertEquals(journalEntityPage.getTitle(), activity, "Activity title is inappropriate");
         softAssert.assertEquals(journalEntityPage.getDateTime().toString(), dateTime.format(ISO_FORMAT), "Activity start date or time is inappropriate");
         softAssert.assertEquals(journalEntityPage.getDuration(), DateTimeUtils.timeParser(dateTime), "Activity duration is inappropriate");
         softAssert.assertEquals(journalEntityPage.getEnergy(), energyExpended, "Energy expended is inappropriate");

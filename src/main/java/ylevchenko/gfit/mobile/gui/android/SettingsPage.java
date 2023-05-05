@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SettingsPageBase.class)
 public class SettingsPage extends SettingsPageBase {
 
-    @FindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']")
+    @FindBy(xpath = "//android.widget.ImageButton[@content-desc='{L10N:backBtn}']")
     private ExtendedWebElement backBtn;
 
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/settings_unit_container']//*[contains(@text,'%s')]//parent::*")

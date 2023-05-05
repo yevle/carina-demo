@@ -22,7 +22,7 @@ public class AddActivityPage extends AddActivityPageBase {
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/activity_field']/*/*")
     private ExtendedWebElement activityField;
 
-    @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/container_action_button'][contains(@text,'Save')]")
+    @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/container_action_button'][contains(@text,'{L10N:save}')]")
     private ExtendedWebElement saveBtn;
 
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/time_field']/*[@resource-id='com.google.android.apps.fitness:id/date_button']")
@@ -43,13 +43,13 @@ public class AddActivityPage extends AddActivityPageBase {
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/mtrl_picker_header']/parent::*")
     private SetDateModal setDateModal;
 
-    @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/header_title'][contains(@text,'SELECT TIME')]/parent::*")
+    @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/header_title'][contains(@text,'{L10N:selectTime}')]/parent::*")
     private SetTimeModal setTimeModal;
 
-    @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/header_title'][contains(@text,'SELECT DURATION')]/parent::*")
+    @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/header_title'][contains(@text,'{L10N:selectDuration}')]/parent::*")
     private SetDurationModal setDurationModal;
 
-    @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/alertTitle'][contains(@text,'Intensity')]/ancestor::*[@resource-id='com.google.android.apps.fitness:id/parentPanel']")
+    @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/alertTitle'][contains(@text,'{L10N:intensity}')]/ancestor::*[@resource-id='com.google.android.apps.fitness:id/parentPanel']")
     private SetIntensityModal setIntensityModal;
 
     public AddActivityPage(WebDriver driver) {
