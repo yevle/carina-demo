@@ -12,6 +12,6 @@ public abstract class SetGenderPageBase extends GFitAbstractPage {
 
     public abstract SetGenderPageBase setGender(Gender gender);
 
-    public abstract ProfilePageBase exit();
+    public abstract ProfilePageBase backToProfilePage();
 
 }

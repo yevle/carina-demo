@@ -22,8 +22,16 @@ public abstract class MainPageBase extends GFitAbstractPage {
 
     public abstract boolean isYoutubeCarouselItemPresent(YoutubeCarouselItems item);
 
-    public abstract GFitAbstractPage openMainMenuItem (MainMenuItems item);
+    public abstract GFitAbstractPage openMainMenuItem(MainMenuItems item);
 
     public abstract PlusMenu openPlusMenu();
+
+    public abstract String getStepsLogoColor();
+
+    public abstract String getHeartPtsLogoColor();
+
+    public abstract String getMainValuesColor();
+
+    public abstract String getAccLogoColor();
 
 }

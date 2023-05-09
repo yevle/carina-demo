@@ -25,4 +25,9 @@ public class MainMenu extends MainMenuBase {
         throw new NotImplementedException();
     }
 
+    @Override
+    public String getMenuItemColor(MainMenuItems item) {
+        return null;
+    }
+
 }

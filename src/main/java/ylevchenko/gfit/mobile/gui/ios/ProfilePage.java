@@ -4,6 +4,7 @@ import com.zebrunner.carina.utils.exception.NotImplementedException;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import ylevchenko.gfit.mobile.gui.GFitAbstractPage;
+import ylevchenko.gfit.mobile.gui.android.components.MainMenu;
 import ylevchenko.gfit.mobile.gui.common.ProfilePageBase;
 import ylevchenko.gfit.mobile.gui.common.SettingsPageBase;
 import ylevchenko.gfit.mobile.gui.enums.AboutYouItems;
@@ -22,7 +23,7 @@ public class ProfilePage extends ProfilePageBase {
 
     @Override
     public SettingsPageBase openSettings() {
-       throw new NotImplementedException();
+        throw new NotImplementedException();
     }
 
     @Override
@@ -31,7 +32,27 @@ public class ProfilePage extends ProfilePageBase {
     }
 
     @Override
-    public String getText(AboutYouItems field) {
+    public String getAboutYouFieldText(AboutYouItems field) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public ProfilePageBase sleepSwitchChecker(Boolean toCheck) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String getSleepSwitchColor() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String getAccLogoColor() {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public MainMenu getMainMenu() {
         throw new NotImplementedException();
     }
 

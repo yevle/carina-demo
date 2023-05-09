@@ -36,7 +36,7 @@ public class SetGenderPage extends SetGenderPageBase {
     }
 
     @Override
-    public ProfilePageBase exit() {
+    public ProfilePageBase backToProfilePage() {
         backBtn.click();
         return initPage(getDriver(), ProfilePageBase.class);
     }
