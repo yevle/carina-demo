@@ -11,7 +11,7 @@ import ylevchenko.gfit.mobile.gui.common.components.DialogModalBase;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = DialogModalBase.class)
 public class DialogModal extends DialogModalBase {
 
-    @FindBy(xpath = "//*[@resource-id='android:id/button1'][@text='Delete']")
+    @FindBy(xpath = "//*[@resource-id='android:id/button1'][@text='{L10N:delete}']")
     ExtendedWebElement deleteBtn;
 
     public DialogModal(WebDriver driver, SearchContext searchContext) {

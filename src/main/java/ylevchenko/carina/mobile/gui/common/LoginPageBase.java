@@ -23,8 +23,6 @@ public abstract class LoginPageBase extends CarinaAbstractPage {
 
     public abstract WebViewPageBase login();
 
-    public abstract LoginPageBase enterLoginDetails();
-
     public abstract boolean isLoginBtnActive();
 
     public abstract boolean isNameFieldHasText();
@@ -36,7 +34,5 @@ public abstract class LoginPageBase extends CarinaAbstractPage {
     public abstract boolean isGenderFieldHasText(Gender gender);
 
     public abstract boolean isPrivacyPolicyChecked();
-
-    public abstract boolean isPrivacyPolicyHasText();
 
 }

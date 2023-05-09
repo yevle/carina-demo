@@ -7,8 +7,9 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import ylevchenko.gfit.mobile.gui.common.AddActivityPageBase;
 import ylevchenko.gfit.mobile.gui.enums.ActivityTypeItems;
+import ylevchenko.gfit.mobile.gui.service.IConstants;
 
-public abstract class SetActivityTypeModalBase extends AbstractUIObject implements ICustomTypePageFactory, IMobileUtils {
+public abstract class SetActivityTypeModalBase extends AbstractUIObject implements ICustomTypePageFactory, IMobileUtils, IConstants {
 
     public SetActivityTypeModalBase(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);

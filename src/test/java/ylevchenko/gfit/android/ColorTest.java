@@ -2,6 +2,7 @@ package ylevchenko.gfit.android;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
+import com.zebrunner.carina.utils.resources.L10N;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -22,6 +23,8 @@ public class ColorTest extends BaseTest {
         SoftAssert softAssert = new SoftAssert();
 
         MainPageBase mainPage = initPage(getDriver(), MainPageBase.class);
+        L10N.assertAll();
+
         softAssert.assertEquals(mainPage.getHeartPtsLogoColor(), COLOR_CARIBBEAN_GREEN, "[MAIN PAGE] - Color of HeartPts Logo is inappropriate");
         softAssert.assertEquals(mainPage.getStepsLogoColor(), COLOR_YALE_BLUE, "[MAIN PAGE] - Color of Steps Logo is inappropriate");
         softAssert.assertEquals(mainPage.getMainValuesColor(), COLOR_BLUE_CRAYOLA, "[MAIN PAGE] - Color of Main Values is inappropriate");

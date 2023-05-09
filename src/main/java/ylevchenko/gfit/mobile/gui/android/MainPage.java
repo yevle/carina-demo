@@ -1,6 +1,7 @@
 package ylevchenko.gfit.mobile.gui.android;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.annotations.Localized;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.apache.commons.lang3.RandomUtils;
 import org.openqa.selenium.Point;
@@ -49,10 +50,12 @@ public class MainPage extends MainPageBase {
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/card_list']//*[@resource-id='com.google.android.apps.fitness:id/playlist_carousel']//*[@text='%s']")
     private ExtendedWebElement youtubeCarouselItem;
 
-    @FindBy(xpath = "//*[@content-desc='Heart Points history']/*[contains(@class,'ImageView')]")
+    @Localized
+    @FindBy(xpath = "//*[@content-desc='{L10N:heartPtsLogo}']/*[contains(@class,'ImageView')]")
     private ExtendedWebElement heartPtsLogo;
 
-    @FindBy(xpath = "//android.widget.LinearLayout[@content-desc='Steps history']/android.widget.ImageView")
+    @Localized
+    @FindBy(xpath = "//android.widget.LinearLayout[@content-desc='{L10N:stepsLogo}']/android.widget.ImageView")
     private ExtendedWebElement stepsLogo;
 
     @FindBy(xpath = "//*[@resource-id='com.google.android.apps.fitness:id/metric_value_text']")
@@ -78,7 +81,7 @@ public class MainPage extends MainPageBase {
     @Override
     public boolean isMainPageCardPresent(MainPageCards card) {
         ExtendedWebElement cardToCheck = card == MainPageCards.YOUTUBE ? youtubeCard.format(card.getText()) : mainPageCard.format(card.getText());
-        return swipe(cardToCheck, cardsContainer, Direction.UP, ATTEMPTS_FIVE);
+        return swipe(cardToCheck, cardsContainer, Direction.UP, ATTEMPTS_FIVE, SWIPE_DURATION_LONG);
     }
 
     @Override
@@ -96,7 +99,7 @@ public class MainPage extends MainPageBase {
     @Override
     public boolean isYoutubeCarouselItemPresent(YoutubeCarouselItems item) {
         ExtendedWebElement itemToCheck = youtubeCarouselItem.format(item.getText());
-        return swipe(itemToCheck, youtubeCarousel, Direction.LEFT, ATTEMPTS_FIVE);
+        return swipe(itemToCheck, youtubeCarousel, Direction.LEFT, ATTEMPTS_FIVE, SWIPE_DURATION_LONG);
     }
 
     @Override

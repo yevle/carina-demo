@@ -23,6 +23,7 @@ public class DateTimeUtils implements IConstants {
 //        String locale = props.isEmpty() ? readProperty().getProperty("locale") : props.getProperty("locale");
         String locale = R.CONFIG.get("locale");
         if (locale.equalsIgnoreCase("en_US")) return dateTime.toLocalDate().format(EN_US);
+        if (locale.equalsIgnoreCase("de_DE")) return dateTime.toLocalDate().format(DE_DE);
         else throw new DateTimeException("Wrong date format");
     }
 
@@ -35,14 +36,23 @@ public class DateTimeUtils implements IConstants {
     }
 
     public static String timeParser(LocalDateTime dateTime) {
-        String hours = String.valueOf(dateTime.getHour());
-        String minutes = String.valueOf(dateTime.getMinute());
-        if (minutes.length() == 1) {
-            minutes = "0" + minutes;
+        String locale = R.CONFIG.get("locale");
+        if (locale.equalsIgnoreCase("en_US")) {
+            String hours = String.valueOf(dateTime.getHour());
+            String minutes = String.valueOf(dateTime.getMinute());
+            if (minutes.length() == 1) {
+                minutes = "0" + minutes;
+            }
+            if (hours.equalsIgnoreCase("0") || hours.equalsIgnoreCase("00")) {
+                return minutes + "m 00s";
+            } else return hours + "h " + minutes + "m 00s";
         }
-        if (hours.equalsIgnoreCase("0") || hours.equalsIgnoreCase("00")) {
-            return minutes + "m 00s";
-        } else return hours + "h " + minutes + "m 00s";
+        if (locale.equalsIgnoreCase("de_DE")) {
+            String hours = String.valueOf(dateTime.getHour());
+            String minutes = String.valueOf(dateTime.getMinute()).length()<2?
+                    "0"+dateTime.getMinute():String.valueOf(dateTime.getMinute());
+            return hours + " h " + minutes + " Min. 00 s";
+        } else throw new DateTimeException("No Time Parse found for defined locale");
     }
 
 }

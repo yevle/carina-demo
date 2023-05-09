@@ -1,11 +1,19 @@
 package ylevchenko.gfit.mobile.gui.enums;
 
+import com.zebrunner.carina.utils.resources.L10N;
+
 public enum MainPageCards {
 
-    DAILY_GOALS("Your daily goals"), WEEKLY_TARGET("Your weekly target"), ACTIVITY_TRACKING("Activity tracking is off"),
-    WEIGHT("Weight"), ENERGY_EXPENDED("Energy expended"), SIMPLE_WAY("A simple way to stay healthy"),
-    HOW_MUCH_SLEEP("How much sleep you need"), YOUTUBE("The YouTube logo and slogan Stay Fit With Me"),
-    SET_A_PACE("Set a pace for your walks"), YOUR_SLEEP("Your sleep in Fit");
+    DAILY_GOALS(L10N.getText("dailyGoals")),
+    WEEKLY_TARGET(L10N.getText("weeklyTarget")),
+    ACTIVITY_TRACKING(L10N.getText("activityTracking")),
+    WEIGHT(L10N.getText("weight")),
+    ENERGY_EXPENDED(L10N.getText("energyExpended")),
+    SIMPLE_WAY(L10N.getText("simpleWay")),
+    HOW_MUCH_SLEEP(L10N.getText("howMuchSleep")),
+    YOUTUBE(L10N.getText("youTube")),
+    SET_A_PACE(L10N.getText("setPace")),
+    YOUR_SLEEP(L10N.getText("yourSleep"));
 
     String text;
 

@@ -32,7 +32,7 @@ public class SetIntensityModal extends SetIntensityModalBase implements IConstan
         Point bottomRight = new Point(topLeft.x + seekBarContainer.getSize().width, topLeft.y + seekBarContainer.getSize().height);
         Point random = CoordinatesUtils.randomPointInsideRect(topLeft, bottomRight);
         tap(random.x, random.y);
-        int heartPts = Integer.parseInt(heartPoints.getText().replace(",",""));
+        int heartPts = Integer.parseInt(heartPoints.getText().replace(COMMA, "").replace(POINT, ""));
         okButton.click();
         return heartPts;
     }
