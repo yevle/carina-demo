@@ -25,6 +25,9 @@ public class TrackActivitiesPage extends TrackActivitiesPageBase {
     }
 
     public MainPageBase clickSkipBtn() {
+        if (skipBtn.isElementNotPresent(TIMEOUT_SHORT)) {
+            swipeUp(SWIPE_DURATION_LONG);
+        }
         skipBtn.click();
         return initPage(getDriver(), MainPageBase.class);
     }

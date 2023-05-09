@@ -25,14 +25,14 @@ public interface IConstants {
 
     int ATTEMPTS_ONE = 1;
     int ATTEMPTS_FIVE = 5;
-    int ATTEMPTS_FIFTEEN = 15;
+    int ATTEMPTS_TWENTY = 20;
     int ATTEMPTS_FIFTY = 50;
 
     DateTimeFormatter EN_US = DateTimeFormatter.ofPattern("MM/dd/yyyy");
     DateTimeFormatter DE_DE = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     DateTimeFormatter EN_FORMATTER = DateTimeFormatter.ofPattern("MMMM d, yyyy, h:mm a", Locale.ENGLISH);
-    DateTimeFormatter DE_FORMATTER = DateTimeFormatter.ofPattern("d. MMMM yyyy, HH:mm", Locale.GERMAN);
+    DateTimeFormatter DE_FORMATTER = DateTimeFormatter.ofPattern("d. MMMM yyyy, HH:m", Locale.GERMAN);
 
     DateTimeFormatter ISO_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
     DateTimeFormatter TEXT_MONTH = DateTimeFormatter.ofPattern("MMMM");

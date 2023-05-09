@@ -39,7 +39,7 @@ public class SetActivityTypeModal extends SetActivityTypeModalBase {
         Direction direction = fullElemList.indexOf(partialElemList.get(0).getText()) > fullElemList.indexOf(activityType) ?
                 Direction.DOWN : Direction.UP;
         ExtendedWebElement activity = activityField.format(activityType);
-        swipe(activity, direction, ATTEMPTS_FIFTEEN, SWIPE_DURATION_LONG);
+        swipe(activity, direction, ATTEMPTS_TWENTY, SWIPE_DURATION_LONG);
         activity.click();
         return initPage(getDriver(), AddActivityPageBase.class);
     }
@@ -52,7 +52,7 @@ public class SetActivityTypeModal extends SetActivityTypeModalBase {
             swipeUp(SWIPE_DURATION_LONG);
             seen.addAll(partialElemList.stream().map(ExtendedWebElement::getText).collect(Collectors.toList()).subList(1, partialElemList.size()));
             counter++;
-            if (counter > ATTEMPTS_FIFTEEN) {
+            if (counter > ATTEMPTS_TWENTY) {
                 System.out.println("break");
                 break;
             }

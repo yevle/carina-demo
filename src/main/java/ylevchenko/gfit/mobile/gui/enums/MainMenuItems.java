@@ -8,10 +8,10 @@ import ylevchenko.gfit.mobile.gui.common.MainPageBase;
 import ylevchenko.gfit.mobile.gui.common.ProfilePageBase;
 
 public enum MainMenuItems {
-    HOME(L10N.getText("home"), MainPageBase.class),
-    JOURNAL(L10N.getText("journal"), JournalPageBase.class),
-    BROWSE(L10N.getText("browse"), BrowsePageBase.class),
-    PROFILE(L10N.getText("profile"), ProfilePageBase.class);
+    HOME("home", MainPageBase.class),
+    JOURNAL("journal", JournalPageBase.class),
+    BROWSE("browse", BrowsePageBase.class),
+    PROFILE("profile", ProfilePageBase.class);
 
     final String text;
     final Class<? extends GFitAbstractPage> classType;
@@ -22,7 +22,7 @@ public enum MainMenuItems {
     }
 
     public String getText() {
-        return text;
+        return L10N.getText(text);
     }
 
     public Class<? extends GFitAbstractPage> getClassType() {
