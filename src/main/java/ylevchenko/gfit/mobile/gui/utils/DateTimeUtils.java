@@ -49,8 +49,8 @@ public class DateTimeUtils implements IConstants {
         }
         if (locale.equalsIgnoreCase("de_DE")) {
             String hours = String.valueOf(dateTime.getHour());
-            String minutes = String.valueOf(dateTime.getMinute()).length()<2?
-                    "0"+dateTime.getMinute():String.valueOf(dateTime.getMinute());
+            String minutes = String.valueOf(dateTime.getMinute()).length() < 2 ?
+                    "0" + dateTime.getMinute() : String.valueOf(dateTime.getMinute());
             return hours + " h " + minutes + " Min. 00 s";
         } else throw new DateTimeException("No Time Parse found for defined locale");
     }

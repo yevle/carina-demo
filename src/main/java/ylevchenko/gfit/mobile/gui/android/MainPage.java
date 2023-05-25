@@ -21,7 +21,6 @@ import ylevchenko.gfit.mobile.gui.utils.ScreenshotUtils;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
-import java.util.Random;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = MainPageBase.class)
 public class MainPage extends MainPageBase {
