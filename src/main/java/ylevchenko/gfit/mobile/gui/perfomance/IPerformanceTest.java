@@ -11,18 +11,18 @@ public interface IPerformanceTest extends IAbstractTest {
 
     @BeforeSuite
     default void setPerformanceListener() {
-        R.CONFIG.put("driver_event_listeners", "ylevchenko.gfit.mobile.gui.perfomance.PerfListener");
-        PerfListener.startPerformanceTracking();
+        PerformanceListener.startPerformanceTracking();
+        R.CONFIG.put("driver_event_listeners", "ylevchenko.gfit.mobile.gui.perfomance.PerformanceListener");
     }
 
     @AfterMethod
     default void stopPerformanceTracking() {
-        PerfListener.stopPerformanceTracking();
+        PerformanceListener.stopPerformanceTracking();
     }
 
     @AfterSuite
     default void printPerfBench() {
-        PerfListener.collect();
+        PerformanceListener.collect();
     }
 
 }

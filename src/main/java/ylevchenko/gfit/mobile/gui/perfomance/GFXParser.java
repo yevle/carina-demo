@@ -2,17 +2,18 @@ package ylevchenko.gfit.mobile.gui.perfomance;
 
 import com.influxdb.client.domain.WritePrecision;
 import com.influxdb.client.write.Point;
+import ylevchenko.gfit.mobile.gui.service.IPerformanceCredits;
 
 import java.time.Instant;
 import java.util.*;
 
-public class GFXParser {
+public class GFXParser implements IPerformanceCredits {
 
     public static Point getGFXPoint(String output) {
         Map<String, Object> parsedOutput = parseFramesData2(output);
         System.out.println(parsedOutput);
 
-        return new Point("mem")
+        return new Point(MEASUREMENT_NAME)
                 .addTag("Benchmarks", "GFX")
                 .addFields(parsedOutput)
                 .time(Instant.now(), WritePrecision.NS);

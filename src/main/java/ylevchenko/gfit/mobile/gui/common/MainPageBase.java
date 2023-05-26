@@ -7,7 +7,6 @@ import ylevchenko.gfit.mobile.gui.android.components.PlusMenu;
 import ylevchenko.gfit.mobile.gui.enums.MainMenuItems;
 import ylevchenko.gfit.mobile.gui.enums.MainPageCards;
 import ylevchenko.gfit.mobile.gui.enums.YoutubeCarouselItems;
-import ylevchenko.gfit.mobile.gui.perfomance.PerfListener;
 
 public abstract class MainPageBase extends GFitAbstractPage {
 

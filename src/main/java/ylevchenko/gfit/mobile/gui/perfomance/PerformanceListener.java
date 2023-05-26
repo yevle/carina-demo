@@ -6,7 +6,7 @@ import org.openqa.selenium.support.events.WebDriverListener;
 import java.lang.reflect.Method;
 import java.util.List;
 
-public class PerfListener implements WebDriverListener {
+public class PerformanceListener implements WebDriverListener {
 
     private static PerformanceCollector performanceCollector;
 
@@ -14,12 +14,22 @@ public class PerfListener implements WebDriverListener {
 
     private boolean isClick = false;
 
+    private boolean isEnvRead = false;
+
     public static void startPerformanceTracking() {
         performanceCollector = new PerformanceCollector();
     }
 
     public static void stopPerformanceTracking() {
         performanceCollector.writeGFXData();
+    }
+
+    @Override
+    public void beforeClick(WebElement element) {
+        if (!isEnvRead) {
+            performanceCollector.writeEnvironmentInfo();
+            isEnvRead = true;
+        }
     }
 
     @Override

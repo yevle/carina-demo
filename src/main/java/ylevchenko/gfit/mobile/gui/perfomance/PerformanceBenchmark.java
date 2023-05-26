@@ -2,10 +2,11 @@ package ylevchenko.gfit.mobile.gui.perfomance;
 
 import com.influxdb.client.domain.WritePrecision;
 import com.influxdb.client.write.Point;
+import ylevchenko.gfit.mobile.gui.service.IPerformanceCredits;
 
 import java.time.Instant;
 
-public class PerformanceBenchmark {
+public class PerformanceBenchmark implements IPerformanceCredits {
 
     private final Instant time;
     private final double cpuBenchmark;
@@ -29,8 +30,8 @@ public class PerformanceBenchmark {
 
     public Point getPoint() {
         return Point
-                .measurement("mem")
-                .addTag("Benchmarks", "CPU, MEM")
+                .measurement(MEASUREMENT_NAME)
+                .addTag(BENCHMARKS, "Resources over time")
                 .addField("CPU", cpuBenchmark)
                 .addField("MEM", memBenchmark)
                 .addField("RUN", runTime)

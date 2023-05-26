@@ -49,6 +49,10 @@ public class PerformanceCollector {
         return new PerformanceBenchmark(cpu, mem, time);
     }
 
+    public void writeEnvironmentInfo(){
+        influxDBService.writePoint(new EnvironmentParser().getPoint());
+    }
+
     public void writeGFXData() {
         influxDBService.writePoint(GFXParser.getGFXPoint(shellCommands.getGFXOutput()));
     }
