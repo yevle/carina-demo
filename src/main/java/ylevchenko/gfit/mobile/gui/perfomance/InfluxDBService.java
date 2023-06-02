@@ -18,7 +18,7 @@ public class InfluxDBService implements IPerformanceCredits {
     public void writePoint(Point point) {
         WriteApiBlocking writeApi = client.getWriteApiBlocking();
         writeApi.writePoint(BUCKET, ORG, point);
-        LOGGER.info("WRITE InfluxDB point");
+        LOGGER.info("WRITE InfluxDB point to {} bucket", BUCKET);
     }
 
 }

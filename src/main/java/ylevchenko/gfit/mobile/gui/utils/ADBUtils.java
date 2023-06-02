@@ -1,13 +1,8 @@
 package ylevchenko.gfit.mobile.gui.utils;
 
-import com.google.common.collect.ImmutableMap;
-import com.qaprosoft.carina.core.foundation.webdriver.IDriverPool;
-import org.openqa.selenium.JavascriptExecutor;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Collections;
 
 public class ADBUtils {
 
@@ -41,7 +36,6 @@ public class ADBUtils {
     public static String getBatteryUsageOutput() throws IOException {
         return executeAdbCommand("adb shell dumpsys battery");
     }
-
 
 }
 

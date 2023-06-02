@@ -7,11 +7,27 @@ import ylevchenko.gfit.mobile.gui.service.IPerformanceCredits;
 import java.time.Instant;
 import java.util.*;
 
-public class GFXParser implements IPerformanceCredits {
+public class ShellOutputParser implements IPerformanceCredits {
+
+    public static String[] parseCpuMemOutput(String output, String pid) {
+        String[] rows = output.split("\n");
+        String mainRow = "";
+        for (String row : rows) {
+            row=row.trim();
+            if (row.startsWith(pid)) {
+                mainRow = row;
+            }
+        }
+
+        System.out.println(mainRow);
+
+        String[] tokens = mainRow.split("\\s+");
+
+        return new String[]{tokens[8], tokens[6]};
+    }
 
     public static Point getGFXPoint(String output) {
-        Map<String, Object> parsedOutput = parseFramesData2(output);
-        System.out.println(parsedOutput);
+        Map<String, Object> parsedOutput = parseFramesData(output);
 
         return new Point(MEASUREMENT_NAME)
                 .addTag("Benchmarks", "GFX")
@@ -19,7 +35,7 @@ public class GFXParser implements IPerformanceCredits {
                 .time(Instant.now(), WritePrecision.NS);
     }
 
-    public static Map<String, Object> parseFramesData2(String output) {
+    public static Map<String, Object> parseFramesData(String output) {
         Map<String, Object> framesData = new LinkedHashMap<>();
         String[] lines = output.split("\n");
 
@@ -42,6 +58,8 @@ public class GFXParser implements IPerformanceCredits {
                 }
             }
         }
+        System.out.println(framesData);
+
         return framesData;
     }
 
@@ -49,7 +67,7 @@ public class GFXParser implements IPerformanceCredits {
         if (value.contains("(")) {
             value = value.substring(0, value.indexOf('('));
         }
-        String numericString = value.replaceAll("\\D+", ""); // Remove non-digit characters
+        String numericString = value.replaceAll("\\D+", "");
         try {
             return Integer.valueOf(numericString);
         } catch (NumberFormatException e) {

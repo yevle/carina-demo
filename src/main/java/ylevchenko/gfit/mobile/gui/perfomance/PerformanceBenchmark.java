@@ -11,8 +11,7 @@ public class PerformanceBenchmark implements IPerformanceCredits {
     private final Instant time;
     private final double cpuBenchmark;
     private final double memBenchmark;
-
-    private double runTime;
+    private double loadTime;
 
     public PerformanceBenchmark(double cpuBenchmark, double memBenchmark, Instant time) {
         this.cpuBenchmark = cpuBenchmark;
@@ -24,8 +23,8 @@ public class PerformanceBenchmark implements IPerformanceCredits {
         return time;
     }
 
-    public void setRunTime(double runTime) {
-        this.runTime = runTime;
+    public void setLoadTime(double loadTime) {
+        this.loadTime = loadTime;
     }
 
     public Point getPoint() {
@@ -33,14 +32,14 @@ public class PerformanceBenchmark implements IPerformanceCredits {
                 .measurement(MEASUREMENT_NAME)
                 .addTag(BENCHMARKS, "Resources over time")
                 .addField("CPU", cpuBenchmark)
-                .addField("MEM", memBenchmark)
-                .addField("RUN", runTime)
+                .addField("Memory", memBenchmark)
+                .addField("Load time", loadTime)
                 .time(time, WritePrecision.NS);
     }
 
     @Override
     public String toString() {
-        return "TIME:" + time.toString() + " CPU:" + cpuBenchmark + " MEM:" + memBenchmark + "RUN:" + runTime;
+        return "TIME:" + time.toString() + " CPU:" + cpuBenchmark + " MEM:" + memBenchmark + "RUN:" + loadTime;
     }
 
 }

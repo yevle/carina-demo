@@ -13,20 +13,18 @@ public class EnvironmentParser implements IDriverPool, IPerformanceCredits {
 
     private final String environment;
     private final String locale;
-    private final String osVersion;
     private final String deviceName;
     private final String platformName;
     private final long testRun;
     private final Instant time;
+//    private final String osVersion;
 
     public EnvironmentParser() {
         this.time = Instant.now();
         this.environment = R.CONFIG.get("env");
         this.locale = R.CONFIG.get("locale");
-        this.osVersion = getDevice().getOsVersion();
-        System.out.println(osVersion);
+//        this.osVersion = getDevice().getOsVersion();
         this.deviceName = getDevice().getName();
-        System.out.println(deviceName);
         this.platformName = R.CONFIG.get("capabilities.platformName");
         this.testRun = CurrentTestRun.getId().orElse(0L);
     }
@@ -34,9 +32,9 @@ public class EnvironmentParser implements IDriverPool, IPerformanceCredits {
     public Point getPoint() {
         return new Point(MEASUREMENT_NAME)
                 .addTag(BENCHMARKS, "Environment")
-                .addField("ENV", environment)
+                .addField("Env", environment)
                 .addField("Locale", locale)
-                .addField("OS_Version", osVersion)
+//                .addField("OS_Version", osVersion)
                 .addField("Device_Name", deviceName)
                 .addField("Platform_Name", platformName)
                 .addField("Test_Run", testRun)

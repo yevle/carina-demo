@@ -15,18 +15,6 @@ import java.time.LocalDateTime;
 
 public class PerformanceTest extends BaseTest implements IPerformanceTest {
 
-    @Test(description = "Clicking items on main page")
-    @MethodOwner(owner = "ylevchenko")
-    public void mainPageClickTestWithPerf() {
-
-        SoftAssert softAssert = new SoftAssert();
-        MainPageBase mainPageBase = initPage(getDriver(), MainPageBase.class);
-
-        ProfilePageBase profilePage = (ProfilePageBase) mainPageBase.openMainMenuItem(MainMenuItems.PROFILE);
-        mainPageBase = (MainPageBase) profilePage.getMainMenu().openMainMenuItem(MainMenuItems.HOME);
-
-    }
-
     @Test(description = "Added activity test with performance")
     @MethodOwner(owner = "ylevchenko")
     public void addActivityTestWithPerf() {
@@ -40,10 +28,10 @@ public class PerformanceTest extends BaseTest implements IPerformanceTest {
         AddActivityPageBase addActivityPage = (AddActivityPageBase) mainPage.openPlusMenu().openPlusMenuItem(PlusMenuItems.ADD_ACTIVITY);
         Assert.assertTrue(addActivityPage.isPageOpened(), "Add Activity page isn't opened");
 
-        String activity = ActivityTypeItems.TREADMILL_RUNNING.getText();
+        String activity = ActivityTypeItems.VOLLEYBALL.getText();
 
         addActivityPage.inputTextField(AddActivityTextFields.TITLE, activity);
-        addActivityPage.openActivityTypeModal().setActivityType(ActivityTypeItems.TREADMILL_RUNNING);
+        addActivityPage.openActivityTypeModal().setActivityType(ActivityTypeItems.VOLLEYBALL);
         addActivityPage.openSetDateModal().selectDate(dateTime);
         addActivityPage.openSetStartTimeModal().selectTime(dateTime);
         addActivityPage.openSetDurationModal().selectTime(dateTime);
