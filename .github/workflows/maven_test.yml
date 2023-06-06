@@ -20,15 +20,11 @@ jobs:
         distribution: 'temurin'
         cache: maven
         
+    - name: Start Appium server
+      run: npx appium --log-level debug --log-timestamp
+        
     - name: Set up Android emulator
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 29
-
-    - name: Start Appium server
-      run: npx appium --log-level debug --log-timestamp
-        
-    - name: Build and test
-      run: |
-        mvn clean install
-        mvn test -Dtest=ylevchenko/gfit/android/MainPageTest.java   
+        script: mvn test -Dtest=ylevchenko/gfit/android/MainPageTest.java   
