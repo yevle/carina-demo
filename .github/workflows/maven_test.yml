@@ -19,9 +19,13 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
+
+    - name: Install Appium globally
+      run: |
+        npm install -g appium@1.22
         
     - name: Start Appium server
-      run: npx appium --log-level debug --log-timestamp
+      run: npx appium
         
     - name: Set up Android emulator
       uses: reactivecircus/android-emulator-runner@v2
