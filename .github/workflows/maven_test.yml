@@ -32,5 +32,6 @@ jobs:
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 29
-        script: mvn compile
-                mvn clean test -Dtest=ylevchenko/gfit/android/MainPageTest.java   
+        arch: x86_64
+        profile: Nexus 6
+        script: mvn clean compile test -Dtest=ylevchenko/gfit/android/MainPageTest.java   
