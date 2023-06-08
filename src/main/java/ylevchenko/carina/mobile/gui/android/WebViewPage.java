@@ -21,6 +21,9 @@ public class WebViewPage extends WebViewPageBase {
     @FindBy(xpath = "//*[(@resource-id='com.solvd.carinademoapplication:id/lin')]/*/child::*")
     private ExtendedWebElement scrollableContainer;
 
+    @FindBy(xpath = "//*[@text='Carina - open source test automation framework']")
+    private ExtendedWebElement scrollableMainContainer;
+
     @FindBy(xpath = "//*[(@resource-id='t-footer')]/*/child::*[5]/child::*[1]/child::*[1]")
     private ExtendedWebElement footerEmailLink;
 
@@ -46,7 +49,7 @@ public class WebViewPage extends WebViewPageBase {
 
     @Override
     public boolean isFooterEmailLinkPresent() {
-        return swipe(footerEmailLink, scrollableContainer, Direction.UP, ATTEMPTS_FIVE, SWIPE_DURATION_SHORTEST);
+        return swipe(footerEmailLink, scrollableMainContainer, Direction.UP, ATTEMPTS_FIVE, SWIPE_DURATION_SHORTEST);
     }
 
     @Override
