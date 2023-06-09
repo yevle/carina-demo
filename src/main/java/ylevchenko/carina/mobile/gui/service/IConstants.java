@@ -12,6 +12,8 @@ public interface IConstants {
 
     int ATTEMPTS_FIVE = 5;
 
+    int ATTEMPTS_TEN = 10;
+
     String NAME_FIELD_TEXT = "Name";
 
     String PASSWORD_FIELD_TEXT = "Password";

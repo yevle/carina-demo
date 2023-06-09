@@ -49,12 +49,12 @@ public class WebViewPage extends WebViewPageBase {
 
     @Override
     public boolean isFooterEmailLinkPresent() {
-        return swipe(footerEmailLink, scrollableMainContainer, Direction.UP, ATTEMPTS_FIVE, SWIPE_DURATION_SHORTEST);
+        return swipe(footerEmailLink, scrollableMainContainer, Direction.UP, ATTEMPTS_TEN, SWIPE_DURATION_LONG);
     }
 
     @Override
     public boolean isSliderVisibleAfterSwipe() {
-        swipeDown(ATTEMPTS_FIVE, SWIPE_DURATION_LONG);
+        swipeUp(ATTEMPTS_FIVE, SWIPE_DURATION_LONG);
         return imageSlider.isVisible(TIMEOUT_SHORT);
     }
 
