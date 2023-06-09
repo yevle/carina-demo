@@ -28,5 +28,6 @@ jobs:
     - name: Set up Android emulator
       uses: reactivecircus/android-emulator-runner@v2
       with:
+        api: 29
         arch: arm64-v8a
         script: mvn clean compile test -Dtest=ylevchenko/gfit/android/MainPageTest.java
