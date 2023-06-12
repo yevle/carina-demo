@@ -30,7 +30,7 @@ jobs:
       with:
         api-level: 31
         profile: Nexus 6
-        arch: x86_64
+#         arch: x86_64
 #         force-avd-creation: false
 #         avd-name: macOS-avd-arm64-v8a-30
         emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
