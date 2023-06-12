@@ -19,9 +19,6 @@ jobs:
         distribution: 'temurin'
 
     - name: Start selenoid
-      uses: Xotabu4/selenoid-github-action@v2
-    - run: npm ci  
-  
-    - name: Run tests
-      run: mvn clean test -Dtest=com/qaprosoft/carina/demo/WebSampleTest.java
+    - uses: Xotabu4/selenoid-github-action@v2
+    - run: mvn clean test -Dtest=com/qaprosoft/carina/demo/WebSampleTest.java
 
