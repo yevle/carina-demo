@@ -17,14 +17,11 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
-  tests:
-    runs-on: macOS-latest
-    name: Run WDIO tests
-    steps:
     - name: Start selenoid
       uses: Xotabu4/selenoid-github-action@v2
     - uses: actions/checkout@v1
     - run: npm ci  
+  
     - name: Run tests
       run: mvn clean test -Dtest=com/qaprosoft/carina/demo/WebSampleTest.java
 
