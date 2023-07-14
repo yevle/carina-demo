@@ -1,16 +1,15 @@
-package ylevchenko.gsmarena.mobile.gui.android.components;
+package ylevchenko.gsmarena.mobile.gui.ios.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.utils.exception.NotImplementedException;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 import ylevchenko.gsmarena.mobile.gui.common.components.SpecsItemBase;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SpecsItemBase.class)
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = SpecsItemBase.class)
 public class SpecsItem extends SpecsItemBase {
 
-    @FindBy(xpath = "*//android.view.View")
     private ExtendedWebElement title;
 
     public SpecsItem(WebDriver driver, SearchContext searchContext) {
@@ -18,13 +17,7 @@ public class SpecsItem extends SpecsItemBase {
     }
 
     public String getTitle() {
-        return title.getText();
-    }
-
-    public void SwipeToElement() {
-        if (!title.isVisible(TIMEOUT_SHORT)) {
-            swipe(title, Direction.UP, ATTEMPTS_FIVE, SWIPE_DURATION_LONG);
-        }
+        throw new NotImplementedException();
     }
 
 }
