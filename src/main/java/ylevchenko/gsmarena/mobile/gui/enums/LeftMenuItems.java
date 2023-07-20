@@ -1,18 +1,20 @@
 package ylevchenko.gsmarena.mobile.gui.enums;
 
 import ylevchenko.gsmarena.mobile.gui.GsmArenaAbstractPage;
+import ylevchenko.gsmarena.mobile.gui.common.NewsPageBase;
 import ylevchenko.gsmarena.mobile.gui.common.ProfilePageBase;
 import ylevchenko.gsmarena.mobile.gui.common.SearchPageBase;
 
 public enum LeftMenuItems {
 
-//    NEWS("NEWS"),
+    NEWS("NEWS", NewsPageBase.class),
+    SEARCH("SEARCH", SearchPageBase.class),
+    PROFILE("Profile", ProfilePageBase.class);
+
 //    REVIEWS("REVIEWS"),
 //    PHONES("PHONES"),
-    SEARCH("SEARCH", SearchPageBase.class),
 //    PHONE_FINDER("PHONE_FINDER"),
-//    ARENAEV("ARENAEV"),
-    PROFILE("Profile", ProfilePageBase.class);
+//    ARENAEV("ARENAEV");
 //    NOTIFICATIONS("Notifications"),
 //    NEWS_TOPICS("News Topics"),
 //    SETTINGS("Settings"),
@@ -35,4 +37,4 @@ public enum LeftMenuItems {
         return classType;
     }
 
-}
+    }

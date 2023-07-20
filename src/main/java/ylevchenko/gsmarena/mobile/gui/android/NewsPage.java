@@ -27,7 +27,7 @@ public class NewsPage extends NewsPageBase {
     }
 
     public GsmArenaAbstractPage openLeftMenuItem(LeftMenuItems item) {
-        leftMenuBtn.click();
+        leftMenuBtn.click(TIMEOUT_SHORT);
         return leftMenu.openMenuItem(item);
     }
 

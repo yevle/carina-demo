@@ -21,4 +21,9 @@ public class PassResetPage extends PassResetPageBase {
         return resultText.getText();
     }
 
+    @Override
+    public boolean isPassResetSucceed() {
+        return resultText.getText().equals(SUCCESS_PASS_RESET);
+    }
+
 }

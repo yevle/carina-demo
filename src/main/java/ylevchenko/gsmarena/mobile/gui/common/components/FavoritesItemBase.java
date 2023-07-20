@@ -8,12 +8,12 @@ import org.openqa.selenium.WebDriver;
 import ylevchenko.gsmarena.mobile.gui.IConstants;
 import ylevchenko.gsmarena.mobile.gui.common.DevicePageBase;
 
-public abstract class SpecsItemBase extends AbstractUIObject implements IConstants, IMobileUtils, ICustomTypePageFactory {
+public abstract class FavoritesItemBase extends AbstractUIObject implements IConstants, IMobileUtils, ICustomTypePageFactory {
 
-    public SpecsItemBase(WebDriver driver, SearchContext searchContext) {
+    public FavoritesItemBase(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-    public abstract DevicePageBase openFavorite();
+    public abstract DevicePageBase openSpec();
 
 }

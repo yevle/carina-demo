@@ -11,6 +11,8 @@ public abstract class PassResetPageBase extends GsmArenaAbstractPage {
 
     public abstract String getResultMessage();
 
+    public abstract boolean isPassResetSucceed();
+
 }
 
 

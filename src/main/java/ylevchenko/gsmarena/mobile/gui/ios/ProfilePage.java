@@ -43,4 +43,14 @@ public class ProfilePage extends ProfilePageBase {
         throw new NotImplementedException();
     }
 
+    @Override
+    public boolean checkFavoritesContains(String keyword) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public void cleanFavorites() {
+        throw new NotImplementedException();
+    }
+
 }

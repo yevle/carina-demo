@@ -15,4 +15,8 @@ public abstract class ProfilePageBase extends GsmArenaAbstractPage {
 
     public abstract ForgotPassPageBase clickForgotPass();
 
+    public abstract boolean checkFavoritesContains(String keyword);
+
+    public abstract void cleanFavorites();
+
 }

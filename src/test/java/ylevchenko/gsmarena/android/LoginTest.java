@@ -16,8 +16,6 @@ public class LoginTest implements IMobileUtils, IAbstractTest {
     private String login = "john_tak_@ukr.net";
     private String pass = "john_tak_";
 
-    private String successMessage = "The link to reset your password was sent to your email.";
-
     @Test(description = "Login to profile using credentials")
     @MethodOwner(owner = "ylevchenko", platform = "android")
     @TestLabel(name = "feature", value = {"mobile", "regression"})
@@ -43,7 +41,7 @@ public class LoginTest implements IMobileUtils, IAbstractTest {
         ProfilePageBase profilePage = (ProfilePageBase)newsPage.openLeftMenuItem(LeftMenuItems.PROFILE);
         PassResetPageBase passResetPage = profilePage.clickForgotPass().submitPassReset(login);
 
-        Assert.assertEquals(passResetPage.getResultMessage(), successMessage, "[PassResetPage] - Password reset has failed.");
+        Assert.assertTrue(passResetPage.isPassResetSucceed(), "[PassResetPage] - Password reset has failed.");
 
     }
 

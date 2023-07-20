@@ -9,12 +9,12 @@ import ylevchenko.gsmarena.mobile.gui.common.DevicePageBase;
 import ylevchenko.gsmarena.mobile.gui.common.components.SpecsItemBase;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SpecsItemBase.class)
-public class SpecsItem extends SpecsItemBase {
+public class FavoritesItem extends SpecsItemBase {
 
-    @FindBy(xpath = "*//android.view.View")
+    @FindBy(xpath = "//android.view.View/*/android.view.View[contains(@text,'')]")
     private ExtendedWebElement title;
 
-    public SpecsItem(WebDriver driver, SearchContext searchContext) {
+    public FavoritesItem(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
@@ -29,7 +29,7 @@ public class SpecsItem extends SpecsItemBase {
     }
 
     public DevicePageBase openFavorite() {
-        title.click(TIMEOUT_SHORT);
+        title.click();
         return initPage(getDriver(), DevicePageBase.class);
     }
 

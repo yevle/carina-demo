@@ -14,4 +14,9 @@ public interface IConstants {
     int ATTEMPTS_FIVE = 5;
     int ATTEMPTS_TWENTY = 20;
 
+    String FAVORITE_TEXT = "You're a fan";
+
+    String SUCCESS_PASS_RESET = "The link to reset your password was sent to your email.";
+
+
 }

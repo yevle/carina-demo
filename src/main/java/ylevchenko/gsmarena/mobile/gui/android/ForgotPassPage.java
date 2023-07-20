@@ -23,7 +23,7 @@ public class ForgotPassPage extends ForgotPassPageBase {
     @Override
     public PassResetPageBase submitPassReset(String email) {
         emailTextField.type(email);
-        submitBtn.click();
+        submitBtn.click(TIMEOUT_SHORT);
         return initPage(getDriver(), PassResetPageBase.class);
     }
 
