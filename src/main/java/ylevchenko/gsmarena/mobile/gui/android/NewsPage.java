@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import ylevchenko.gsmarena.mobile.gui.GsmArenaAbstractPage;
 import ylevchenko.gsmarena.mobile.gui.android.components.LeftMenuModal;
 import ylevchenko.gsmarena.mobile.gui.common.NewsPageBase;
-import ylevchenko.gsmarena.mobile.gui.common.components.LeftMenuModalBase;
 import ylevchenko.gsmarena.mobile.gui.enums.LeftMenuItems;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = NewsPageBase.class)

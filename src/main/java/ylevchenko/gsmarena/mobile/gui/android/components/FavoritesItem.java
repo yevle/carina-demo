@@ -6,10 +6,10 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ylevchenko.gsmarena.mobile.gui.common.DevicePageBase;
-import ylevchenko.gsmarena.mobile.gui.common.components.SpecsItemBase;
+import ylevchenko.gsmarena.mobile.gui.common.components.FavoritesItemBase;
 
-@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SpecsItemBase.class)
-public class FavoritesItem extends SpecsItemBase {
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = FavoritesItemBase.class)
+public class FavoritesItem extends FavoritesItemBase {
 
     @FindBy(xpath = "//android.view.View/*/android.view.View[contains(@text,'')]")
     private ExtendedWebElement title;

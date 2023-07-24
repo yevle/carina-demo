@@ -21,13 +21,10 @@ public class FavoritesTest extends BaseTest {
 
         NewsPageBase newsPage = initPage(getDriver(), NewsPageBase.class);
         SearchPageBase searchPage = (SearchPageBase) newsPage.openLeftMenuItem(LeftMenuItems.SEARCH);
-
         newsPage = (NewsPageBase) searchPage.openDevicePage(favoritesKeyword).addToFavourites().goBackToSearch().goBackTo(LeftMenuItems.NEWS);
-
         ProfilePageBase profilePage = (ProfilePageBase) newsPage.openLeftMenuItem(LeftMenuItems.PROFILE);
 
-        Assert.assertTrue(profilePage.checkFavoritesContains(favoritesKeyword));
-
+        Assert.assertTrue(profilePage.checkFavoritesContains(favoritesKeyword), "[PROFILE PAGE] - Favorites does not contains added item(s)");
     }
 
     @AfterMethod

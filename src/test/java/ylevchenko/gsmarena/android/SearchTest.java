@@ -4,13 +4,10 @@ import com.zebrunner.agent.core.annotation.TestLabel;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import ylevchenko.gsmarena.mobile.gui.android.components.SpecsItem;
 import ylevchenko.gsmarena.mobile.gui.common.NewsPageBase;
 import ylevchenko.gsmarena.mobile.gui.common.SearchPageBase;
-import ylevchenko.gsmarena.mobile.gui.common.components.SpecsItemBase;
 import ylevchenko.gsmarena.mobile.gui.enums.LeftMenuItems;
 
-import java.util.List;
 
 public class SearchTest extends BaseTest {
 
@@ -22,7 +19,7 @@ public class SearchTest extends BaseTest {
         NewsPageBase newsPage = initPage(getDriver(), NewsPageBase.class);
         SearchPageBase searchPage = (SearchPageBase)newsPage.openLeftMenuItem(LeftMenuItems.SEARCH);
 
-        Assert.assertTrue(searchPage.checkResultContains("nokia"));
+        Assert.assertTrue(searchPage.checkResultContains("nokia"), "[SEARCH PAGE] - search results does not match");
 
     }
 

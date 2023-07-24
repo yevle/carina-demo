@@ -36,7 +36,7 @@ public class LoginTest implements IMobileUtils, IAbstractTest {
     public void ForgotPassTest() {
 
         NewsPageBase newsPage = initPage(getDriver(), NewsPageBase.class);
-        Assert.assertTrue(newsPage.isPageOpened());
+        Assert.assertTrue(newsPage.isPageOpened(), "[NEWS PAGE] - Main page didn't open");
 
         ProfilePageBase profilePage = (ProfilePageBase)newsPage.openLeftMenuItem(LeftMenuItems.PROFILE);
         PassResetPageBase passResetPage = profilePage.clickForgotPass().submitPassReset(login);

@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ylevchenko.gsmarena.mobile.gui.android.components.FavoritesItem;
 import ylevchenko.gsmarena.mobile.gui.android.components.MoreOptionsModal;
-import ylevchenko.gsmarena.mobile.gui.android.components.SpecsItem;
-import ylevchenko.gsmarena.mobile.gui.common.DevicePageBase;
 import ylevchenko.gsmarena.mobile.gui.common.ForgotPassPageBase;
 import ylevchenko.gsmarena.mobile.gui.common.NewsPageBase;
 import ylevchenko.gsmarena.mobile.gui.common.ProfilePageBase;
