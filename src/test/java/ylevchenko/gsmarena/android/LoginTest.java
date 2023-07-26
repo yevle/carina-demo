@@ -19,7 +19,7 @@ public class LoginTest implements IMobileUtils, IAbstractTest {
     @Test(description = "Login to profile using credentials")
     @MethodOwner(owner = "ylevchenko", platform = "android")
     @TestLabel(name = "feature", value = {"mobile", "regression"})
-    public void LoginTest() {
+    public void loginTest() {
 
         NewsPageBase newsPage = initPage(getDriver(), NewsPageBase.class);
         Assert.assertTrue(newsPage.isPageOpened());
@@ -33,7 +33,7 @@ public class LoginTest implements IMobileUtils, IAbstractTest {
     @Test(description = "Checking if forgot pass function works correct")
     @MethodOwner(owner = "ylevchenko", platform = "android")
     @TestLabel(name = "feature", value = {"mobile", "regression"})
-    public void ForgotPassTest() {
+    public void forgotPassTest() {
 
         NewsPageBase newsPage = initPage(getDriver(), NewsPageBase.class);
         Assert.assertTrue(newsPage.isPageOpened(), "[NEWS PAGE] - Main page didn't open");

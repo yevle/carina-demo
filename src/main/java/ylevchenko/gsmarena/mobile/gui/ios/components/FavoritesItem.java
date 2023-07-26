@@ -21,7 +21,7 @@ public class FavoritesItem extends FavoritesItemBase {
         throw new NotImplementedException();
     }
 
-    public void SwipeToElement() {
+    public void swipeToElement() {
         throw new NotImplementedException();
     }
 

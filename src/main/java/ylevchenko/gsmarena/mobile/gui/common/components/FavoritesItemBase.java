@@ -14,7 +14,7 @@ public abstract class FavoritesItemBase extends AbstractUIObject implements ICon
         super(driver, searchContext);
     }
 
-    public abstract void SwipeToElement();
+    public abstract void swipeToElement();
 
     public abstract DevicePageBase openFavorite();
 

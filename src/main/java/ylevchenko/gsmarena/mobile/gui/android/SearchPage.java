@@ -30,7 +30,7 @@ public class SearchPage extends SearchPageBase {
         searchField.type(keyword);
         (new MobileShellCommands()).pressEnter();
         return specsList.stream().allMatch(specsItem -> {
-                    specsItem.SwipeToElement();
+                    specsItem.swipeToElement();
                     return specsItem.getTitle().toLowerCase().contains(keyword.toLowerCase());
                 }
         );

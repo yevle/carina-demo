@@ -64,14 +64,14 @@ public class ProfilePage extends ProfilePageBase {
 
     public boolean checkFavoritesContains(String keyword) {
         return favoritesList.stream().anyMatch(favoritesItem -> {
-            favoritesItem.SwipeToElement();
+            favoritesItem.swipeToElement();
             return favoritesItem.getTitle().toLowerCase().contains(keyword.toLowerCase());
         });
     }
 
     public void cleanFavorites() {
         favoritesList.forEach(favoritesItem -> {
-            favoritesItem.SwipeToElement();
+            favoritesItem.swipeToElement();
             favoritesItem.openFavorite().removeFromFavourites().goBackToProfile();
             moreOptionsBtn.click(TIMEOUT_SHORT);
             moreOptionsMenu.refreshPage();

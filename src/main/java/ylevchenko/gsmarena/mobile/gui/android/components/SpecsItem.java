@@ -22,7 +22,7 @@ public class SpecsItem extends SpecsItemBase {
         return title.getText();
     }
 
-    public void SwipeToElement() {
+    public void swipeToElement() {
         if (!title.isVisible(TIMEOUT_SHORT)) {
             swipe(title, Direction.UP, ATTEMPTS_FIVE, SWIPE_DURATION_LONG);
         }
