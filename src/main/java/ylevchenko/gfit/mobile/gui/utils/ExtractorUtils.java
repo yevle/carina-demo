@@ -21,7 +21,6 @@ public class ExtractorUtils implements IConstants {
         } else {
             return extractIntValue(str);
         }
-//        throw new NumberFormatException("No double value found in string: " + str);
     }
 
 }
