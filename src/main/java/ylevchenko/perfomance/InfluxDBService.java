@@ -1,4 +1,4 @@
-package ylevchenko.gfit.mobile.gui.perfomance;
+package ylevchenko.perfomance;
 
 import com.influxdb.client.InfluxDBClient;
 import com.influxdb.client.InfluxDBClientFactory;

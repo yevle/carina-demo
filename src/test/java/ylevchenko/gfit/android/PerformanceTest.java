@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import ylevchenko.gfit.mobile.gui.common.*;
 import ylevchenko.gfit.mobile.gui.enums.*;
-import ylevchenko.gfit.mobile.gui.perfomance.IPerformanceTest;
+import ylevchenko.perfomance.IPerformanceTest;
 import ylevchenko.gfit.mobile.gui.utils.DateTimeUtils;
 
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package ylevchenko.gfit.mobile.gui.perfomance;
+package ylevchenko.perfomance;
 
 public class Stopwatch {
 

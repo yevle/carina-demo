@@ -1,4 +1,4 @@
-package ylevchenko.gfit.mobile.gui.perfomance;
+package ylevchenko.perfomance;
 
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;

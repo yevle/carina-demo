@@ -1,4 +1,4 @@
-package ylevchenko.gfit.mobile.gui.perfomance;
+package ylevchenko.perfomance;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
