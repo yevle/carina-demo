@@ -1,13 +1,11 @@
 package ylevchenko.carina.mobile.gui.android;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.utils.exception.NotImplementedException;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ylevchenko.carina.mobile.gui.android.components.MainMenu;
 import ylevchenko.carina.mobile.gui.common.ChartsPageBase;
-import ylevchenko.carina.mobile.gui.common.components.MainMenuBase;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ChartsPageBase.class)
 public class ChartsPage extends ChartsPageBase {

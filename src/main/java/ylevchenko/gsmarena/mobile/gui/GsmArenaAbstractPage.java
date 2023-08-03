@@ -1,6 +1,6 @@
 package ylevchenko.gsmarena.mobile.gui;
 
-import com.qaprosoft.carina.core.gui.AbstractPage;
+import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
 public abstract class GsmArenaAbstractPage extends AbstractPage implements IConstants {

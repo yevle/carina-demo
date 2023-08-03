@@ -1,6 +1,6 @@
 package ylevchenko.carina.mobile.gui.android;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.apache.commons.lang3.RandomStringUtils;
 import ylevchenko.carina.enums.Gender;
 import ylevchenko.carina.mobile.gui.common.LoginPageBase;

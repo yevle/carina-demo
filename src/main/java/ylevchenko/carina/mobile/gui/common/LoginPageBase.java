@@ -1,6 +1,5 @@
 package ylevchenko.carina.mobile.gui.common;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import ylevchenko.carina.enums.Gender;
 import ylevchenko.carina.mobile.gui.CarinaAbstractPage;

@@ -2,7 +2,7 @@ package ylevchenko.perfomance;
 
 import com.influxdb.client.domain.WritePrecision;
 import com.influxdb.client.write.Point;
-import com.qaprosoft.carina.core.foundation.webdriver.IDriverPool;
+import com.zebrunner.carina.webdriver.IDriverPool;
 import com.zebrunner.agent.core.registrar.CurrentTestRun;
 import com.zebrunner.carina.utils.R;
 import ylevchenko.gfit.mobile.gui.service.IPerformanceCredits;

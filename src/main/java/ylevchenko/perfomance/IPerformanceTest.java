@@ -1,7 +1,7 @@
 package ylevchenko.perfomance;
 
 
-import com.qaprosoft.carina.core.foundation.IAbstractTest;
+import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.utils.R;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;

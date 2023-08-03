@@ -1,6 +1,6 @@
 package ylevchenko.gfit.mobile.gui;
 
-import com.qaprosoft.carina.core.gui.AbstractPage;
+import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.openqa.selenium.WebDriver;
 import ylevchenko.gfit.mobile.gui.service.IConstants;
