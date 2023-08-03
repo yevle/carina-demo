@@ -1,7 +1,7 @@
-package com.qaprosoft.carina.demo.gui.ylevchenko.rozetka.pages;
+package ylevchenko.web.rozetka.pages;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.demo.gui.ylevchenko.rozetka.IConstants;
+import ylevchenko.web.rozetka.IConstants;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 

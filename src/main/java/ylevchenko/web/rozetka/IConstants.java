@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.gui.ylevchenko.rozetka;
+package ylevchenko.web.rozetka;
 
 public interface IConstants {
 

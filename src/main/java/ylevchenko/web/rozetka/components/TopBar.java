@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.gui.ylevchenko.rozetka.components;
+package ylevchenko.web.rozetka.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;

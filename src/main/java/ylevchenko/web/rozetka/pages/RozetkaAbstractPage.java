@@ -1,7 +1,7 @@
-package com.qaprosoft.carina.demo.gui.ylevchenko.rozetka.pages;
+package ylevchenko.web.rozetka.pages;
 
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.qaprosoft.carina.demo.gui.ylevchenko.rozetka.components.TopBar;
+import ylevchenko.web.rozetka.components.TopBar;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
