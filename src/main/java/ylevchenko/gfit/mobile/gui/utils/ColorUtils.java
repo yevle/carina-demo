@@ -1,6 +1,6 @@
 package ylevchenko.gfit.mobile.gui.utils;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.Point;
 
 import java.awt.*;

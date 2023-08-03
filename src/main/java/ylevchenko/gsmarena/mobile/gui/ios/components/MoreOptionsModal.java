@@ -1,6 +1,6 @@
 package ylevchenko.gsmarena.mobile.gui.ios.components;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.exception.NotImplementedException;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.SearchContext;

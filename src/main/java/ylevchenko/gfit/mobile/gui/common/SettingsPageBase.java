@@ -1,6 +1,6 @@
 package ylevchenko.gfit.mobile.gui.common;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import ylevchenko.gfit.mobile.gui.GFitAbstractPage;
 import ylevchenko.gfit.mobile.gui.service.IConstants;

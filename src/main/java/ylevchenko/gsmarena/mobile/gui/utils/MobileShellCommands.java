@@ -1,7 +1,7 @@
 package ylevchenko.gsmarena.mobile.gui.utils;
 
 import com.google.common.collect.ImmutableMap;
-import com.qaprosoft.carina.core.foundation.webdriver.IDriverPool;
+import com.zebrunner.carina.webdriver.IDriverPool;
 import org.openqa.selenium.JavascriptExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

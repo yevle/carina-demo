@@ -1,6 +1,6 @@
 package ylevchenko.gfit.mobile.gui.android.components;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.SearchContext;
