@@ -7,10 +7,12 @@ public interface IConstants {
     int TIMEOUT_LONG = 5;
 
     int SWIPE_DURATION_SHORTEST = 50;
+    int SWIPE_DURATION_SHORT = 150;
     int SWIPE_DURATION_LONG = 200;
     int SWIPE_DURATION_LONGEST = 400;
 
     int ATTEMPTS_ONE = 1;
+    int ATTEMPTS_TWO = 2;
     int ATTEMPTS_FIVE = 5;
     int ATTEMPTS_TWENTY = 20;
 

@@ -36,6 +36,9 @@ public class CatalogPage extends CatalogPageBase {
     @FindBy(xpath = "//*[@resource-id='com.tabletkiua.tabletki:id/tv_select_count']")
     ExtendedWebElement resultsCount;
 
+    @FindBy(id = "coordinator")
+    ExtendedWebElement container;
+
     LinkedHashSet<Double> pricesSet;
 
     LinkedHashSet<String> titlesSet;
@@ -50,41 +53,43 @@ public class CatalogPage extends CatalogPageBase {
         return initPage(getDriver(), CatalogPageBase.class);
     }
 
-    public List<Double> getPricesSet() {
+    public List<Double> getPricesList() {
         pricesSet = new LinkedHashSet<>();
         int resultPages = Integer.parseInt(resultsCount.getText().replaceAll("[^0-9.]", "")) / SEARCH_ITEMS_PER_PAGE;
 
-        for (int i = 0; i < resultPages; i++) {
-            for (int j = 0; j < SEARCH_ITEMS_PER_PAGE / 2; j++) {
-                pricesSet.addAll(searchItemsList.stream()
-                        .map(SearchItem::getPrice)
-                        .filter(price -> price != 0)
-                        .collect(Collectors.toList()));
-                swipeUp(ATTEMPTS_ONE, SWIPE_DURATION_LONG);
-            }
-            if (showMoreBtn.isVisible(TIMEOUT_SHORT)) {
+        for (int i = 0; i <= resultPages; i++) {
+            if (showMoreBtn.isVisible(TIMEOUT_SHORTEST)) {
                 showMoreBtn.click();
             }
+            pricesSet.addAll(searchItemsList.stream()
+                    .map(SearchItem::getPrice)
+                    .filter(price -> price != 0)
+                    .collect(Collectors.toList()));
+            swipeUp(ATTEMPTS_ONE, 150);
+            if (showMoreBtn.isVisible(TIMEOUT_SHORTEST)) {
+                showMoreBtn.click();
+                i--;
+            }
         }
-
         return new ArrayList<>(pricesSet);
     }
 
-    public List<String> getTitlesSet() {
+    public List<String> getTitlesList() {
         titlesSet = new LinkedHashSet<>();
         int resultPages = Integer.parseInt(resultsCount.getText().replaceAll("[^0-9.]", "")) / SEARCH_ITEMS_PER_PAGE;
 
-        for (int i = 0; i < resultPages; i++) {
-            for (int j = 0; j < SEARCH_ITEMS_PER_PAGE / 2; j++) {
-                titlesSet.addAll(searchItemsList.stream()
-                        .map(SearchItem::getTitle)
-                        .filter(item -> !Objects.equals(item, ""))
-                        .collect(Collectors.toList()));
-                swipeUp(ATTEMPTS_ONE, SWIPE_DURATION_LONG);
-                if (showMoreBtn.isVisible(TIMEOUT_SHORT)) {
-                    showMoreBtn.click();
-                    i++;
-                }
+        for (int i = 0; i <= resultPages; i++) {
+            if (showMoreBtn.isVisible(TIMEOUT_SHORTEST)) {
+                showMoreBtn.click();
+            }
+            titlesSet.addAll(searchItemsList.stream()
+                    .map(SearchItem::getTitle)
+                    .filter(item -> !Objects.equals(item, ""))
+                    .collect(Collectors.toList()));
+            swipeUp(ATTEMPTS_ONE, SWIPE_DURATION_LONG);
+            if (showMoreBtn.isVisible(TIMEOUT_SHORTEST)) {
+                showMoreBtn.click();
+                i--;
             }
         }
         return new ArrayList<>(titlesSet);
@@ -95,19 +100,19 @@ public class CatalogPage extends CatalogPageBase {
         List<String> titles;
         switch (order) {
             case PRICE_ASC:
-                prices = getPricesSet();
+                prices = getPricesList();
                 return IntStream.range(0, prices.size() - 1).
                         allMatch(i -> prices.get(i) <= prices.get(i + 1));
             case PRICE_DESC:
-                prices = getPricesSet();
+                prices = getPricesList();
                 return IntStream.range(0, prices.size() - 1).
                         allMatch(i -> prices.get(i) >= prices.get(i + 1));
             case ALPHABET_ASC:
-                titles = getTitlesSet();
+                titles = getTitlesList();
                 return IntStream.range(0, titles.size() - 1).
                         allMatch(i -> titles.get(i).compareTo(titles.get(i + 1)) <= 0);
             case ALPHABET_DESC:
-                titles = getTitlesSet();
+                titles = getTitlesList();
                 return IntStream.range(0, titles.size() - 1).
                         allMatch(i -> titles.get(i).compareTo(titles.get(i + 1)) >= 0);
             default:

@@ -1,7 +1,7 @@
 package ylevchenko.web.rozetka.components;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.gui.AbstractUIObject;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import ylevchenko.web.rozetka.IConstants;
 import ylevchenko.web.rozetka.pages.HomePage;
 import org.openqa.selenium.SearchContext;

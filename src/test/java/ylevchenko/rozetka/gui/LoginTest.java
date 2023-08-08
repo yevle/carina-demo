@@ -1,6 +1,6 @@
 package ylevchenko.rozetka.gui;
 
-import com.qaprosoft.carina.core.foundation.IAbstractTest;
+import com.zebrunner.carina.core.IAbstractTest;
 import ylevchenko.web.rozetka.pages.HomePage;
 import com.zebrunner.agent.core.annotation.TestLabel;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;

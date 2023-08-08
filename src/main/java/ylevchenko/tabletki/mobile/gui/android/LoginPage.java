@@ -28,6 +28,9 @@ public class LoginPage extends LoginPageBase {
 
     public ProfilePageBase loginWithCreds(String email, String pass) {
         if (googleSignSuggest.isVisible(TIMEOUT_LONG)) {navigateBack();}
+        if (!emailTextField.isVisible(TIMEOUT_SHORTEST)&&!passTextField.isVisible(TIMEOUT_SHORTEST)){
+            navigateBack();
+        }
         emailTextField.type(email);
         passTextField.type(pass);
         loginBtn.click();

@@ -30,8 +30,9 @@ public class SearchItem extends SearchItemBase {
 
     public double getPrice() {
         if (!price.isVisible(TIMEOUT_SHORTEST)) {
-            swipe(price, Direction.UP, ATTEMPTS_ONE, SWIPE_DURATION_LONG);
+                swipe(price, Direction.UP, ATTEMPTS_ONE, SWIPE_DURATION_LONG);
             if (!price.isVisible(TIMEOUT_SHORTEST)) {
+                swipeDown(ATTEMPTS_ONE,SWIPE_DURATION_LONG);
                 return 0;
             }
         }

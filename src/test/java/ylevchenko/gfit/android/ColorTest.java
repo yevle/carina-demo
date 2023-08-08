@@ -1,6 +1,6 @@
 package ylevchenko.gfit.android;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import com.zebrunner.carina.utils.resources.L10N;
 import org.testng.Assert;

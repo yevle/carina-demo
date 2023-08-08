@@ -18,7 +18,7 @@
 
     <test name="Wikipedia Localization Test">
         <classes>
-            <class name="com.qaprosoft.carina.demo.WebLocalizationSample" >
+            <class name="com.zebrunner.carina.demo.WebLocalizationSample" >
                 <methods>
                     <include name="testLanguages" />
                 </methods>

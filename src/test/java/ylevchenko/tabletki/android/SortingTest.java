@@ -20,7 +20,7 @@ public class SortingTest extends BaseTest {
 
         MainPageBase mainPage = initPage(getDriver(), MainPageBase.class);
         CatalogPageBase catalogPage = mainPage.search(searchKeyword).sortBy(order);
-        Assert.assertTrue(catalogPage.isSortedBy(order));
+        Assert.assertTrue(catalogPage.isSortedBy(order), String.format("[CATALOG PAGE] - Result list is not sorted by '%s' order", order.getText()));
     }
 
 }
