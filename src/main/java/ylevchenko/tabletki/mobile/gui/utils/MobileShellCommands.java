@@ -13,7 +13,7 @@ public class MobileShellCommands implements IDriverPool {
 
         private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-        private String packageName = "com.gsmarena.android";
+        private final String packageName = "com.gsmarena.android";
 
         private final String enterCmd = "input keyevent 66";
 

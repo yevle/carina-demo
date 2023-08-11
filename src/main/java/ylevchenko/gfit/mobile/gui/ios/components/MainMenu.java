@@ -8,8 +8,6 @@ import ylevchenko.gfit.mobile.gui.GFitAbstractPage;
 import ylevchenko.gfit.mobile.gui.common.components.MainMenuBase;
 import ylevchenko.gfit.mobile.gui.enums.MainMenuItems;
 
-import java.util.List;
-
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = MainMenuBase.class)
 public class MainMenu extends MainMenuBase {
 

@@ -14,4 +14,6 @@ public abstract class MainPageBase extends TabletkiAbstractPage {
 
     public abstract CatalogPageBase search(String keyword);
 
+    public abstract ProductPageBase searchProduct(String keyword);
+
 }

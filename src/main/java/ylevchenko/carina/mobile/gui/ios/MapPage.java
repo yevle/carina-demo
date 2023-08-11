@@ -1,8 +1,8 @@
 package ylevchenko.carina.mobile.gui.ios;
 
-import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.exception.NotImplementedException;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import ylevchenko.carina.mobile.gui.android.components.MainMenu;
 import ylevchenko.carina.mobile.gui.common.MapPageBase;

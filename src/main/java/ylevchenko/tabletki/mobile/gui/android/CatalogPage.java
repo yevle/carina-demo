@@ -1,7 +1,7 @@
 package ylevchenko.tabletki.mobile.gui.android;
 
-import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ylevchenko.tabletki.mobile.gui.android.components.SearchItem;
@@ -65,7 +65,7 @@ public class CatalogPage extends CatalogPageBase {
                     .map(SearchItem::getPrice)
                     .filter(price -> price != 0)
                     .collect(Collectors.toList()));
-            swipeUp(ATTEMPTS_ONE, 150);
+            swipeUp(COUNT_ONE, 150);
             if (showMoreBtn.isVisible(TIMEOUT_SHORTEST)) {
                 showMoreBtn.click();
                 i--;
@@ -86,7 +86,7 @@ public class CatalogPage extends CatalogPageBase {
                     .map(SearchItem::getTitle)
                     .filter(item -> !Objects.equals(item, ""))
                     .collect(Collectors.toList()));
-            swipeUp(ATTEMPTS_ONE, SWIPE_DURATION_LONG);
+            swipeUp(COUNT_ONE, SWIPE_DURATION_LONG);
             if (showMoreBtn.isVisible(TIMEOUT_SHORTEST)) {
                 showMoreBtn.click();
                 i--;

@@ -1,7 +1,7 @@
 package ylevchenko.gfit.mobile.gui.android;
 
-import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import ylevchenko.gfit.mobile.gui.android.components.MainMenu;

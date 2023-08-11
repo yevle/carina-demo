@@ -13,7 +13,7 @@ public class MobileShellCommands implements IDriverPool {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    private String packageName = "com.google.android.apps.fitness";
+    private final String packageName = "com.google.android.apps.fitness";
 
     private final String pidCommand = "pidof -s %s";
     private final String cpuCommand = "top -n 1 | grep -E \"%s|%s\"";

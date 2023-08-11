@@ -9,9 +9,9 @@ public enum MainMenuItems {
     MAP ("Map", MapPageBase.class, 2),
     UI_ELEMENTS ("UI elements", UiElementsPageBase.class, 3);
 
-    private Class <?extends MainMenuPageBase> pageClass;
-    private String text;
-    private int index;
+    private final Class <?extends MainMenuPageBase> pageClass;
+    private final String text;
+    private final int index;
 
     MainMenuItems(String text, Class <?extends MainMenuPageBase> pageClass, int index) {
         this.pageClass = pageClass;

@@ -1,8 +1,8 @@
 package ylevchenko.tabletki.mobile.gui;
 
-import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
+import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 

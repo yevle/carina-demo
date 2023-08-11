@@ -1,7 +1,7 @@
 package ylevchenko.tabletki.mobile.gui.android.components;
 
-import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -22,7 +22,7 @@ public class SearchItem extends SearchItemBase {
 
     @Override
     public String getTitle() {
-        if (!swipe(title, Direction.UP, ATTEMPTS_ONE, SWIPE_DURATION_LONG)) {
+        if (!swipe(title, Direction.UP, COUNT_ONE, SWIPE_DURATION_LONG)) {
             return "";
         }
         return title.getText();
@@ -30,9 +30,9 @@ public class SearchItem extends SearchItemBase {
 
     public double getPrice() {
         if (!price.isVisible(TIMEOUT_SHORTEST)) {
-                swipe(price, Direction.UP, ATTEMPTS_ONE, SWIPE_DURATION_LONG);
+                swipe(price, Direction.UP, COUNT_ONE, SWIPE_DURATION_LONG);
             if (!price.isVisible(TIMEOUT_SHORTEST)) {
-                swipeDown(ATTEMPTS_ONE,SWIPE_DURATION_LONG);
+                swipeDown(COUNT_ONE,SWIPE_DURATION_LONG);
                 return 0;
             }
         }

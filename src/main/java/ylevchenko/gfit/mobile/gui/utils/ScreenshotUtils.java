@@ -11,9 +11,7 @@ import ylevchenko.gfit.mobile.gui.service.IConstants;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-
 import java.io.File;
-
 import java.io.IOException;
 
 

@@ -1,11 +1,11 @@
 package ylevchenko.rozetka.gui;
 
-import com.zebrunner.carina.core.IAbstractTest;
-import ylevchenko.web.rozetka.pages.HomePage;
 import com.zebrunner.agent.core.annotation.TestLabel;
+import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import ylevchenko.web.rozetka.pages.HomePage;
 
 public class LoginTest implements IAbstractTest {
 

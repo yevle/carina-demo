@@ -4,9 +4,9 @@ public enum Gender {
 
     MALE("male", "Male"), FEMALE("female", "Female");
 
-    private String idName;
+    private final String idName;
 
-    private String text;
+    private final String text;
 
     Gender(String idName, String text) {
         this.idName = idName;

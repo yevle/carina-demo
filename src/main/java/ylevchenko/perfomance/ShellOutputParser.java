@@ -5,7 +5,8 @@ import com.influxdb.client.write.Point;
 import ylevchenko.gfit.mobile.gui.service.IPerformanceCredits;
 
 import java.time.Instant;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class ShellOutputParser implements IPerformanceCredits {
 

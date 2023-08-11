@@ -8,8 +8,6 @@ import ylevchenko.gfit.mobile.gui.GFitAbstractPage;
 import ylevchenko.gfit.mobile.gui.common.components.PlusMenuBase;
 import ylevchenko.gfit.mobile.gui.enums.PlusMenuItems;
 
-import java.util.List;
-
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = PlusMenuBase.class)
 public class PlusMenu extends PlusMenuBase {
 

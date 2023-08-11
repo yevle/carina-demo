@@ -1,7 +1,7 @@
 package ylevchenko.carina.mobile.gui.android.components;
 
-import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.apache.commons.lang3.RandomUtils;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.SearchContext;

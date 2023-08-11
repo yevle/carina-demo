@@ -1,8 +1,8 @@
 package ylevchenko.gsmarena.mobile.gui.ios;
 
-import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.utils.exception.NotImplementedException;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import ylevchenko.gsmarena.mobile.gui.common.ForgotPassPageBase;
 import ylevchenko.gsmarena.mobile.gui.common.PassResetPageBase;

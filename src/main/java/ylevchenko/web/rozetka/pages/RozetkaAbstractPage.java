@@ -1,9 +1,9 @@
 package ylevchenko.web.rozetka.pages;
 
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
-import ylevchenko.web.rozetka.components.TopBar;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import ylevchenko.web.rozetka.components.TopBar;
 
 public class RozetkaAbstractPage extends AbstractPage {
 

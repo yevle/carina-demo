@@ -6,8 +6,6 @@ import ylevchenko.gfit.mobile.gui.GFitAbstractPage;
 import ylevchenko.gfit.mobile.gui.GFitAbstractUIObject;
 import ylevchenko.gfit.mobile.gui.enums.PlusMenuItems;
 
-import java.util.List;
-
 public abstract class PlusMenuBase extends GFitAbstractUIObject {
 
     public PlusMenuBase(WebDriver driver, SearchContext searchContext) {

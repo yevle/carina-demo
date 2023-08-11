@@ -20,7 +20,7 @@ public class PerformanceCollector implements IPerformanceCredits {
 
     private String pid;
 
-    private String grafanaLink = GRAFANA_BASE_URL;
+    private final String grafanaLink = GRAFANA_BASE_URL;
 
     private final InfluxDBService influxDBService = new InfluxDBService();
 

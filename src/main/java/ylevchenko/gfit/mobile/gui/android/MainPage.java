@@ -1,8 +1,8 @@
 package ylevchenko.gfit.mobile.gui.android;
 
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.annotations.Localized;
-import com.zebrunner.carina.utils.factory.DeviceType;
 import org.apache.commons.lang3.RandomUtils;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;

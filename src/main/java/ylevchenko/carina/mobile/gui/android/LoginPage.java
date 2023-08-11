@@ -1,13 +1,13 @@
 package ylevchenko.carina.mobile.gui.android;
 
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 import ylevchenko.carina.enums.Gender;
 import ylevchenko.carina.mobile.gui.common.LoginPageBase;
 import ylevchenko.carina.mobile.gui.common.WebViewPageBase;
-import com.zebrunner.carina.utils.factory.DeviceType;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase {
